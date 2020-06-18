@@ -12,7 +12,7 @@ makedocs(
     )
 
 deploydocs(
-    repo   = "github.com/mathn7/optinum.git",
+    repo   = "github.com/mathn7/Analyse_de_donnees.git",
     branch = "gh-pages",
     devbranch = "master",
 )
