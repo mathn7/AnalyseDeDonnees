@@ -18,6 +18,5 @@ jobs:
       julia: 1.4
       os: linux
       script:        
-        - julia --project=docs -e 'using Pkg; Pkg.instantiate(); Pkg.develop(PackageSpec(path=pwd()))'        
         - julia --project=docs --color=yes docs/make.jl
       after_success: skip
