@@ -8,9 +8,6 @@ julia:
 
 notifications:
   email: false
-  
-before_script:
-  - julia -e 'using Pkg; Pkg.add(PackageSpec(url="https://github.com/mathn7/Test_Optinum.git"))'
 
 jobs:
   include:
