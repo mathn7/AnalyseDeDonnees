@@ -2,3 +2,13 @@ name = "Analyse_donnees"
 uuid = "a3a846ad-50e5-4006-9d28-db2d39eae729"
 authors = ["MohamedElWaghf <hindahwakhfe@gmail.com>"]
 version = "0.1.0"
+
+name = "Analyse_donnees"
+uuid = "a3a846ad-50e5-4006-9d28-db2d39eae729"
+authors = ["MohamedElWaghf <hindahwakhfe@gmail.com>"]
+version = "0.1.0"
+
+[deps]
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+UnicodePlots = "b8865327-cd53-5732-bb35-84acbb429228"
