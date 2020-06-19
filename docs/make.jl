@@ -1,5 +1,3 @@
-using Documenter
-
 
 makedocs(
     sitename = "Analyse_donnees.jl",
