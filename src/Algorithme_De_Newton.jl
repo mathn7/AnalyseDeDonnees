@@ -26,16 +26,6 @@ xk,f_min,flag,nb_iters = Algorithme_de_Newton(f,gradf,hessf,x0,option)
       * **3**    : nombre maximal d'itération dépassé
    * **nb_iters** : (Integer) le nombre d'itérations faites par le programme
 
-# Exemple d'appel
-```@example
-using Optinum
-f(x)=100*(x[2]-x[1]^2)^2+(1-x[1])^2
-gradf(x)=[-400*x[1]*(x[2]-x[1]^2)-2*(1-x[1]) ; 200*(x[2]-x[1]^2)]
-hessf(x)=[-400*(x[2]-3*x[1]^2)+2  -400*x[1];-400*x[1]  200]
-x0 = [1; 0]
-options = []
-xmin,f_min,flag,nb_iters = Algorithme_De_Newton(f,gradf,hessf,x0,options)
-```
 """
 function Algorithme_De_Newton(f::Function,gradf::Function,hessf::Function,x0,options)
 
