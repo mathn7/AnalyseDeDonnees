@@ -1,12 +1,11 @@
 # Index des fonctions
 
-Documentation de toute les fonctions du package MTH2210
-
+Documentation de toute les fonctions du package CSAD
 ```@index
 Pages = ["fct_index.md"]
 ```
 
 ```@autodocs
-Modules = [Analyse_donnees]
+Modules = [CSAD]
 Order   = [:function, :type]
 ```
