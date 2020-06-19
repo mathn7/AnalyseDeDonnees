@@ -9,9 +9,6 @@ julia:
 notifications:
   email: false
 
-before_script:
-  - julia -e 'using Pkg; Pkg.add("Documenter")'
-
 jobs:
   include:
     - stage: Documentation
