@@ -8,7 +8,8 @@ makedocs(
     format = Documenter.HTML(prettyurls = get(ENV, "CI", nothing) == "true"),
     pages = [
             "Accueil" => "index.md",            
-            "Sujet" => "Sujet.md"	        	
+            "Sujet" => "Sujet.md",
+	        "Documentation des fonctions" =>"fct_index.md"
             ]
     )
 
