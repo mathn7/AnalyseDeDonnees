@@ -11,6 +11,8 @@ notifications:
 
 jobs:
   include:
+    stages :
+    - compile
     - stage: Documentation
       julia: 1.4
       os: linux
