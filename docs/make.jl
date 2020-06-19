@@ -9,7 +9,7 @@ makedocs(
     pages = [
             "Accueil" => "index.md",            
             "Sujet" => "Sujet.md",
-	        "Documentation des fonctions" =>"fct_index.md"
+	    "Documentation des fonctions" =>"fct_index.md"
             ]
     )
 
