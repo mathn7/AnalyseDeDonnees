@@ -9,6 +9,9 @@ julia:
 notifications:
   email: false
 
+before_script:
+  - julia -e 'using Pkg; Pkg.add(PackageSpec(url="https://github.com/mathn7/Analyse_de_donnees.git"))'
+
 jobs:
   include:
     - stage: Documentation
