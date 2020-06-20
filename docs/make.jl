@@ -11,4 +11,4 @@ makedocs(
             ]
     )
 
-deploydocs(repo = "github.com/mathn7/Analyse_de_donnees.git")
+deploydocs(repo = "github.com/mathn7/Projet-CSAD.git")
