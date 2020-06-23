@@ -25,11 +25,6 @@ C = channelview(I)
 R = float(C[1,:,:])
 V = float(C[2,:,:])
 B = float(C[3,:,:])
-#=
-R = colorview(RGB, C[1,:,:], zeroarray, zeroarray);
-V = colorview(RGB, zeroarray, C[2,:,:], zeroarray);
-B = colorview(RGB, zeroarray, zeroarray, C[3,:,:]);
-=#
 
 gui = imshow_gui((300,300),(2, 2))  # 2 colonnes x 2 lignes d'images (initialisés par 300×300)
 canvases = gui["canvas"]
@@ -57,25 +52,14 @@ ImageView.imshow(canvases[2,2],B) #2eme ligne ,2eme colonne
 Gtk.showall(gui["window"])
 
 
-#" Enregistrement des images des canaux "
-#save("TP Analyse de Donnees/canal_R.png",img)
-#imwrite(uint8(V),'canal_V.png')
-#imwrite(uint8(B),'canal_B.png')
+"# Enregistrement des images des canaux "
 
-#" Affichage du nuage de pixels dans le repere RVB "
-#=
-
-R_gray = Gray.(R)
-R_gray_float=convert(Array{Gray{Float64},2},R)
-R= Real.(R_gray_float).*100;
-B_gray = Gray.(B)
-B_gray_float=convert(Array{Gray{Float64},2},B)
-B= Real.(B_gray_float).*100;
-V_gray = Gray.(V)
-V_gray_float=convert(Array{Gray{Float64},2},V)
-V= Real.(V_gray_float).*100;
-=#
-#gcf() #PyPlot.display_figs()
+save("src/TP1/canal_R.png",C[1,:,:])   #pour enregistrer l'image coloré
+                               #save("src/TP1/canal_R.png",colorview(RGB, C[1,:,:], zeroarray, zeroarray))
+save("src/TP1/canal_V.png",C[2,:,:])   #pour enregistrer l'image coloré
+                               #save("src/TP1/canal_V.png",colorview(RGB,  zeroarray,C[2,:,:], zeroarray))
+save("src/TP1/canal_B.png",C[3,:,:])   #pour enregistrer l'image coloré
+                               #save("src/TP1/canal_B.png",colorview(RGB, zeroarray, zeroarray, C[3,:,:]))
 
 "####### Calcul des correlations entre les canaux RVB et des contrastes  #####"
 
@@ -103,30 +87,6 @@ c = sum(diag(Sigma));
 println("Proportion de contraste dans le canal R = ",Sigma[1,1]/c);
 println("Proportion de contraste dans le canal V = ",Sigma[2,2]/c);
 println("Proportion de contraste dans le canal B = ",Sigma[3,3]/c);
-
-#le vecteur col contient des 1
-#et a pour dimension le nombre des colonnes de X
-#=
-col = [1. for i in range(1,length=size(X,2))]
-X_bar= mean(col',X);
-Sigma = 1/n.*transpose(X)*X-X_bar*X_bar;
-
-# "Coefficients de correlation lineaire"
-sigR=(abs(Sigma[1,1]))^(1/2);
-sigV=(abs(Sigma[2,2]))^(1/2);
-sigB=(abs(Sigma[3,3]))^(1/2);
-correlationRB=Sigma[1,3];
-correlationVB=Sigma[2,3];
-correlationVR=Sigma[1,2];
-rRB=correlationRB/(sigR*sigB);
-rVB=correlationVB/(sigV*sigB);
-rVR=correlationVR/(sigV*sigR);
-#" Proportions de contraste"
-Variance_total=(sigR^2)+(sigB^2)+(sigV^2);
-cB=sigB^2/Variance_total;
-cV=sigV^2/Variance_total;
-cR=sigR^2/Variance_total;
-=#
 
 "#Affichage du nuage de pixels dans le repere RVB "
 
