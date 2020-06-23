@@ -44,7 +44,7 @@ denominateur_classe_chrysanthemes = vars["denominateur_classe_chrysanthemes"]
 nb_r = Integer(vars["nb_r"])
 nb_v = Integer(vars["nb_v"])
 r = vars["r"]
-v = vars["v"] 
+v = vars["v"]
 #" Calcul du maximum de vraisemblance ":
 V_max = max.(V_pensees,V_oeillets)
 V_max = max.(V_max,V_chrysanthemes)
@@ -101,7 +101,7 @@ for i = 1:nb_images_oeillets
 	V_classe_pensees = exp.(-x_centre.*inv_Sigma_pensees.*transpose(x_centre)/2)/denominateur_classe_pensees
 	x_centre = [r_i;v_i]-mu_oeillets
 	V_classe_oeillets = exp.(-x_centre.*inv_Sigma_oeillets.*transpose(x_centre)/2)/denominateur_classe_oeillets
-	x_centre = [r_i;v_i]-mu_chrysanthemes 
+	x_centre = [r_i;v_i]-mu_chrysanthemes
 	V_classe_chrysanthemes = exp.(-x_centre.*inv_Sigma_chrysanthemes.*transpose(x_centre)/2)/denominateur_classe_chrysanthemes
 	if (norm((V_classe_oeillets.>=V_classe_pensees))==2) && (norm(V_classe_oeillets.>=V_classe_chrysanthemes)==2)
 		cpt_images_correctement_classees = cpt_images_correctement_classees+1
@@ -111,7 +111,7 @@ for i = 1:nb_images_oeillets
 	end
 end
 
-#" Comptage des images de chrysanthemes correctement classees :"
+# Comptage des images de chrysanthemes correctement classees :
 for i = 1:nb_images_chrysanthemes
 	cpt_images = cpt_images+1
 	r_i = X_chrysanthemes[i,1]
@@ -129,6 +129,6 @@ for i = 1:nb_images_chrysanthemes
 		PyPlot.plot3D([r_i],[v_i],4,"g*",MarkerSize=10,LineWidth=2)
 	end
 end
-
+gcf()
 #"Affichage du pourcentage d'images correctement classees :"
 print(string(Integer((100*cpt_images_correctement_classees)/cpt_images))," '% d''images correctement classees")
