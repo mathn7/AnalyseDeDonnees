@@ -12,52 +12,47 @@ using ImageMagick
 using Statistics
 using LinearAlgebra
 
-
 ImageView.closeall()
 
-#= "Decompostion des canaux RVB d'une image couleur "=#
+"# Decompostion des canaux RVB d'une image couleur #"
 
-I = testimage("mandrill")        #" 1er exemple"
+#I = testimage("mandrill")        #" exemple d'une image tiréé du package ImageMagick
 
-#"Decoupage de l'image en trois canaux et conversion en flottants"
+I = load("src/TP1/automn.tiff")        #" 1er exemple d'une image locale"
+
+"#Decoupage de l'image en trois canaux et conversion en flottants"
 C = channelview(I)
-B = colorview(RGB, zeroarray, zeroarray, C[3,:,:]);
+R = float(C[1,:,:])
+V = float(C[2,:,:])
+B = float(C[3,:,:])
+#=
 R = colorview(RGB, C[1,:,:], zeroarray, zeroarray);
 V = colorview(RGB, zeroarray, C[2,:,:], zeroarray);
+B = colorview(RGB, zeroarray, zeroarray, C[3,:,:]);
+=#
 
-
-gui = imshow_gui((300,300),(2, 2))  # 2 columns, 1 row of images (each initially 300×300)
+gui = imshow_gui((300,300),(2, 2))  # 2 colonnes x 2 lignes d'images (initialisés par 300×300)
 canvases = gui["canvas"]
 
-##" Affichage de l'image RVB et de ses canaux"
+"###### Affichage de l'image RVB et de ses canaux  #######"
 
-#" Affichage de l'image RVB"
+"# Affichage de l'image RVB"
 
-#figure("Affichage de l'image RVB et de ses canaux",figsize=(30,30));
+ImageView.imshow(canvases[1,1], I) #1er ligne ,1er colonne
 
-#grid, frames, canvases = canvasgrid((2,2));
-ImageView.imshow(canvases[1,1], I)
+"# Affichage du canal R"
 
-#" Affichage du canal R"
+ImageView.imshow(canvases[1,2],R) #1er ligne ,2eme colonne
 
-#figure("Affichage du canal R",figsize=(30,30));
-#title("Affichage du canal R ")
+"#Affichage du canal V"
 
-ImageView.imshow(canvases[1,2],R)
+ImageView.imshow(canvases[2,1],V) #2eme ligne ,1er colonne
 
-#" Affichage du canal V"
+"# Affichage du canal B"
 
-#figure("Affichage du canal V",figsize=(30,30));
-#title("Affichage du canal V")
+ImageView.imshow(canvases[2,2],B) #2eme ligne ,2eme colonne
 
-ImageView.imshow(canvases[2,1],V)
-
-#" Affichage du canal B"
-
-#figure("Affichage du canal B",figsize=(30,30));
-#title("Affichage du canal B")
-
-ImageView.imshow(canvases[2,2],B)
+"#affichage de tous les images"
 
 Gtk.showall(gui["window"])
 
@@ -68,6 +63,7 @@ Gtk.showall(gui["window"])
 #imwrite(uint8(B),'canal_B.png')
 
 #" Affichage du nuage de pixels dans le repere RVB "
+#=
 
 R_gray = Gray.(R)
 R_gray_float=convert(Array{Gray{Float64},2},R)
@@ -78,24 +74,16 @@ B= Real.(B_gray_float).*100;
 V_gray = Gray.(V)
 V_gray_float=convert(Array{Gray{Float64},2},V)
 V= Real.(V_gray_float).*100;
-
-#= " Deuxieme fenetre d affichage  " =#
-PyPlot.figure("Nuage de pixels dans le repere RVB ",figsize=(30,30))
-PyPlot.title("Representation 3D des pixels dans lespace RVB",FontSize=20)
-PyPlot.xlabel("R")
-PyPlot.ylabel("V")
-PyPlot.zlabel("B")
-PyPlot.surf(R,V,B)
-
+=#
 #gcf() #PyPlot.display_figs()
 
-#" Calcul des correlations entre les canaux RVB et des contrastes"
+"####### Calcul des correlations entre les canaux RVB et des contrastes  #####"
 
-#" Matrice des donnees "
+"# Matrice des donnees "
 
-X = [R[:] V[:] B[:]];	#"Les trois canaux sont vectorises et concatenes"
+X = [R[:] V[:] B[:]];	"#Les trois canaux sont vectorises et concatenes"
 
-#" Matrice de variance/covariance"
+"# Matrice de variance/covariance"
 
 (n,p)= size(X);
 x_barre = X'*ones(n,1)/n;
@@ -103,7 +91,7 @@ X_c = X-ones(n,1)*x_barre';	# Centrage des donnees
 Sigma = (X_c')*X_c/n;
 
 
-# Coefficients de correlation lineaire
+"# Coefficients de correlation lineaire"
 
 println("Correlation r(R,V) = ",Sigma[1,2]/sqrt(Sigma[1,1]*Sigma[2,2]));
 println("Correlation r(R,B) = ",Sigma[1,3]/sqrt(Sigma[1,1]*Sigma[3,3]));
@@ -139,4 +127,17 @@ cB=sigB^2/Variance_total;
 cV=sigV^2/Variance_total;
 cR=sigR^2/Variance_total;
 =#
+
+"#Affichage du nuage de pixels dans le repere RVB "
+
+#Deuxieme fenetre d affichage
+PyPlot.title("Representation 3D des pixels dans lespace RVB",FontSize=20)
+PyPlot.xlabel("R")
+PyPlot.ylabel("V")
+PyPlot.zlabel("B")
+PyPlot.surf(R,V,B)
+
+"#pour que la derniére fenêtre s'affiche il faut que cette commande
+ #soit la dernière commande !"
+
 gcf()
