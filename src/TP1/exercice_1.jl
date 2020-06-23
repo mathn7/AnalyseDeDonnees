@@ -4,6 +4,9 @@
   Exercice_1.js
 --------------------------------------------------------------------------
 =#
+
+#importation des bibliothèques
+
 using PyPlot
 using ImageView
 using TestImages, Gtk.ShortNames
@@ -12,7 +15,11 @@ using ImageMagick
 using Statistics
 using LinearAlgebra
 
+#nettoyer l'environnement
 ImageView.closeall()
+clf()
+
+#pygui(true) #pour afficher l'image en dehors d'atom
 
 "# Decompostion des canaux RVB d'une image couleur #"
 
@@ -26,26 +33,26 @@ R = float(C[1,:,:])
 V = float(C[2,:,:])
 B = float(C[3,:,:])
 
-gui = imshow_gui((300,300),(2, 2))  # 2 colonnes x 2 lignes d'images (initialisés par 300×300)
+gui = imshow_gui((300,300),(2, 2))  # La fenetre comporte 2 lignes et 2 colonnes (affichage 300×300)
 canvases = gui["canvas"]
 
 "###### Affichage de l'image RVB et de ses canaux  #######"
 
 "# Affichage de l'image RVB"
 
-ImageView.imshow(canvases[1,1], I) #1er ligne ,1er colonne
+ImageView.imshow(canvases[1,1], I) #1ere ligne ,1ere colonne
 
 "# Affichage du canal R"
 
-ImageView.imshow(canvases[1,2],R) #1er ligne ,2eme colonne
+ImageView.imshow(canvases[1,2],R) #1ere ligne ,2nd colonne
 
 "#Affichage du canal V"
 
-ImageView.imshow(canvases[2,1],V) #2eme ligne ,1er colonne
+ImageView.imshow(canvases[2,1],V) #2nd ligne ,1ere colonne
 
 "# Affichage du canal B"
 
-ImageView.imshow(canvases[2,2],B) #2eme ligne ,2eme colonne
+ImageView.imshow(canvases[2,2],B) #2nd ligne ,2nd colonne
 
 "#affichage de tous les images"
 
@@ -91,11 +98,11 @@ println("Proportion de contraste dans le canal B = ",Sigma[3,3]/c);
 "#Affichage du nuage de pixels dans le repere RVB "
 
 #Deuxieme fenetre d affichage
+PyPlot.scatter3D(R,V,B,"b.")
 PyPlot.title("Representation 3D des pixels dans lespace RVB",FontSize=20)
 PyPlot.xlabel("R")
 PyPlot.ylabel("V")
 PyPlot.zlabel("B")
-PyPlot.surf(R,V,B)
 
 "#pour que la derniére fenêtre s'affiche il faut que cette commande
  #soit la dernière commande !"

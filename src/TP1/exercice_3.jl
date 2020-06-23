@@ -14,29 +14,17 @@ using TestImages, Gtk.ShortNames
 using Images
 
 ImageView.closeall()
+clf()
 
 ## Calcul des composantes principales d'une image RVB
 
-I = testimage("mandrill")        #" 1er exemple"
+I = load("src/TP1/coloredChips.png")        #chargement de l'image
 
-#"Decoupage de l'image en trois canaux et conversion en flottants"
-C=channelview(I)
-B = colorview(RGB, zeroarray, zeroarray, C[3,:,:])
-R = colorview(RGB, C[1,:,:], zeroarray, zeroarray)
-V = colorview(RGB, zeroarray, C[2,:,:], zeroarray)
-
-#conversion des données
-R = Gray.(R)
-R=convert(Array{Gray{Float64},2},R)
-R= Real.(R)
-
-B = Gray.(B)
-B=convert(Array{Gray{Float64},2},B)
-B= Real.(B)
-
-V = Gray.(V)
-V=convert(Array{Gray{Float64},2},V)
-V= Real.(V)
+#Decoupage de l'image en trois canaux et conversion en flottants
+CI = channelview(I)
+R = float(CI[1,:,:])
+V = float(CI[2,:,:])
+B = float(CI[3,:,:])
 
 # Matrice des donnees
 X = [R[:] V[:] B[:]];	# Les trois canaux sont vectorises et concatenes
@@ -47,16 +35,15 @@ x_barre = X'*ones(n,1)/n
 X_c = X-ones(n,1)*x_barre';	# Centrage des donnees
 Sigma = (X_c')*X_c/n
 
-# Calcul des valeurs/vecteurs propres de Sigma :
-D,W = eig(Sigma)
+# Calcul des valeurs/vecteurs propres de Sigma
+D,W = eigen(Sigma)
 
-# Tri des valeurs propres :
-valeurs_triees, = sort(D)
-indices=sortperm(D)
+#Tri des valeurs propres dans l'ordre décroissant:
+indices=sortperm(D,rev=true)
 
-# Projection sur la premiere composante principale :
+#Calcul des composantes principales et des coefficients de projection
 W = W[:,indices];   # Permutation des colonnes de W
-C = X_c*W;          # Changement d'axes du repere
+C = X_c*W          # Changement d'axes du repere
 C1 = reshape(C[:,1],size(R))
 
 ## Autres methodes de projection sur un canal pour une image RVB
@@ -69,23 +56,19 @@ Y = Gray.(I)
 
 ## Affichage de l'image RVB et de ses differentes projections
 
+gui = imshow_gui((300,300),(2, 2))  # La fenetre comporte 2 lignes et 2 colonnes (affichage 300×300)
 # 1ere fenetre d'affichage
-#figure("Name','Differentes projections pour une image RVB",..."Position",[0.01*L,0.1*H,0.71*L,0.75*H])
-
-### Affichage de l'image RVB et de ses composantes principales
-grid, frames, canvases = canvasgrid((2,2));  # 2 row, 2 columns
-# 1ere fenetre d'affichage
+canvases = gui["canvas"]
 
 # Affichage de l'image RVB
-    ImageView.imshow(canvases[1,1], testimage("mandrill"))
+ImageView.imshow(canvases[1,1], I) # 1ere ligne, 1ere colonne
 
 # 1ere composante principale = projection sur la 1er vecteur principal
-    ImageView.imshow(canvases[1,2],Gray.(C1))
+ImageView.imshow(canvases[1,2],C1) # 1ere ligne, 2nd colonne
 
 # Moyenne des 3 canaux
-    ImageView.imshow(canvases[2,1],Gray.(I_nvg))
+ImageView.imshow(canvases[2,1],I_nvg) # 2nd ligne, 1ere colonne
 
-# Fonction rgb2gray de Matlab
-    ImageView.imshow(canvases[2,2],Gray.(I))
-    win = Window(grid)
-    showall(win)
+# Fonction Gray de Julia
+ImageView.imshow(canvases[2,2],Y) # 2nd ligne, 2nd colonne
+Gtk.showall(gui["window"])
