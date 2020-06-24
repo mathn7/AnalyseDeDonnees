@@ -17,7 +17,7 @@ using LinearAlgebra
 
 #nettoyer l'environnement
 ImageView.closeall()
-clf()
+clf()     #à commmenter si vous n'êtes pas sous Atom
 
 #pygui(true) #pour afficher l'image en dehors d'atom
 
@@ -107,4 +107,4 @@ PyPlot.zlabel("B")
 "#pour que la derniére fenêtre s'affiche il faut que cette commande
  #soit la dernière commande !"
 
-gcf()
+gcf()    #à commmenter si vous n'êtes pas sous Atom
