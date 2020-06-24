@@ -10,10 +10,14 @@ using PyPlot
 using ImageView
 using TestImages, Gtk.ShortNames
 using Images
+using ImageMagick
+using LinearAlgebra
+using Statistics
+using Gaston
 
 #nettoyer l'environnement
 ImageView.closeall()
-clf()
+clf() #à commenter si vous n'êtes pas sous Atom
 
 ## ########## Calcul des composantes principales d'une image RVB #########
 
@@ -69,9 +73,9 @@ Gtk.showall(gui["window"])
 
 
 # Enregistrement des images des composantes principales
-#imwrite(uint8(255*(C1-minimum(C1))/(max(C1[:]-minimum(C1)))),"CP1.png")
-#imwrite(uint8(255*(C2-minimum(C2))/(max(C2[:]-minimum(C2)))),"CP2.png")
-#imwrite(uint8(255*(C3-minimum(C3))/(max(C3[:]-minimum(C3)))),"CP3.png")
+ImageMagick.save("src/TP1/CP1.png",(C1.-minimum(C1[:]))/(maximum(C1[:].-minimum(C1[:]))))
+ImageMagick.save("src/TP1/CP2.png",(C2.-minimum(C2[:]))/(maximum(C2[:].-minimum(C2[:]))))
+ImageMagick.save("src/TP1/CP3.png",(C3.-minimum(C3[:]))/(maximum(C3[:].-minimum(C3[:]))))
 
 ## Affichage du nuage de pixels dans le repere des composantes principales
 
@@ -83,7 +87,15 @@ Gtk.showall(gui["window"])
     ylabel("2eme CP",FontWeight=20)
     zlabel("3eme CP",FontWeight=20)
     title("Representation 3D des pixels dansl''espace des composantes principales",FontWeight=20)
-
+#=
+Gaston.surf(C1,C2,C3,lc = :green,
+           pointtype ="dot",ms=5,
+           legend=:Vraisemblance_empirique,
+           Gaston.Axes(title=:"'Estimation pour les chrysanthemes'",
+           xlabel = :r_bar,
+           ylabel = :v_bar,
+           hidden3d = :on))
+=#
 
 ## Calcul des correlations entre les composantes principales et des contrastes
 
@@ -101,4 +113,4 @@ println("Proportion de contraste dans le canal C1 = ",Sigma_2[1,1]/c)
 println("Proportion de contraste dans le canal C2 = ",Sigma_2[2,2]/c)
 println("Proportion de contraste dans le canal C3 = ",Sigma_2[3,3]/c)
 
-gcf()
+gcf() #à commenter si vous n'êtes pas sous Atom

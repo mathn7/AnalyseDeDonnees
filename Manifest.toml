@@ -74,6 +74,11 @@ git-tree-sha1 = "3663bfffede2ef41358b6fc2e1d8a6d50b3c3904"
 uuid = "6e34b625-4abd-537c-b88f-471c36dfa7a0"
 version = "1.0.6+2"
 
+[[CEnum]]
+git-tree-sha1 = "215a9aa4a1f23fbd05b92769fdd62559488d70e9"
+uuid = "fa961155-64e5-5f13-b03f-caf6b980ea82"
+version = "0.4.1"
+
 [[CRlibm]]
 deps = ["Libdl"]
 git-tree-sha1 = "9d1c22cff9c04207f336b8e64840d0bd40d86e0e"
@@ -463,6 +468,12 @@ git-tree-sha1 = "1587838842e1c35381c59cc52dbabca37bbc458d"
 uuid = "6a3955dd-da59-5b1f-98d4-e7296123deb5"
 version = "0.6.13"
 
+[[ImageIO]]
+deps = ["FileIO", "PNGFiles"]
+git-tree-sha1 = "ef9eb9238819c9d2a5b922ba128b29647147ecfd"
+uuid = "82e4d734-157c-48bb-816b-45c225c6df19"
+version = "0.2.0"
+
 [[ImageMagick]]
 deps = ["FileIO", "ImageCore", "ImageMagick_jll", "InteractiveUtils", "Libdl", "Pkg", "Random"]
 git-tree-sha1 = "318342a5099a9c952b4de087344a2db831458c87"
@@ -819,6 +830,12 @@ deps = ["ArgCheck", "DataStructures", "Dates", "DefaultApplication", "DocStringE
 git-tree-sha1 = "0138f33baf8f19e7ada1184df8bf458a74388fa6"
 uuid = "8314cec4-20b6-5062-9cdb-752b83310925"
 version = "1.2.8"
+
+[[PNGFiles]]
+deps = ["CEnum", "ImageCore", "IndirectArrays", "OffsetArrays", "libpng_jll"]
+git-tree-sha1 = "72ad6e0a33aa52ff244cc0a79acc7d8d6d5b263d"
+uuid = "f57f5aa1-a3ce-4bc8-8ab9-96f992907883"
+version = "0.2.1"
 
 [[PaddedViews]]
 deps = ["OffsetArrays"]

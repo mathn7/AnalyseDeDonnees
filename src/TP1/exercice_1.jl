@@ -17,10 +17,9 @@ using LinearAlgebra
 
 #nettoyer l'environnement
 ImageView.closeall()
-clf()
+clf() #à commenter si vous n'êtes pas sous Atom
 
 #pygui(true) #pour afficher l'image en dehors d'atom
-
 "# Decompostion des canaux RVB d'une image couleur #"
 
 #I = testimage("mandrill")        #" exemple d'une image tiréé du package ImageMagick
@@ -104,7 +103,7 @@ PyPlot.xlabel("R")
 PyPlot.ylabel("V")
 PyPlot.zlabel("B")
 
-"#pour que la derniére fenêtre s'affiche il faut que cette commande
+"#pour que la derniére fenêtre s'affiche sous Atom il faut que cette commande
  #soit la dernière commande !"
 
-gcf()
+gcf() #à commmenter si vous n'êtes pas sous Atom

@@ -72,3 +72,8 @@ ImageView.imshow(canvases[2,1],I_nvg) # 2nd ligne, 1ere colonne
 # Fonction Gray de Julia
 ImageView.imshow(canvases[2,2],Y) # 2nd ligne, 2nd colonne
 Gtk.showall(gui["window"])
+
+#Enregistrement des images
+save("src/TP1/CP1.png",(C1.-minimum(C1[:]))/(maximum(C1[:].-minimum(C1[:]))))
+save("src/TP1/I_nvg.png",I_nvg)
+save("src/TP1/Y.png",Y)
