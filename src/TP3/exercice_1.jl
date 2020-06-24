@@ -5,7 +5,6 @@
 #-------------------------------------------------------------------------------
 
 using MAT
-using PyPlot
 using Statistics
 using LaTeXStrings
 

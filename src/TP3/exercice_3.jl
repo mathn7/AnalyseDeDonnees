@@ -4,7 +4,6 @@
 # exercice_3.js
 #--------------------------------------------------------------------------
 
-#using PyPlot
 using Plots
 using MAT
 using LinearAlgebra
