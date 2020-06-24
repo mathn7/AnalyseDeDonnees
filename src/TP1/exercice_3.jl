@@ -14,7 +14,7 @@ using TestImages, Gtk.ShortNames
 using Images
 
 ImageView.closeall()
-clf()
+
 
 ## Calcul des composantes principales d'une image RVB
 
