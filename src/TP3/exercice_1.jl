@@ -59,4 +59,4 @@ plot(X_chrysanthemes[:,1],X_chrysanthemes[:,2],"b+",MarkerSize=10,LineWidth=2)
 xlabel(L"\mathrm{\bar{r}}",FontSize=20)
 ylabel(L"\mathrm{\bar{v}}",FontSize=20)
 legend(("Pensees","Oeillets","Chrysantemes"))
-gcf()
+### TODO : sauvegarde des variables 

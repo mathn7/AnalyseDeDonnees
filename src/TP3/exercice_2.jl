@@ -13,7 +13,7 @@ include("tapez_entrer.jl")
 include("estimation_mu_Sigma.jl")
 
 # Chargement des donnees de l exercice 1
-vars = matread("exercice_1.mat")
+vars = matread("resultats_ex1.mat")
 azimuth = -72
 elevation = 42
 # récupérer les données du dictionnaire
@@ -29,7 +29,6 @@ v = vars["v"][:]
 
 # Estimation des parametres de la loi normale [fonction a coder]
 mu_pensees,Sigma_pensees = estimation_mu_Sigma(X_pensees)
-inv_Sigma_pensees = inv(Sigma_pensees);
 # Valeurs de la loi normale sur la grille
 V_pensees = zeros(nb_r,nb_v)
 for i = 1:nb_r
@@ -81,7 +80,6 @@ Gaston.surf!(X_pensees[:,1],X_pensees[:,2],zeros(length(X_pensees)),
 
 # Estimation des parametres de la loi normal
 mu_oeillets,Sigma_oeillets= estimation_mu_Sigma(X_oeillets);
-inv_Sigma_oeillets = inv(Sigma_oeillets);
 # Valeurs de la loi normale sur la grille
 V_oeillets = zeros(nb_r,nb_v)
 for i = 1:Integer(nb_r)
@@ -129,8 +127,6 @@ Gaston.surf!(X_oeillets[:,1],X_oeillets[:,2],zeros(length(X_oeillets)),
 
 # Estimation des parametres de la loi normale [fonction a coder]
 mu_chrysanthemes,Sigma_chrysanthemes = estimation_mu_Sigma(X_chrysanthemes)
-inv_Sigma_chrysanthemes = inv(Sigma_chrysanthemes);
-
 # Valeurs de la loi normale sur la grille
 V_chrysanthemes = zeros(nb_r,nb_v)
 for i = 1:Integer(nb_r)
@@ -175,3 +171,6 @@ Gaston.surf!(X_chrysanthemes[:,1],X_chrysanthemes[:,2],zeros(length(X_chrysanthe
 	lc = :green)
 #,"b+",MarkerSize=10,LineWidth=2)
 =#
+
+
+### TODO : sauvegarde des variables 
