@@ -53,7 +53,6 @@ V_pensees = V_pensees / denominateur_classe_pensees
 pyplot();
 plt = plot(layout=(1,3))
 
-labels = ["Vraisemblance empirique","donnees d'apprentissage"]
 plot!(r,v,V_pensees,st=:wireframe,color=:palegreen,	
 	title=" Vraisemblance de la classe des pensees",
 	label="Vraisemblance empirique",subplot=1,	
