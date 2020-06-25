@@ -5,11 +5,10 @@
 #--------------------------------------------------------------------------
 
 
-using Plots
 using MAT
 using Primes
 using ImageView
-using TestImages.testimage
+using TestImages
 using Gtk.ShortNames
 include("float_to_RGB.jl")
 

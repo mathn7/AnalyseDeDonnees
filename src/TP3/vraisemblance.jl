@@ -8,23 +8,25 @@ function vraisemblance( r, v, mu_i, Sigma_i, denominateur_classe_i )
 
     nb_r = length(r)
     nb_v = length(v)
-
-    P = zeros(nb_r,nb_v)
-
-    for i = 1:nb_r
-        for j = 1:nb_v
-            x_centre = [r(i),v(j)] - mu_i
-            P[j,i] = exp(-(x_centre')*(Sigma_i \ x_centre)/2)
+    if nb_r > 1 | nb_v > 1
+        P = zeros(nb_r,nb_v)
+        for i = 1:nb_r
+            for j = 1:nb_v
+                x_centre = [r[i],v[j]] - mu_i
+                P[j,i] = exp(-(x_centre')*(Sigma_i \ x_centre)/2)
+            end
         end
+    else
+        x_centre = [r;v] - mu_i
+        P = exp(-x_centre' * (Sigma_i \ x_centre) / 2)
     end
-
-    if(denominateur_classe_i == -1)
+    if denominateur_classe_i == -1
         denominateur = 2*pi*sqrt(det(Sigma_i))
     else
         denominateur = denominateur_classe_i
     end
 
     P = P / denominateur
-    return [ P, denominateur ]
+    return P, denominateur
 end
 

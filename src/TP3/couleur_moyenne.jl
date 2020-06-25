@@ -4,7 +4,7 @@
 # moyenne_ex4.m
 #--------------------------------------------------------------------------
 
-function moyenne_ex4(I)
+function couleur_moyenne(I)
 
     # Conversion au format flottants
     I = float(I)

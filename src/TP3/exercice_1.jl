@@ -9,8 +9,8 @@ using MAT
 using LinearAlgebra
 using Statistics
 using LaTeXStrings
-
-include("moyenneim.jl")
+closeall()
+include("moyenne_image.jl")
 # Chargement des donnees sous forme d'un dictionnaire
 vars = matread("donnees.mat")
 
@@ -22,21 +22,21 @@ nb_images_chrysanthemes = Integer(vars["nb_images_chrysanthemes"])
 X_pensees = zeros(nb_images_pensees,2)
 for i = 1:nb_images_pensees
 	im = vars["pe"*string(i)]
-	X_pensees[i,:] = moyenneim(im)
+	X_pensees[i,:] = moyenne_image(im)
 end
 
 # Couleur moyenne de chaque image d oeillet [fonction a coder]
 X_oeillets = zeros(nb_images_oeillets,2)
 for i = 1:nb_images_oeillets
 	im = vars["oe"*string(i)]
-	X_oeillets[i,:] = moyenneim(im)
+	X_oeillets[i,:] = moyenne_image(im)
 end
 
 # Couleur moyenne de chaque image de chrysantheme
 X_chrysanthemes = zeros(nb_images_chrysanthemes,2)
 for i = 1:nb_images_chrysanthemes
 	im = vars["ch"*string(i)]
-	X_chrysanthemes[i,:] = moyenneim(im)
+	X_chrysanthemes[i,:] = moyenne_image(im)
 end
 
 ## Affichage des couleurs moyennes des images de fleurs
@@ -47,7 +47,7 @@ r = 0.35:pas:0.60
 v = 0.2:pas:0.45
 nb_r = length(collect(r))
 nb_v = length(collect(v))
-pyplot()
+pyplot() # utiliser le backend pyplot de matplotlib
 scatter(X_pensees[:,1],X_pensees[:,2],color=:red,marker=:star7,markerstrokecolor=:red,markersize=15,
 	title="Couleurs moyennes des images",label="Pensees",xlabel=L"\mathrm{\bar{r}}",ylabel=L"\mathrm{\bar{v}}",
 	xlim=(r[1],r[end]),ylim=(v[1],v[end]))
