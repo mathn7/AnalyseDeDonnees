@@ -6,6 +6,7 @@
 
 using Plots
 using MAT
+using LinearAlgebra
 using Statistics
 using LaTeXStrings
 

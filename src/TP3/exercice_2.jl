@@ -4,13 +4,15 @@
 # exercice_2.jl
 #--------------------------------------------------------------------------
 
+using Plots
 using MAT
 using LinearAlgebra
 using LaTeXStrings
-using Plots
-closeall()   # close all plot windows
+  
 include("tapez_entrer.jl")
 include("estimation_mu_Sigma.jl")
+
+closeall()
 
 # Chargement des donnees de l exercice 1
 vars = matread("resultats_ex1.mat")

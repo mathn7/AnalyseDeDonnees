@@ -8,11 +8,11 @@ using Plots
 using MAT
 using LinearAlgebra
 using LaTeXStrings
-closeall() 
-#deuxieme option.
-#using Plots
 
-# Chargement des donnees de l exercice 2
+closeall() 
+
+#deuxieme option.
+
 # Chargement des donnees de l exercice 2
 vars = matread("resultats_ex2.mat")
 
@@ -51,8 +51,8 @@ classe_pensees = findall(V_pensees .== V_max)
 classe_oeillets = findall(V_oeillets .== V_max)
 classe_chrysanthemes = findall(V_chrysanthemes .== V_max)
 code_classe = zeros(nb_r,nb_v)
-code_classe[classe_pensees] .= 3;
-code_classe[classe_oeillets] .= 2;
+code_classe[classe_pensees] .= 3
+code_classe[classe_oeillets] .= 2
 code_classe[classe_chrysanthemes] .= 1
 
 # Affichage des classes 
@@ -78,7 +78,6 @@ heatmap!(r,v,code_classe,color=cgrad([:royalblue, :seagreen, :firebrick]),
 cpt_images = 0
 cpt_images_correctement_classees = 0
 # Comptage des images de pensees correctement classees :
-islabeled = false
 for i = 1:nb_images_pensees
 	global cpt_images = cpt_images + 1
 	r_i = X_pensees[i,1]
@@ -91,9 +90,9 @@ for i = 1:nb_images_pensees
 	V_classe_chrysanthemes = exp.(-x_centre'*(Sigma_chrysanthemes \ x_centre)/2)/denominateur_classe_chrysanthemes
 	if (V_classe_pensees >= V_classe_oeillets) && (V_classe_pensees >= V_classe_chrysanthemes)
 		global cpt_images_correctement_classees = cpt_images_correctement_classees+1
-		scatter!([r_i],[v_i],color=:red,markersize=10,label="")
+		scatter!([r_i],[v_i],color=:red,markersize=10,label="pensee bien classée")
 	else
-		scatter!([r_i],[v_i],color=:white,markerstrokecolor=:red,marker=:xcross,markersize=10,label="")
+		scatter!([r_i],[v_i],color=:white,markerstrokecolor=:red,marker=:xcross,markersize=10,label="pensee pas bien classée")
 	end
 end
 
@@ -102,17 +101,21 @@ for i = 1:nb_images_oeillets
 	global cpt_images = cpt_images + 1
 	r_i = X_oeillets[i,1]
 	v_i = X_oeillets[i,2]
+
 	x_centre = [r_i;v_i]-mu_pensees
 	V_classe_pensees = exp.(-x_centre'*(Sigma_pensees \ x_centre)/2)/denominateur_classe_pensees
+
 	x_centre = [r_i;v_i]-mu_oeillets
 	V_classe_oeillets = exp.(-x_centre'*(Sigma_oeillets \ x_centre)/2)/denominateur_classe_oeillets
+
 	x_centre = [r_i;v_i]-mu_chrysanthemes
 	V_classe_chrysanthemes = exp.(-x_centre'*(Sigma_chrysanthemes \ x_centre)/2)/denominateur_classe_chrysanthemes
+	
 	if (V_classe_oeillets >= V_classe_pensees) && (V_classe_oeillets >= V_classe_chrysanthemes)
 		global cpt_images_correctement_classees = cpt_images_correctement_classees+1
-		scatter!([r_i],[v_i],color=:green,markersize=10,label="")
+		scatter!([r_i],[v_i],color=:green,markersize=10,label="oeillet bien classée")
 	else
-		scatter!([r_i],[v_i],color=:white,markerstrokecolor=:green,marker=:xcross,markersize=10,label="")
+		scatter!([r_i],[v_i],color=:white,markerstrokecolor=:green,marker=:xcross,markersize=10,label="oeillet bien classée")
 	end
 end
 
@@ -134,10 +137,10 @@ for i = 1:nb_images_chrysanthemes
 
 	if (V_classe_chrysanthemes >= V_classe_pensees) && (V_classe_chrysanthemes >= V_classe_oeillets)
 		global cpt_images_correctement_classees = cpt_images_correctement_classees+1
-		scatter!([r_i],[v_i],color=:blue,markersize=10,label="")
+		scatter!([r_i],[v_i],color=:blue,markersize=10,label="chrysantheme bien classée")
 		dernierpt = "blue"
 	else
-		scatter!([r_i],[v_i],color=:white,markerstrokecolor=:blue,marker=:xcross,markersize=10,label="")
+		scatter!([r_i],[v_i],color=:white,markerstrokecolor=:blue,marker=:xcross,markersize=10,label="chrysantheme pas bien classée")
 		dernierpt = "white"
 	end
 end

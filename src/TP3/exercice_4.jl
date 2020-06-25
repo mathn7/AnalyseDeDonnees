@@ -8,6 +8,7 @@ using Plots
 using MAT
 using LinearAlgebra
 using LaTeXStrings
+
 include("moyenne_ex4.jl")
 
 # Chargement des donnees
