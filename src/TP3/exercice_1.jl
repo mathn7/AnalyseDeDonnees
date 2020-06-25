@@ -4,6 +4,7 @@
 # exercice_1.jl
 #-------------------------------------------------------------------------------
 
+using Plots
 using MAT
 using Statistics
 using LaTeXStrings
@@ -45,17 +46,10 @@ r = 0.35:pas:0.60
 v = 0.2:pas:0.45
 nb_r = length(collect(r))
 nb_v = length(collect(v))
-
-figure("Couleurs moyennes des images",figsize=(30,30))
-axis(:equal);
-xlim(xmin=r[1]) # adjust the xmin
-xlim(xmax=r[end]) # adjust the xmax
-ylim(ymin=v[1]) # adjust the ymin
-ylim(ymax=v[end]) # adjust the ymax
-plot(X_pensees[:,1],X_pensees[:,2],"r*",MarkerSize=10,LineWidth=2)
-plot(X_oeillets[:,1],X_oeillets[:,2],"go",MarkerSize=10,LineWidth=2)
-plot(X_chrysanthemes[:,1],X_chrysanthemes[:,2],"b+",MarkerSize=10,LineWidth=2)
-xlabel(L"\mathrm{\bar{r}}",FontSize=20)
-ylabel(L"\mathrm{\bar{v}}",FontSize=20)
-legend(("Pensees","Oeillets","Chrysantemes"))
+pyplot()
+scatter(X_pensees[:,1],X_pensees[:,2],color=:red,marker=:star7,markerstrokecolor=:red,markersize=15,
+	title="Couleurs moyennes des images",label="Pensees",xlabel=L"\mathrm{\bar{r}}",ylabel=L"\mathrm{\bar{v}}",
+	xlim=(r[1],r[end]),ylim=(v[1],v[end]))
+scatter!(X_oeillets[:,1],X_oeillets[:,2],color=:green,markerstrokecolor=:green,markersize=15,label="Oeillets")
+scatter!(X_chrysanthemes[:,1],X_chrysanthemes[:,2],color=:blue,marker=:+,markerstrokecolor=:blue,markersize=15,label="Chrysantemes")
 ### TODO : sauvegarde des variables 

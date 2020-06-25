@@ -56,9 +56,11 @@ nb_v = length(v);
 
 scatter(X_pensees[:,1],X_pensees[:,2],X_pensees[:,3],color=:red,marker=:star7,markerstrokecolor=:red,markersize=10,
    label="Pensees",title="Couleurs moyennes des images",xlabel=L"\mathrm{\bar{r}}",ylabel=L"\mathrm{\bar{v}}")
+
 scatter!(X_oeillets[:,1],X_oeillets[:,2],X_oeillets[:,3],color=:green,markerstrokecolor=:green,markersize=10,label="Oeillets")
-scatter!(X_chrysanthemes[:,1],X_chrysanthemes[:,2],X_chrysanthemes[:,3],
-   color=:blue,marker=:+,markerstrokecolor=:blue,markersize=10,label="Chrysantemes")
+
+scatter!(X_chrysanthemes[:,1],X_chrysanthemes[:,2],X_chrysanthemes[:,3], color=:blue,marker=:+, markerstrokecolor=:blue,
+	markersize=10,label="Chrysantemes",xlim=(r[1],r[end]),ylim=(v[1],v[end]))
 
 #view(azimuth,elevation)
 

@@ -70,7 +70,8 @@ scatter!([x],[y],color=:blue,markersize=10,label="chrysantheme bien classée")
 scatter!([x],[y],color=:white,markerstrokecolor=:blue,marker=:xcross,markersize=10,label="chrysantheme pas bien classée")
 
 heatmap!(r,v,code_classe,color=cgrad([:royalblue, :seagreen, :firebrick]),
-	xlabel=L"\mathrm{\bar{r}}",ylabel=L"\mathrm{\bar{v}}")
+	xlabel=L"\mathrm{\bar{r}}",ylabel=L"\mathrm{\bar{v}}",
+	xlim=(r[1],r[end]),ylim=(v[1],v[end]))
 #-------------------------------------------------------------------------------
 
 #Initialisation des compteurs :
@@ -144,4 +145,4 @@ end
 accuracy = 100*cpt_images_correctement_classees/cpt_images
 print(accuracy,"% d'images correctement classees")
 # Ajout du titre avec le pourcentage des images bien classées
-scatter!([x],[y],	color=dernierpt,label="", title="Classification par maximum de vraisemblance "*string(accuracy)[1:4]*"% d'images correctement classées")
+scatter!([x],[y],	color=dernierpt,markersize=0,label="", title="Classification par maximum de vraisemblance "*string(accuracy)[1:4]*"% d'images correctement classées")
