@@ -1,9 +1,10 @@
-#--------------------------------------------------------------------------
-# ENSEEIHT - 1SN - Analyse de donnees
-# TP3 - Classification bayesienne
-# moyenne_ex4.m
-#--------------------------------------------------------------------------
-
+"""
+--------------------------------------------------------------------------
+ ENSEEIHT - 1SN - Analyse de donnees
+ TP3 - Classification bayesienne
+ moyenne_ex4.m
+--------------------------------------------------------------------------
+"""
 function couleur_moyenne(I)
 
     # Conversion au format flottants

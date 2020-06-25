@@ -1,9 +1,10 @@
-#--------------------------------------------------------------------------
-# ENSEEIHT - 1SN - Analyse de donnees
-# TP3 - Classification bayesienne
-# recup_donnees.jl
-#--------------------------------------------------------------------------
-
+"""
+--------------------------------------------------------------------------
+ ENSEEIHT - 1SN - Analyse de donnees
+ TP3 - Classification bayesienne
+ recup_donnees.jl
+--------------------------------------------------------------------------
+"""
 
 using MAT
 using Primes

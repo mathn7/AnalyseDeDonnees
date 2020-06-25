@@ -1,3 +1,10 @@
+"""
+-------------------------------------------------------------------------------
+ ENSEEIHT - 1SN - Analyse de donnees
+ TP3 - Classification bayesienne
+ moyenne_image.jl
+-------------------------------------------------------------------------------
+"""
 function moyenne_image(image)
 
 	image = float(image)

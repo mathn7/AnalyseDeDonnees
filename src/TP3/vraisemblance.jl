@@ -1,14 +1,22 @@
-# calcule la vraisemblance p(x, w_i) et le dénominateur de classe
-# x est donnée par ses coordonnées sur la grille(r,v)
-# w_i est caractérisée par mu_i et Sigma_i
-# le dénominateur de classe peut être
-#   - calculé (et retourné comme résultat) si denominateur_classe_i = -1
-#   - ou fourni
+"""
+--------------------------------------------------------------------------
+ ENSEEIHT - 1SN - Analyse de donnees
+ TP3 - Classification bayesienne
+ vraisemblance.jl
+--------------------------------------------------------------------------
+
+calcule la vraisemblance p(x, w_i) et le dénominateur de classe
+x est donnée par ses coordonnées sur la grille(r,v)
+w_i est caractérisée par mu_i et Sigma_i
+le dénominateur de classe peut être
+  - calculé (et retourné comme résultat) si denominateur_classe_i = -1
+  - ou fourni
+"""
 function vraisemblance( r, v, mu_i, Sigma_i, denominateur_classe_i )
 
     nb_r = length(r)
     nb_v = length(v)
-    if nb_r > 1 | nb_v > 1
+    if nb_r > 1 || nb_v > 1
         P = zeros(nb_r,nb_v)
         for i = 1:nb_r
             for j = 1:nb_v

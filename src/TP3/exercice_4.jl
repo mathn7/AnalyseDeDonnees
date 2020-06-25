@@ -1,9 +1,10 @@
-#--------------------------------------------------------------------------
-# ENSEEIHT - 1SN - Analyse de donnees
-# TP3 - Classification bayesienne
-# exercice_4.jl
-#--------------------------------------------------------------------------
-
+"""
+--------------------------------------------------------------------------
+ ENSEEIHT - 1SN - Analyse de donnees
+ TP3 - Classification bayesienne
+ exercice_4.jl
+--------------------------------------------------------------------------
+"""
 using Plots
 using MAT
 using LinearAlgebra

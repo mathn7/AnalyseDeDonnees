@@ -1,9 +1,10 @@
-#--------------------------------------------------------------------------
-# ENSEEIHT - 1SN - Analyse de donnees
-# TP3 - Classification bayesienne
-# exercice_2.jl
-#--------------------------------------------------------------------------
-closeall()
+"""
+--------------------------------------------------------------------------
+ ENSEEIHT - 1SN - Analyse de donnees
+ TP3 - Classification bayesienne
+ exercice_2.jl
+--------------------------------------------------------------------------
+"""
 
 using Plots
 using MAT
@@ -13,16 +14,18 @@ include("tapez_entrer.jl")
 include("estimation_mu_et_sigma.jl")
 include("vraisemblance.jl")
 
-# Chargement des donnees de l exercice 1
-vars = matread("resultats_ex1.mat")
+closeall()
 
-X_pensees = vars["X_pensees"]
-X_oeillets = vars["X_oeillets"]
-X_chrysanthemes = vars["X_chrysanthemes"]
-nb_r = Integer(vars["nb_r"])
-nb_v = Integer(vars["nb_v"])
-r = vars["r"][:] # [:] à enlever
-v = vars["v"][:] # [:] à enlever 
+# Chargement des donnees de l exercice 1
+vars = matread("resultats-ex1.mat")
+
+X_pensees =vars["X_pensees"]
+X_oeillets =vars["X_oeillets"]
+X_chrysanthemes =vars["X_chrysanthemes"]
+nb_r =Integer(vars["nb_r"])
+nb_v =Integer(vars["nb_v"])
+r =vars["r"] #  à enlever
+v =vars["v"] #  à enlever 
 
 ## Estimation pour les pensees ##
 
@@ -51,14 +54,14 @@ mu_oeillets, Sigma_oeillets= estimation_mu_et_sigma(X_oeillets)
 V_oeillets, denominateur_classe_oeillets = vraisemblance(r, v, mu_oeillets, Sigma_oeillets, -1)
 
 # Representation 3D de la loi normale
-plot!(plt[2],r,v,V_oeillets,st=:wireframe,color=:lightsalmon,
+plot!(r,v,V_oeillets,st=:wireframe,color=:lightsalmon,
 	title="Vraisemblance de la classe des oeillets",
 	label="Vraisemblance empirique",subplot=2,
 	xlim=(r[1],r[end]),ylim=(v[1],v[end]),
 	xlabel=L"\mathrm{\bar{r}}",ylabel=L"\mathrm{\bar{v}}")
 
-scatter!(plt[2],X_oeillets[:,1],X_oeillets[:,2],zeros(length(X_oeillets)),markersize=10,
-
+scatter!(X_oeillets[:,1],X_oeillets[:,2],zeros(length(X_oeillets)),markersize=10,
+	markerstrokecolor=:red,marker=:star5,c=:red,label="donnees d'apprentissage",subplot=2)
 ## Estimation pour les chrysanthemes ##
 
 # Estimation des parametres de la loi normale [fonction a coder]
@@ -67,13 +70,37 @@ mu_chrysanthemes, Sigma_chrysanthemes = estimation_mu_et_sigma(X_chrysanthemes)
 V_chrysanthemes, denominateur_classe_chrysanthemes = vraisemblance(r,v,mu_chrysanthemes,Sigma_chrysanthemes,-1)
 
 # Representation 3D de la loi normale
-plot!(plt[3],r,v,V_chrysanthemes,st=:wireframe,alpha=0.8,color=:lightblue,
+plot!(r,v,V_chrysanthemes,st=:wireframe,alpha=0.8,color=:lightblue,
 	xlim=(r[1],r[end]),ylim=(v[1],v[end]),
 	title="Vraisemblance de la classe des chrysanthemes",
 	label="Vraisemblance empirique",subplot=3,
 	xlabel=L"\mathrm{\bar{r}}",ylabel=L"\mathrm{\bar{v}}")
 
-scatter!(plt[3],X_chrysanthemes[:,1],X_chrysanthemes[:,2],zeros(length(X_chrysanthemes)),
+scatter!(X_chrysanthemes[:,1],X_chrysanthemes[:,2],zeros(length(X_chrysanthemes)),
 	markersize=10,markerstrokecolor=:blue,marker=:star5,c=:blue,label="donnees d'apprentissage",subplot=3)
 
-### TODO : sauvegarde des variables et affichage du second label dans la legende
+MAT.matwrite("resultats-ex2.mat", Dict(
+	"nb_r" => nb_r,
+	"nb_v" => nb_v,
+	"r" => collect(r), 
+	"v" => collect(v), 
+	"X_pensees" => X_pensees,
+	"X_oeillets" => X_oeillets,
+	"X_chrysanthemes" => X_chrysanthemes,
+	"V_pensees"=> V_pensees,
+	"V_oeillets"=> V_oeillets,
+	"V_chrysanthemes"=> V_chrysanthemes,
+	"nb_images_pensees" => nb_images_pensees,
+	"nb_images_oeillets" => nb_images_oeillets,
+	"nb_images_chrysanthemes" => nb_images_chrysanthemes,
+	"mu_pensees"=> mu_pensees,
+	"mu_oeillets"=> mu_oeillets,
+	"mu_chrysanthemes"=> mu_chrysanthemes,
+	"Sigma_pensees"=> Sigma_pensees,
+	"Sigma_oeillets"=> Sigma_oeillets,
+	"Sigma_chrysanthemes"=> Sigma_chrysanthemes,
+	"denominateur_classe_pensees"=> denominateur_classe_pensees,
+	"denominateur_classe_oeillets"=> denominateur_classe_oeillets,
+	"denominateur_classe_chrysanthemes"=> denominateur_classe_chrysanthemes
+))
+### TODO : affichage du second label dans la legende

@@ -9,8 +9,10 @@ using MAT
 using LinearAlgebra
 using Statistics
 using LaTeXStrings
-closeall()
 include("moyenne_image.jl")
+
+closeall()
+
 # Chargement des donnees sous forme d'un dictionnaire
 vars = matread("donnees.mat")
 
@@ -53,4 +55,14 @@ scatter(X_pensees[:,1],X_pensees[:,2],color=:red,marker=:star7,markerstrokecolor
 	xlim=(r[1],r[end]),ylim=(v[1],v[end]))
 scatter!(X_oeillets[:,1],X_oeillets[:,2],color=:green,markerstrokecolor=:green,markersize=15,label="Oeillets")
 scatter!(X_chrysanthemes[:,1],X_chrysanthemes[:,2],color=:blue,marker=:+,markerstrokecolor=:blue,markersize=15,label="Chrysantemes")
-### TODO : sauvegarde des variables 
+
+MAT.matwrite("resultats-ex1.mat", Dict(
+	"nb_r" => nb_r,
+	"nb_v" => nb_v,
+	"r" => collect(r), 
+	"v" => collect(v), 
+	"X_pensees" => X_pensees,
+	"X_oeillets" => X_oeillets,
+	"X_chrysanthemes" => X_chrysanthemes
+))
+

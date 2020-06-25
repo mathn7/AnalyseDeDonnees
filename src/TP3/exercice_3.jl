@@ -1,3 +1,4 @@
+#
 #--------------------------------------------------------------------------
 # ENSEEIHT - 1SN - Analyse de donnees
 # TP3 - Classification bayesienne
@@ -12,10 +13,8 @@ include("vraisemblance.jl")
 
 closeall() 
 
-#deuxieme option.
-
 # Chargement des donnees de l exercice 2
-vars = matread("resultats_ex2.mat")
+vars = matread("resultats-ex2.mat")
 
 V_pensees = vars["V_pensees"]
 V_oeillets = vars["V_oeillets"]
