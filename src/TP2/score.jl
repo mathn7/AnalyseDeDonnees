@@ -6,7 +6,9 @@ function score(F_1,F_2,a,F_1_estime,F_2_estime,a_estime)
     F_2_estime = [2.1937;10.6136]
     F_1_estime = [-9.2992;-2.6953]
     a_estime = 15.2463
+
 =#
+
     a_max = max(a,a_estime)
     x_min = minimum([F_1[1],F_2[1],F_1_estime[1],F_2_estime[1]])-a_max
     x_max = maximum([F_1[1],F_2[1],F_1_estime[1],F_2_estime[1]])+a_max
@@ -29,27 +31,33 @@ function score(F_1,F_2,a,F_1_estime,F_2_estime,a_estime)
         Y[:,j] = y
     end
 
+
     distance_P_F_1 = sqrt.((X.-F_1[1]).*(X.-F_1[1]).+(Y.-F_1[2]).*(Y.-F_1[2]))
     distance_P_F_2 = sqrt.((X.-F_2[1]).*(X.-F_2[1]).+(Y.-F_2[2]).*(Y.-F_2[2]))
 
     distance_P_F_1_estime = sqrt.((X.-F_1_estime[1]).*(X.-F_1_estime[1])+(Y.-F_1_estime[2]).*(Y.-F_1_estime[2]))
     distance_P_F_2_estime = sqrt.((X.-F_2_estime[1]).*(X.-F_2_estime[1])+(Y.-F_2_estime[2]).*(Y.-F_2_estime[2]))
+
     #vecorisation
 
     M = distance_P_F_1+distance_P_F_2
     M_es = distance_P_F_1_estime+distance_P_F_2_estime
 
+
     indices_union = findall(x -> x <2*a, M )
+
     indices_estime = findall(x -> x <2*a_estime, M_es)
 
 
     indices_intersection = [];
+
     for l in indices_union
         if (l in indices_estime)
              indices_intersection = [indices_intersection; l]
         else
              indices_union = [indices_union; l]
         end
+
     end
 
     union = length(indices_union[:])
