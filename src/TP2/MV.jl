@@ -3,6 +3,7 @@ function MV(xy_donnees_bruitees,x_F_aleatoire,y_F_aleatoire,a_aleatoire)
 	n = size(xy_donnees_bruitees,2)
 	nb_tirages = length(a_aleatoire)
 
+
 	sommes_ecarts_carres = []
 	for k = 1:nb_tirages
 		x_F_1_test = x_F_aleatoire[1,k]
