@@ -9,6 +9,7 @@ using Plots
 using MAT
 using Primes
 using ImageView
+using TestImages.testimage
 using Gtk.ShortNames
 include("float_to_RGB.jl")
 
