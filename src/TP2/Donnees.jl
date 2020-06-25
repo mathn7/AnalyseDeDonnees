@@ -7,44 +7,49 @@
 using PyPlot
 
 include("affichage_ellipse.jl")
-clf()
+
 
 # Parametres de l'ellipse
-taille = 20;
-c = 2*taille/5*(rand(1)[1]+0.25);
-a = 2*taille/5*(rand(1)[1]+1);
+taille = 20
+c = 2*taille/5*(rand(1)[1]+0.25)
+a = 2*taille/5*(rand(1)[1]+1)
 if a[1]<c[1]
-	aux = a;
-	a = c;
-	c = aux;
+	aux = a
+	a = c
+	c = aux
 end
-b = sqrt(a[1]^2-c[1]^2);
-C = (taille-a).*(2*rand(2,1).-1);
-theta_0 = 2*pi*rand(1)[1];
+b = sqrt(a[1]^2-c[1]^2)
+C = (taille-a).*(2*rand(2,1).-1)
+theta_0 = 2*pi*rand(1)[1]
 
-# Affichage de l'ellipse
-nb_points_ellipse = 100;
-deux_pi = 2*pi;
-theta_points_ellipse = deux_pi/nb_points_ellipse:deux_pi/nb_points_ellipse:deux_pi;
-affichage_ellipse(C,theta_0,a,b,theta_points_ellipse);
+
+
 
 # Foyers
-R = [cos(theta_0) -sin(theta_0) ; sin(theta_0) cos(theta_0)];
-F_1 = R*[c ; 0]+C;
-F_2 = R*[-c ; 0]+C;
+R = [cos(theta_0) -sin(theta_0) ; sin(theta_0) cos(theta_0)]
+F_1 = R*[c ; 0]+C
+F_2 = R*[-c ; 0]+C
 
 # Calcul et affichage des donnees bruitees
-n = 200;
-theta_donnees_bruitees = 2*pi*rand(1,n).+2*pi*rand(1);
-xy_donnees_bruitees = [a*cos.(theta_donnees_bruitees) ; b*sin.(theta_donnees_bruitees)];
-xy_donnees_bruitees = R*xy_donnees_bruitees+C*ones(1,n);
-sigma = 1;
-xy_donnees_bruitees = xy_donnees_bruitees+sigma*randn(2,n);
+n = 200
+theta_donnees_bruitees = 2*pi*rand(1,n).+2*pi*rand(1)
+xy_donnees_bruitees = [a*cos.(theta_donnees_bruitees) ; b*sin.(theta_donnees_bruitees)]
+xy_donnees_bruitees = R*xy_donnees_bruitees+C*ones(1,n)
+sigma = 1
+xy_donnees_bruitees = xy_donnees_bruitees+sigma*randn(2,n)
 
 
-PyPlot.figure("Affichage des donnees bruitees et l'ellipse estimé")
-plot(xy_donnees_bruitees[1,:],xy_donnees_bruitees[2,:],"r*",MarkerSize=30,LineWidth=2)
-xlabel("x",FontSize=50)
-ylabel("y",FontSize=50)
+figure()
+axis("equal")
+# Affichage de l'ellipse
+nb_points_ellipse = 100
+deux_pi = 2*pi
+theta_points_ellipse = deux_pi/nb_points_ellipse:deux_pi/nb_points_ellipse:deux_pi
+affichage_ellipse(C,theta_0,a,b,theta_points_ellipse)
+
+#
+plot(xy_donnees_bruitees[1,:],xy_donnees_bruitees[2,:],"r*",MarkerSize=10,LineWidth=2)
+
+xlabel("x",FontSize=30)
+ylabel("y",FontSize=30)
 legend(("Ellipse","Données bruitées"),loc="center")
-gcf()
