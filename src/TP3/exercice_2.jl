@@ -49,7 +49,7 @@ V_pensees = V_pensees / denominateur_classe_pensees
 #xlim(xmax=r[end])
 #ylim(ymin=v[1])
 #ylim(ymax=v[end])
-pyplot();
+pyplot()
 plt = plot(layout=(1,3))
 
 plot!(r,v,V_pensees,st=:wireframe,color=:palegreen,	

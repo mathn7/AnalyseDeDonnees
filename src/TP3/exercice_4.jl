@@ -4,21 +4,18 @@
 # exercice_4.jl
 #--------------------------------------------------------------------------
 
-
 using Plots
 using MAT
 using LinearAlgebra
 using LaTeXStrings
 include("moyenne_ex4.jl")
+
 # Chargement des donnees
 vars = matread("donnees.mat")
 
 nb_images_pensees = Integer(vars["nb_images_pensees"])
 nb_images_oeillets = Integer(vars["nb_images_oeillets"])
 nb_images_chrysanthemes = Integer(vars["nb_images_chrysanthemes"])
-
-azimuth = -72;
-elevation = 42;
 
 ## Calcul des vecteurs de moyenne des images de fleurs
 
@@ -53,7 +50,7 @@ v = 0.2:pas:0.45;
 nb_r = length(r);
 nb_v = length(v);
 
-
+pyplot()
 scatter(X_pensees[:,1],X_pensees[:,2],X_pensees[:,3],color=:red,marker=:star7,markerstrokecolor=:red,markersize=10,
    label="Pensees",title="Couleurs moyennes des images",xlabel=L"\mathrm{\bar{r}}",ylabel=L"\mathrm{\bar{v}}")
 
@@ -62,5 +59,4 @@ scatter!(X_oeillets[:,1],X_oeillets[:,2],X_oeillets[:,3],color=:green,markerstro
 scatter!(X_chrysanthemes[:,1],X_chrysanthemes[:,2],X_chrysanthemes[:,3], color=:blue,marker=:+, markerstrokecolor=:blue,
 	markersize=10,label="Chrysantemes",xlim=(r[1],r[end]),ylim=(v[1],v[end]))
 
-#view(azimuth,elevation)
 
