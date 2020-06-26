@@ -28,9 +28,9 @@ nb_images_pensees = Integer(vars["nb_images_pensees"])
 nb_images_oeillets = Integer(vars["nb_images_oeillets"])
 nb_images_chrysanthemes = Integer(vars["nb_images_chrysanthemes"])
 
-mu_pensees = vars["mu_pensees"][:]
-mu_oeillets = vars["mu_oeillets"][:]
-mu_chrysanthemes = vars["mu_chrysanthemes"][:]
+mu_pensees = vars["mu_pensees"]
+mu_oeillets = vars["mu_oeillets"]
+mu_chrysanthemes = vars["mu_chrysanthemes"]
 
 Sigma_pensees = vars["Sigma_pensees"]
 Sigma_oeillets = vars["Sigma_oeillets"]
@@ -42,8 +42,8 @@ denominateur_classe_chrysanthemes = vars["denominateur_classe_chrysanthemes"]
 
 nb_r = Integer(vars["nb_r"])
 nb_v = Integer(vars["nb_v"])
-r = vars["r"][:]
-v = vars["v"][:]
+r = vars["r"]
+v = vars["v"]
 # Calcul du maximum de vraisemblance 
 V_max = max.(V_pensees,V_oeillets)
 V_max = max.(V_max,V_chrysanthemes)

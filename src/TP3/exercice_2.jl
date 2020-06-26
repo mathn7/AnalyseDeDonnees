@@ -24,8 +24,8 @@ X_oeillets =vars["X_oeillets"]
 X_chrysanthemes =vars["X_chrysanthemes"]
 nb_r =Integer(vars["nb_r"])
 nb_v =Integer(vars["nb_v"])
-r =vars["r"] #  à enlever
-v =vars["v"] #  à enlever 
+r =vars["r"]
+v =vars["v"]
 
 ## Estimation pour les pensees ##
 
@@ -68,17 +68,7 @@ scatter!(X_oeillets[:,1],X_oeillets[:,2],zeros(length(X_oeillets)),markersize=10
 mu_chrysanthemes, Sigma_chrysanthemes = estimation_mu_et_sigma(X_chrysanthemes)
 # Valeurs de la loi normale sur la grille
 V_chrysanthemes, denominateur_classe_chrysanthemes = vraisemblance(r,v,mu_chrysanthemes,Sigma_chrysanthemes,-1)
-
-# Representation 3D de la loi normale
-plot!(r,v,V_chrysanthemes,st=:wireframe,alpha=0.8,color=:lightblue,
-	xlim=(r[1],r[end]),ylim=(v[1],v[end]),
-	title="Vraisemblance de la classe des chrysanthemes",
-	label="Vraisemblance empirique",subplot=3,
-	xlabel=L"\mathrm{\bar{r}}",ylabel=L"\mathrm{\bar{v}}")
-
-scatter!(X_chrysanthemes[:,1],X_chrysanthemes[:,2],zeros(length(X_chrysanthemes)),
-	markersize=10,markerstrokecolor=:blue,marker=:star5,c=:blue,label="donnees d'apprentissage",subplot=3)
-
+# enregistrer les résultats
 MAT.matwrite("resultats-ex2.mat", Dict(
 	"nb_r" => nb_r,
 	"nb_v" => nb_v,
@@ -90,9 +80,9 @@ MAT.matwrite("resultats-ex2.mat", Dict(
 	"V_pensees"=> V_pensees,
 	"V_oeillets"=> V_oeillets,
 	"V_chrysanthemes"=> V_chrysanthemes,
-	"nb_images_pensees" => nb_images_pensees,
-	"nb_images_oeillets" => nb_images_oeillets,
-	"nb_images_chrysanthemes" => nb_images_chrysanthemes,
+	"nb_images_pensees" => vars["nb_images_pensees"],
+	"nb_images_oeillets" => vars["nb_images_oeillets"],
+	"nb_images_chrysanthemes" => vars["nb_images_chrysanthemes"],
 	"mu_pensees"=> mu_pensees,
 	"mu_oeillets"=> mu_oeillets,
 	"mu_chrysanthemes"=> mu_chrysanthemes,
@@ -104,3 +94,13 @@ MAT.matwrite("resultats-ex2.mat", Dict(
 	"denominateur_classe_chrysanthemes"=> denominateur_classe_chrysanthemes
 ))
 ### TODO : affichage du second label dans la legende
+
+# Representation 3D de la loi normale
+plot!(r,v,V_chrysanthemes,st=:wireframe,alpha=0.8,color=:lightblue,
+	xlim=(r[1],r[end]),ylim=(v[1],v[end]),
+	title="Vraisemblance de la classe des chrysanthemes",
+	label="Vraisemblance empirique",subplot=3,
+	xlabel=L"\mathrm{\bar{r}}",ylabel=L"\mathrm{\bar{v}}")
+
+scatter!(X_chrysanthemes[:,1],X_chrysanthemes[:,2],zeros(length(X_chrysanthemes)),
+	markersize=10,markerstrokecolor=:blue,marker=:star5,c=:blue,label="donnees d'apprentissage",subplot=3)

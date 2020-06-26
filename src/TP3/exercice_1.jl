@@ -49,13 +49,7 @@ r = 0.35:pas:0.60
 v = 0.2:pas:0.45
 nb_r = length(collect(r))
 nb_v = length(collect(v))
-pyplot() # utiliser le backend pyplot de matplotlib
-scatter(X_pensees[:,1],X_pensees[:,2],color=:red,marker=:star7,markerstrokecolor=:red,markersize=15,
-	title="Couleurs moyennes des images",label="Pensees",xlabel=L"\mathrm{\bar{r}}",ylabel=L"\mathrm{\bar{v}}",
-	xlim=(r[1],r[end]),ylim=(v[1],v[end]))
-scatter!(X_oeillets[:,1],X_oeillets[:,2],color=:green,markerstrokecolor=:green,markersize=15,label="Oeillets")
-scatter!(X_chrysanthemes[:,1],X_chrysanthemes[:,2],color=:blue,marker=:+,markerstrokecolor=:blue,markersize=15,label="Chrysantemes")
-
+# Enregistrer les résultats 
 MAT.matwrite("resultats-ex1.mat", Dict(
 	"nb_r" => nb_r,
 	"nb_v" => nb_v,
@@ -63,6 +57,15 @@ MAT.matwrite("resultats-ex1.mat", Dict(
 	"v" => collect(v), 
 	"X_pensees" => X_pensees,
 	"X_oeillets" => X_oeillets,
-	"X_chrysanthemes" => X_chrysanthemes
+	"X_chrysanthemes" => X_chrysanthemes,
+	"nb_images_pensees" => vars["nb_images_pensees"],
+	"nb_images_oeillets" => vars["nb_images_oeillets"],
+	"nb_images_chrysanthemes" => vars["nb_images_chrysanthemes"]
 ))
 
+pyplot() # utiliser le backend pyplot de matplotlib
+scatter(X_pensees[:,1],X_pensees[:,2],color=:red,marker=:star7,markerstrokecolor=:red,markersize=15,
+	title="Couleurs moyennes des images",label="Pensees",xlabel=L"\mathrm{\bar{r}}",ylabel=L"\mathrm{\bar{v}}",
+	xlim=(r[1],r[end]),ylim=(v[1],v[end]))
+scatter!(X_oeillets[:,1],X_oeillets[:,2],color=:green,markerstrokecolor=:green,markersize=15,label="Oeillets")
+scatter!(X_chrysanthemes[:,1],X_chrysanthemes[:,2],color=:blue,marker=:+,markerstrokecolor=:blue,markersize=15,label="Chrysantemes")
