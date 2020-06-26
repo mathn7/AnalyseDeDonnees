@@ -1295,9 +1295,15 @@ version = "1.4.0+1"
 
 [[Zlib_jll]]
 deps = ["Libdl", "Pkg"]
+<<<<<<< HEAD
 git-tree-sha1 = "622d8b6dc0c7e8029f17127703de9819134d1b71"
 uuid = "83775a58-1f1d-513f-b197-d71354ab007a"
 version = "1.2.11+14"
+=======
+git-tree-sha1 = "33d31d2b2a24d2fdbc60633b68229ee462811c8b"
+uuid = "83775a58-1f1d-513f-b197-d71354ab007a"
+version = "1.2.11+13"
+>>>>>>> 34d1de327335304529ea4bdbc2f7350480fddf30
 
 [[Zstd_jll]]
 deps = ["Libdl", "Pkg"]

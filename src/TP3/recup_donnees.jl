@@ -1,21 +1,21 @@
-#--------------------------------------------------------------------------
-# ENSEEIHT - 1SN - Analyse de donnees
-# TP3 - Classification bayesienne
-# recup_donnees.jl
-#--------------------------------------------------------------------------
+"""
+--------------------------------------------------------------------------
+ ENSEEIHT - 1SN - Analyse de donnees
+ TP3 - Classification bayesienne
+ recup_donnees.jl
+--------------------------------------------------------------------------
+"""
 
-
-using Plots
 using MAT
 using Primes
 using ImageView
+using TestImages
+using Gtk.ShortNames
+include("float_to_RGB.jl")
 
-#taille_ecran = get(0,'ScreenSize')
-#L = taille_ecran(3)
-#H = taille_ecran(4)
+ImageView.closeall()
 
 # Chemin d'acces aux images
-#chemin = '/mnt/n7fs/ens/tp_gasparini/images/'
 chemin = "./images/"
 
 ## Images de pensees
@@ -25,67 +25,68 @@ fichier = chemin*"pensees.mat"
 images = matread(fichier)
 nb_images_pensees = length(images)
 
-
 # Affichage des images
-fact = factor(Vector,nb_images_pensees) # factorisation en nombres premiers
+fact = Primes.factor(Vector,nb_images_pensees) # factorisation en nombres premiers
 nb_lignes_affichage = fact[2]
 nb_colonnes_affichage = fact[1]
 
 #figure('Images de pensees')
-gui = imshow_gui((400, 400), (nb_colonnes_affichage, nb_lignes_affichage))
+gui = imshow_gui((400, 400), (nb_lignes_affichage,nb_colonnes_affichage))
 canvases = gui["canvas"]
-for i = 1:nb_images_pensees
-	imshow(gui["frame"][1,1], images["pe$i"])#,title="Pensee n°$i")
+img = testimage("lighthouse")
+for i = 1:nb_lignes_affichage
+	for j = 1: nb_colonnes_affichage
+		im = float(images["pe$i"])./255
+		imshow(canvases[i,j], float_to_RGB(im,img))#,label="Pensee n°$i")
+	end
 end
-#=
+Gtk.showall(gui["window"])
+
 ## Images d'oeillets
 
-# Chargement des images
-fichier = [chemin 'oeillets']
-s = whos('-file',fichier)
-nb_images_oeillets = length(s)
-load(fichier)
+fichier = chemin*"oeillets.mat"
+images = matread(fichier)
+nb_images_oeillets = length(images)
 
 # Affichage des images
-fact = factor(nb_images_oeillets)
-nb_lignes_affichage = fact(2)
-nb_colonnes_affichage = fact(1)
+fact = Primes.factor(Vector,nb_images_oeillets) # factorisation en nombres premiers
+nb_lignes_affichage = fact[2]
+nb_colonnes_affichage = fact[1]
 
-figure('Name','Images d''oeillets',...
-       'Position',[0.4*L,0.1*H,0.25*L,0.75*H])
-
-for i = 1:nb_images_oeillets
-	subplot(nb_lignes_affichage,nb_colonnes_affichage,i)
-	imagesc(eval(['oe' num2str(i)]))
-	title(['Oeillet n°' num2str(i)])
-	axis off image
+gui = imshow_gui((400, 400), (nb_lignes_affichage,nb_colonnes_affichage))
+canvases = gui["canvas"]
+for i = 1:nb_lignes_affichage
+	for j = 1: nb_colonnes_affichage
+		im = float(images["oe$i"])./255
+		imshow(canvases[i,j], float_to_RGB(im,img))#,label="oeillets n°$i")
+	end
 end
-
+Gtk.showall(gui["window"])
 ## Images de chrysanthemes
 
 # Chargement des images
-fichier = [chemin 'chrysanthemes']
-s = whos('-file',fichier)
-nb_images_chrysanthemes = length(s)
-load(fichier)
+fichier = chemin*"chrysanthemes.mat"
+images = matread(fichier)
+nb_images_chrysanthemes = length(images)
 
 # Affichage des images
-fact = factor(nb_images_chrysanthemes)
-nb_lignes_affichage = fact(2)
-nb_colonnes_affichage = fact(1)
+fact = Primes.factor(Vector,nb_images_chrysanthemes) # factorisation en nombres premiers
+nb_lignes_affichage = fact[2]
+nb_colonnes_affichage = fact[1]
 
-figure('Name','Images de chrysanthemes',...
-       'Position',[0.7*L,0.1*H,0.25*L,0.75*H])
-
-for i = 1:nb_images_chrysanthemes
-	subplot(nb_lignes_affichage,nb_colonnes_affichage,i)
-	imagesc(eval(['ch' num2str(i)]))
-	title(['Chrysantheme n°' num2str(i)])
-	axis off image
+gui = imshow_gui((400, 400), (nb_lignes_affichage,nb_colonnes_affichage))
+canvases = gui["canvas"]
+for i = 1:nb_lignes_affichage
+	for j = 1: nb_colonnes_affichage
+		im = float(images["ch$i"])./255
+		imshow(canvases[i,j], float_to_RGB(im,img))#,label="oeillets n°$i")
+	end
 end
+Gtk.showall(gui["window"])
 
+# TODO 
+#=
 drawnow
-
 clear chemin fact fichier i nb_lignes_affichage nb_colonnes_affichage s taille_ecran
 save donnees
 =#
