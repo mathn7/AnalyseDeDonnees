@@ -13,7 +13,7 @@ using Images
 using ImageMagick
 using LinearAlgebra
 using Statistics
-using Gaston
+using Printf
 
 #nettoyer l'environnement
 ImageView.closeall()
@@ -80,13 +80,13 @@ ImageMagick.save("src/TP1/CP3.png",(C3.-minimum(C3[:]))/(maximum(C3[:].-minimum(
 ## Affichage du nuage de pixels dans le repere des composantes principales
 
 # Deuxieme fenetre d'affichage
-    figure("Nuage de pixels dans le repere des composantes principales",figsize=(30,30))
-    scatter3D(C1,C2,C3,"r*")
+PyPlot.figure("Nuage de pixels dans le repere des composantes principales",figsize=(30,30))
+PyPlot.scatter3D(C1,C2,C3,"r*")
     #axis("equal")
-    xlabel("1ere CP",FontWeight=20)
-    ylabel("2eme CP",FontWeight=20)
-    zlabel("3eme CP",FontWeight=20)
-    title("Representation 3D des pixels dansl''espace des composantes principales",FontWeight=20)
+PyPlot.xlabel("1ere CP",FontWeight=20)
+PyPlot.ylabel("2eme CP",FontWeight=20)
+PyPlot.zlabel("3eme CP",FontWeight=20)
+PyPlot.title("Representation 3D des pixels dansl''espace des composantes principales",FontWeight=20)
 #=
 Gaston.surf(C1,C2,C3,lc = :green,
            pointtype ="dot",ms=5,
@@ -103,14 +103,14 @@ Gaston.surf(C1,C2,C3,lc = :green,
 Sigma_2 = (C')*C/n
 
 # Coefficients de correlation lineaire
-println("Correlation r[C1,C2] = ",Sigma_2[1,2]/sqrt(Sigma_2[1,1]*Sigma_2[2,2]))
-println("Correlation r[C1,C3] = ",Sigma_2[1,3]/sqrt(Sigma_2[1,1]*Sigma_2[3,3]))
-println("Correlation r[C2,C3] = ",Sigma_2[2,3]/sqrt(Sigma_2[2,2]*Sigma_2[3,3]))
+@printf("Correlation r[C1,C2] = %0.3f\n",Sigma_2[1,2]/sqrt(Sigma_2[1,1]*Sigma_2[2,2]))
+@printf("Correlation r[C1,C3] = %0.3f\n",Sigma_2[1,3]/sqrt(Sigma_2[1,1]*Sigma_2[3,3]))
+@printf("Correlation r[C2,C3] = %0.3f\n",Sigma_2[2,3]/sqrt(Sigma_2[2,2]*Sigma_2[3,3]))
 
 # Proportions de contraste
 c = sum(Sigma_2)
-println("Proportion de contraste dans le canal C1 = ",Sigma_2[1,1]/c)
-println("Proportion de contraste dans le canal C2 = ",Sigma_2[2,2]/c)
-println("Proportion de contraste dans le canal C3 = ",Sigma_2[3,3]/c)
+@printf("Proportion de contraste dans le canal C1 = %0.3f\n",Sigma_2[1,1]/c)
+@printf("Proportion de contraste dans le canal C2 = %0.3f\n",Sigma_2[2,2]/c)
+@printf("Proportion de contraste dans le canal C3 = %0.3f\n",Sigma_2[3,3]/c)
 
 gcf() #à commenter si vous n'êtes pas sous Atom
