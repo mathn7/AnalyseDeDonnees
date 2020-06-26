@@ -1,10 +1,3 @@
-#  Cette fonction evalue la fonction f du probl�me de moindres carres :
-
-#  Inputs
-#  Outputs:
-#  f : valeur d
-
-
 @doc doc"""
 Résolution approchée du problème au sens du moindre carrée
 # Syntaxe
@@ -17,7 +10,6 @@ X_sol = MCO(x,y)
 # Sorties:
    * **X_sol**    : (Array{Float,1}) la solution du problème  : AX=B
 """
-
 
 function MCO(x,y)
     # Initialisation

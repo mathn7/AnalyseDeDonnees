@@ -1,7 +1,7 @@
 #=-------------------------------------------------------------------------
  ENSEEIHT - 1SN - Analyse de donnees
  TP2 - Calcul et affichage des donnees bruitees
-  TP2_AD_exercice_Donnees.jl
+ Donnees.jl
 --------------------------------------------------------------------------
 =#
 using PyPlot
@@ -30,7 +30,7 @@ R = [cos(theta_0) -sin(theta_0) ; sin(theta_0) cos(theta_0)]
 F_1 = R*[c ; 0]+C
 F_2 = R*[-c ; 0]+C
 
-# Calcul et affichage des donnees bruitees
+# Calcul des donnees bruitees
 n = 200
 theta_donnees_bruitees = 2*pi*rand(1,n).+2*pi*rand(1)
 xy_donnees_bruitees = [a*cos.(theta_donnees_bruitees) ; b*sin.(theta_donnees_bruitees)]
@@ -41,13 +41,14 @@ xy_donnees_bruitees = xy_donnees_bruitees+sigma*randn(2,n)
 
 figure()
 axis("equal")
+
 # Affichage de l'ellipse
 nb_points_ellipse = 100
 deux_pi = 2*pi
 theta_points_ellipse = deux_pi/nb_points_ellipse:deux_pi/nb_points_ellipse:deux_pi
 affichage_ellipse(C,theta_0,a,b,theta_points_ellipse)
 
-#
+# affichage des donnees bruitees
 plot(xy_donnees_bruitees[1,:],xy_donnees_bruitees[2,:],"r*",MarkerSize=10,LineWidth=2)
 
 xlabel("x",FontSize=30)
