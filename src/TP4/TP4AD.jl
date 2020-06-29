@@ -3,7 +3,14 @@
 # TP4 - Reconnaissance de chiffres manuscrits par k plus proches voisins
 # TP4AD.m
 #--------------------------------------------------------------------------
-using MNIST
+using MAT
+using ImageView
+using Gtk.ShortNames
+include("float_to_RGB.jl")
+
+include("kppv.jl")
+
+vars = matread("MNIST.mat")
 
 # "Chargement des images d'apprentissage et de test"
 #load MNIST
@@ -13,20 +20,37 @@ using MNIST
 #   database_test_images   " 10000x784  "
 #   database_test_labels   " 10000x1    "
 
-DataA,labelA = traindata()
-DataT,labelT = testdata()
 
-DataA=transpose(DataA)
-labelA=transpose(labelA)
-DataT=transpose(DataT)
-labelT=transpose(labelT)
+DataA = vars["database_train_images"]
+labelA = Integer.(vars["database_train_labels"][:])
+DataT = vars["database_test_images"]
+labelT = Integer.(vars["database_test_labels"][:])
 
 # Choix du nombre de voisins
 K = 10
 
 # Initialisation du vecteur des classes
-ListeClass = [i for i=1:K]
+ListeClass = collect(1:K)
 
 # Classement par aux k-ppv
-Partition = kppv(DataA,DataT,labelA,K,ListeClass)
+#Partition,_,_ = kppv(DataA,DataT,labelA,labelT, K, ListeClass)
+Partition = collect(1:K)
 print("Partition est : " , Partition )
+
+Nt_test = length(Partition)
+n = 28 
+if Nt_test <= 50
+
+    nb_col = 5
+    nb_lig = Integer(Nt_test/nb_col)
+    gui = imshow_gui((2*n, 2*n), (nb_lig,nb_col))
+    canvases = gui["canvas"]
+   
+    for i = 1:nb_lig
+        for j = 1:nb_col
+            im = reshape(DataT[(i-1)*nb_col + j, :], n, n)
+            imshow(canvases[i,j],im) # a voir si y a une facon meilleure 
+            # title(['DataT ',num2str(k), ' - ', num2str(Partition(k))],'FontSize',15)
+        end
+    end
+end
