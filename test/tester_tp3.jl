@@ -5,8 +5,8 @@ tol_erreur = 1e-5
 
     # tester l'exercice 1
     @testset "Tests exo 1" begin
-        solutions = matread("src/TP3/resultats-ex1-test.mat")
-        resultats = matread("src/TP3/resultats-ex1.mat")
+        solutions = matread("../src/TP3/resultats-ex1-test.mat")
+        resultats = matread("../src/TP3/resultats-ex1.mat")
         @test solutions["nb_r"]                     ≈ resultats["nb_r"]  atol = tol_erreur
         @test solutions["nb_v"]                     ≈ resultats["nb_v"]  atol = tol_erreur
         @test solutions["r"][:]                     ≈ resultats["r"][:]  atol = tol_erreur
@@ -21,8 +21,8 @@ tol_erreur = 1e-5
 
     # tester l'exercice 2
     @testset "Tests exo 2" begin 
-        solutions = matread("src/TP3/resultats-ex2-test.mat")
-        resultats = matread("src/TP3/resultats-ex2.mat")
+        solutions = matread("../src/TP3/resultats-ex2-test.mat")
+        resultats = matread("../src/TP3/resultats-ex2.mat")
         @test solutions["nb_r"]                              ≈ resultats["nb_r"]  atol = tol_erreur
         @test solutions["nb_v"]                              ≈ resultats["nb_v"]  atol = tol_erreur
         @test solutions["r"][:]                              ≈ resultats["r"][:]  atol = tol_erreur
@@ -49,15 +49,15 @@ tol_erreur = 1e-5
 
     # tester l'exercice 3
     @testset "Test exo 3" begin 
-        solutions = matread("src/TP3/resultats-ex3-test.mat")
-        resultats = matread("src/TP3/resultats-ex3.mat")
+        solutions = matread("../src/TP3/resultats-ex3-test.mat")
+        resultats = matread("../src/TP3/resultats-ex3.mat")
         @test solutions["accuracy"]         ≈ resultats["accuracy"]  atol = tol_erreur
     end
 
     # tester l'exercice 4
     @testset "Test exo 4" begin
-        solutions = matread("src/TP3/resultats-ex4-test.mat")
-        resultats = matread("src/TP3/resultats-ex4.mat")
+        solutions = matread("../src/TP3/resultats-ex4-test.mat")
+        resultats = matread("../src/TP3/resultats-ex4.mat")
         @test solutions["r"]                ≈ resultats["r"]  atol = tol_erreur
         @test solutions["v"]                ≈ resultats["v"]  atol = tol_erreur
         @test solutions["X_pensees"]        ≈ resultats["X_pensees"]  atol = tol_erreur
