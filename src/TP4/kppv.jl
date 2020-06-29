@@ -3,7 +3,7 @@
 # TP4 - Reconnaissance de chiffres manuscrits par k plus proches voisins
 # fonction kppv.m
 #--------------------------------------------------------------------------
-function kppv(DataA,DataT,labelA,K,ListeClass)
+function kppv(DataA,DataT,labelA,labelT,K,ListeClass)
 
 Na= size(DataA)[1];
 Nt =size(DataT)[1];
@@ -18,7 +18,7 @@ confusion = zeros(length(ListeClass));
 Partition = zeros(Nt_test,1)
 
 #"Initialisation du nombre d erreur de reconnaissance"
-nberr = 0;
+nb_erreurs = 0;
 
 print("Classification des images test dans " ,string(length(ListeClass)),"  classes ")
 print(" par la methode des ", string(K), " plus proches voisins:")
@@ -69,6 +69,15 @@ for i = 1:Nt_test
     # "Assignation de letiquette correspondant à la classe trouvee au point"
     # "correspondant a la i-eme image test dans le vecteur 'Partition'"
     Partition[i] = classe_test;
+
+    # Mise a jour de la matrice de confusion
+    confusion[labelT[i]+1, classe_test+1] = confusion[labelT[i]+1, classe_test+1] + 1;
+
+    # Mise a jour du nombre d'erreur
+    if classe_test ~= labelT[i]
+        nb_erreurs = nb_erreurs + 1;
+    end
+
 end
-return Partition
+return Partition,confusion, nb_erreurs
 end
