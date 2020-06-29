@@ -15,6 +15,8 @@ using LinearAlgebra
 using Statistics
 using Printf
 
+include("../src/TP1/exercice_1.jl")
+
 #nettoyer l'environnement
 ImageView.closeall()
 clf() #à commenter si vous n'êtes pas sous Atom
@@ -28,7 +30,6 @@ CI = channelview(I)
 R = float(CI[1,:,:])
 V = float(CI[2,:,:])
 B = float(CI[3,:,:])
-
 
 # Matrice des donnees
 X = [R[:] V[:] B[:]];	#Les trois canaux sont vectorises et concatenes
