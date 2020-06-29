@@ -1,3 +1,8 @@
-using Test
+using Test 
+using MAT
 
-@test 1==1
+@testset "Test CSAD" begin 
+    
+    # tester le TP3 (pas complets pour l'instant) 
+    include("tester_tp3.jl")
+end

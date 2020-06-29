@@ -1,10 +1,9 @@
-"""
---------------------------------------------------------------------------
- ENSEEIHT - 1SN - Analyse de donnees
- TP3 - Classification bayesienne
- exercice_4.jl
---------------------------------------------------------------------------
-"""
+#--------------------------------------------------------------------------
+# ENSEEIHT - 1SN - Analyse de donnees
+# TP3 - Classification bayesienne
+# exercice_4.jl
+#--------------------------------------------------------------------------
+
 using Plots
 using MAT
 using LinearAlgebra
@@ -46,6 +45,13 @@ end
 pas = 0.0025;
 r = 0.35:pas:0.60;
 v = 0.2:pas:0.45;
+MAT.matwrite("resultats-ex4.mat", Dict(
+	"r" => collect(r),
+	"v" => collect(v), 
+	"X_pensees" => X_pensees,
+	"X_oeillets" => X_oeillets,
+	"X_chrysanthemes" => X_chrysanthemes
+))
 
 pyplot() # utiliser le backend pyplot de matplotlib
 
