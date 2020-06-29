@@ -12,7 +12,7 @@ le dénominateur de classe peut être
   - calculé (et retourné comme résultat) si denominateur_classe_i = -1
   - ou fourni
 """
-function vraisemblance( r, v, mu_i, Sigma_i, denominateur_classe_i )
+function vraisemblance( r, v, mu_i, Sigma_i, denominateur_classe_i)
 
     nb_r = length(r)
     nb_v = length(v)
@@ -35,6 +35,7 @@ function vraisemblance( r, v, mu_i, Sigma_i, denominateur_classe_i )
     end
 
     P = P / denominateur
+    
     return P, denominateur
 end
 
