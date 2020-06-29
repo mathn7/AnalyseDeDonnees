@@ -127,6 +127,10 @@ for i = 1:nb_images_chrysanthemes
 end
 # l'accuracy en % :
 accuracy = 100*nb_img_bien_classees/(nb_images_chrysanthemes + nb_images_oeillets + nb_images_pensees)
+MAT.matwrite("resultats-ex3.mat", Dict(
+	"accuracy" => accuracy
+))
+
 print(string(accuracy)[1:5]*"% d'images correctement classees")
 # Ajout du titre avec le pourcentage des images bien classées
 scatter!([x],[y],markersize=0,label="", title="Classification par maximum de vraisemblance, "*string(accuracy)[1:4]*"% d'images correctement classées")

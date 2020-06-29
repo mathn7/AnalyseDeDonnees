@@ -21,7 +21,7 @@ function vraisemblance( r, v, mu_i, Sigma_i, denominateur_classe_i)
         for i = 1:nb_r
             for j = 1:nb_v
                 x_centre = [r[i],v[j]] - mu_i
-                P[j,i] = exp(-(x_centre')*(Sigma_i \ x_centre)/2)
+                P[j,i] = exp(-x_centre' * (Sigma_i \ x_centre) / 2)
             end
         end
     else
