@@ -8,7 +8,7 @@ function kppv(DataA,DataT,labelA,labelT,K,ListeClass)
     Na= size(DataA)[1]
     Nt =size(DataT)[1]
 
-    Nt_test =10; # A changer, pouvant aller de 1 jusqu a Nt
+    Nt_test =50; # A changer, pouvant aller de 1 jusqu a Nt
 
     #" Initialisation de la matrice de confusion pour comparer les resultats"
     #" obtenus avec l'etiquetage deja present dans 'labelT' pour les images tests"
@@ -16,7 +16,7 @@ function kppv(DataA,DataT,labelA,labelT,K,ListeClass)
     confusion = zeros(nb_classes,nb_classes);
 
     # "Initialisation du vecteur d etiquetage des images tests"
-    Partition = zeros(Nt_test,1)
+    Partition = zeros(Int,Nt_test,1)
 
     #"Initialisation du nombre d erreur de reconnaissance"
     nb_erreurs = 0
@@ -68,7 +68,7 @@ function kppv(DataA,DataT,labelA,labelT,K,ListeClass)
 
         # "Assignation de letiquette correspondant à la classe trouvee au point"
         # "correspondant a la i-eme image test dans le vecteur 'Partition'"
-        Partition[i] = Int(classe_test)
+        Partition[i] = classe_test
 
         # Mise a jour de la matrice de confusion
         confusion[Int(labelT[i]+1), Int(classe_test+1)] = confusion[Int(labelT[i]+1), Int(classe_test+1)] + 1;

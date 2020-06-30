@@ -40,17 +40,10 @@ if Nt_test <= 50
     gui = imshow_gui((300,300), (nb_lig,nb_col))
     canvases = gui["canvas"]
 
-    #=for i = 1:nb_lig
-        for j = 1:nb_col
-            im = reshape(DataT[(i-1)*nb_col + j, :], n, n)
-            imshow(canvases[i,j],im) # a voir si y a une facon meilleure
-            # title(['DataT ',num2str(k), ' - ', num2str(Partition(k))],'FontSize',15)
-        end
-    end=#
     for k = 1:Nt_test
             im = reshape(DataT[k, :], n, n);
             if k%nb_col == 0
-                imshow(canvases[Int(floor(k/nb_col)),k%nb_col+1],im); # a voir si y a une facon meilleure
+                imshow(canvases[Int(floor(k/nb_col)),nb_col],im); # a voir si y a une facon meilleure
                 println("DataT ",string(k), " - ", string(Partition[k]));
             else
                 imshow(canvases[Int(floor(k/nb_col))+1,k%nb_col],im); # a voir si y a une facon meilleure
