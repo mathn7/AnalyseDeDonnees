@@ -5,6 +5,11 @@ fleurs (ne recopiez pas les images, afin de préserver votre quota). Lancez le s
 qui affiche des images de pensées, d’œillets et de chrysanthèmes. Vous constatez que ces images n’ont
 pas toutes la même taille.
 
+![](assets/fleurs.png)
+
+``\hspace*{3.5cm}`` FIGURE 1 - De gauche à droite : pensée, œillet, chrysanthème.
+
+
 ## Exercice 1 - Calcul de la couleur moyenne d’une image
 
 Dans un premier temps, vous allez classer les images selon la couleur moyenne de chaque espèce de
@@ -18,7 +23,7 @@ suivante :
 Le principal intérêt des niveaux de couleur normalisés est que deux valeurs parmi ``(r, v, b)`` permettent de
 déduire la troisième, puisque ``r+v+b = 1``, sauf dans le cas exceptionnel où ``(r, v, b) = (0, 0, 0)``. Une image
 est donc caractérisée par les moyennes ``(\bar{r}, \bar{v}, \bar{b})``, ou plus simplement par ``(\bar{r},\bar{v})``, 
-puisque ``\bar{r}+\bar{v}+\bar{b}=1``, c’est-à-dire par un vecteur ``x = (\bar{r},\bar{v}) > \in \mathhb{R}^2`` que l’on 
+puisque ``\bar{r}+\bar{v}+\bar{b}=1``, c’est-à-dire par un vecteur ``x = (\bar{r},\bar{v}) \in \mathbb{R}^2`` que l’on 
 appelle sa **couleur moyenne**. Compte tenu des différences de couleurs moyennes entre les trois espèces de fleurs, 
 on postule que ce vecteur suffira à les distinguer.
 
@@ -29,7 +34,7 @@ on postule que ce vecteur suffira à les distinguer.
 
 Le script *exercice_1.m* regroupe dans trois tableaux de données *X_pensees*, *X_oeillets* et *X_chrysanthemes* les valeurs moyennes calculées 
 avec la fonction précédente pour chaque groupe d’images. Il affiche ensuite les couleurs moyennes de l’ensemble des images de fleurs sous la forme
-de trois nuages de points de ``\mathhb{R}^2`` avec trois couleurs et symboles différents.
+de trois nuages de points de ``\mathbb{R}^2`` avec trois couleurs et symboles différents.
 
 #### Question 
 Au regard de cette figure, la couleur moyenne vous semble-t-elle une caractéristique suffisamment discriminante de ces trois espèces de fleurs ?
@@ -64,7 +69,7 @@ Nous souhaitons maintenant prédire à quelle espèce de fleurs une image requê
 !!! warning "Travail à effectuer"
 
     Modifiez le script *exercice_3.m*, de manière à :
-    1. partitionner le plan ``\mathhb{R}^2`` en trois parties correspondant aux trois classes de fleurs,
+    1. partitionner le plan ``\mathbb{R}^2`` en trois parties correspondant aux trois classes de fleurs,
     2. les colorier en trois couleurs différentes associées à celles des nuages de points,
     3. afficher le pourcentage d’images bien classées sur l’ensemble des trois classes.
 

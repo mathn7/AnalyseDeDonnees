@@ -30,9 +30,9 @@ Vous pouvez reformuler le problème en ne considérant que cinq paramètres en �
 
 L’objectif est de reconstruire des images préalablement modifiées par une transformation non linéaire bruitée.
 
-``\hspace*{1.5cm}`` ![Alt text](/home/viet/Stage2A/Projet-CSAD/docs/src/images/image_TP2.png?raw=true "")
+``\hspace*{1.5cm}`` ![](assets/image-modifiee.png)
 
-Soit I une image de taille ``n \time m``. Une transformation non linéaire notée ``T`` est réalisée sur chaque niveau de gris ``I_{ij}`` du pixel ``(i, j)`` de l’image ``I``. L’image modifiée après transformation est notée ``J``, dont les éléments sont définis par :
+Soit I une image de taille ``n \times m``. Une transformation non linéaire notée ``T`` est réalisée sur chaque niveau de gris ``I_{ij}`` du pixel ``(i, j)`` de l’image ``I``. L’image modifiée après transformation est notée ``J``, dont les éléments sont définis par :
 
 ``\hspace*{2cm}``  ``\forall i \in\{1, \ldots, n\}, \forall j \in\{1, \ldots, m\}, \quad J_{i j}=T\left(\alpha, \beta, I_{i j}\right)=e^{-\alpha t_{i j}+\beta}``  ``\hspace*{1.5cm}`` (2)
 
