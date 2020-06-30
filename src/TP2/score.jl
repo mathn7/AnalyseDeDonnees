@@ -1,12 +1,4 @@
 function score(F_1,F_2,a,F_1_estime,F_2_estime,a_estime)
-   #=
-    a = 15
-    F_1 = [-9.2845; -2.3648]
-    F_2 = [2.1918;10.2250]
-    F_2_estime = [2.1937;10.6136]
-    F_1_estime = [-9.2992;-2.6953]
-    a_estime = 15.2463
-=#
 
     a_max = max(a,a_estime)
     x_min = minimum([F_1[1],F_2[1],F_1_estime[1],F_2_estime[1]])-a_max
@@ -35,7 +27,6 @@ function score(F_1,F_2,a,F_1_estime,F_2_estime,a_estime)
 
     distance_P_F_1_estime = sqrt.((X.-F_1_estime[1]).*(X.-F_1_estime[1])+(Y.-F_1_estime[2]).*(Y.-F_1_estime[2]))
     distance_P_F_2_estime = sqrt.((X.-F_2_estime[1]).*(X.-F_2_estime[1])+(Y.-F_2_estime[2]).*(Y.-F_2_estime[2]))
-    #vecorisation
 
     M = distance_P_F_1+distance_P_F_2
     M_es = distance_P_F_1_estime+distance_P_F_2_estime

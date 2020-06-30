@@ -5,7 +5,6 @@
 --------------------------------------------------------------------------
 =#
 using PyPlot
-
 include("affichage_ellipse.jl")
 
 
@@ -46,11 +45,12 @@ axis("equal")
 nb_points_ellipse = 100
 deux_pi = 2*pi
 theta_points_ellipse = deux_pi/nb_points_ellipse:deux_pi/nb_points_ellipse:deux_pi
-affichage_ellipse(C,theta_0,a,b,theta_points_ellipse)
+affichage_ellipse(C,theta_0,a,b,theta_points_ellipse,"g-")
 
 # affichage des donnees bruitees
-plot(xy_donnees_bruitees[1,:],xy_donnees_bruitees[2,:],"r*",MarkerSize=10,LineWidth=2)
-
+plot(xy_donnees_bruitees[1,:],xy_donnees_bruitees[2,:],"k*",MarkerSize=10,LineWidth=2)
 xlabel("x",FontSize=30)
 ylabel("y",FontSize=30)
 legend(("Ellipse","Données bruitées"),loc="center")
+
+gcf()

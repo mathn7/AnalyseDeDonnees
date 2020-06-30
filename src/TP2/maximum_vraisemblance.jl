@@ -33,7 +33,7 @@ c_chapeau = sqrt(F_2_chapeau_F_1_chapeau[1].^2+F_2_chapeau_F_1_chapeau[1].^2)/2
 b_chapeau = sqrt(transpose(a_chapeau)*a_chapeau-transpose(c_chapeau)*c_chapeau)
 
 #" Affichage de l'ellipse estimee par MV :"
-affichage_ellipse(C_chapeau,theta_0_chapeau,a_chapeau,b_chapeau,theta_points_ellipse)
+affichage_ellipse(C_chapeau,theta_0_chapeau,a_chapeau,b_chapeau,theta_points_ellipse,"b-")
 legend(("Ellipse","Donnees bruitees","Estimation par MV"),loc="center")
 
 # " Calcul du score de l'ellipse estimee par MV :"

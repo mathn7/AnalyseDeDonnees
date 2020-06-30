@@ -20,7 +20,7 @@ C_chapeau, theta_0_chapeau, a_chapeau, b_chapeau = conversion(X_chapeau)
 
 
 #" Affichage de l'ellipse estimee par MCO :"
-affichage_ellipse(C_chapeau,theta_0_chapeau,a_chapeau,b_chapeau,theta_points_ellipse)
+affichage_ellipse(C_chapeau,theta_0_chapeau,a_chapeau,b_chapeau,theta_points_ellipse,"r-")
 legend(("Ellipse","Donnees bruitees","Estimation par MV","Estimation par MCO"),loc="center")
 
 
@@ -33,7 +33,7 @@ Score = score(F_1,F_2,a,F_1_chapeau,F_2_chapeau,a_chapeau);
 println("Score de l''estimation par MCO = ",Score)
 
 
-MAT.matwrite("src/TP2/score-exo1.mat", Dict(
+MAT.matwrite("score-exo1.mat", Dict(
 	"score" => Score
 ))
 
