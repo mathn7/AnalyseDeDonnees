@@ -6,11 +6,6 @@
 using MAT
 using ImageView
 using Gtk.ShortNames
-include("float_to_RGB.jl")
-
-include("kppv.jl")
-
-vars = matread("MNIST.mat")
 
 include("kppv.jl")
 # "Chargement des images d'apprentissage et de test"
