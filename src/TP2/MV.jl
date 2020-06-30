@@ -1,7 +1,22 @@
 function MV(xy_donnees_bruitees,x_F_aleatoire,y_F_aleatoire,a_aleatoire)
+#=
+using MAT
+v1 = matread("src/TP2/x_F_aleatoire.mat")
+v2 = matread("src/TP2/y_F_aleatoire.mat")
+v3 = matread("src/TP2/xy_aleatoire.mat")
+v4 = matread("src/TP2/a_aleatoire.mat")
+
+xy_donnees_bruitees = v3["xy_donnees_bruitees"]
+x_F_aleatoire = v1["x_F_aleatoire"]
+y_F_aleatoire = v2["y_F_aleatoire"]
+a_aleatoire = v4["a_aleatoire"]
+
+=#
+
 
 	n = size(xy_donnees_bruitees,2)
 	nb_tirages = length(a_aleatoire)
+
 
 
 	sommes_ecarts_carres = []
@@ -9,13 +24,16 @@ function MV(xy_donnees_bruitees,x_F_aleatoire,y_F_aleatoire,a_aleatoire)
 		x_F_1_test = x_F_aleatoire[1,k]
 		y_F_1_test = y_F_aleatoire[1,k]
 		P_i_F_1_test = [x_F_1_test;y_F_1_test]*ones(1,n)-xy_donnees_bruitees
-		distances_P_i_F_1_test = sqrt(sum(P_i_F_1_test.*P_i_F_1_test))
+
+		distances_P_i_F_1_test = sqrt.(((P_i_F_1_test.*P_i_F_1_test)'*ones(2,1))')
 		x_F_2_test = x_F_aleatoire[2,k]
 		y_F_2_test = y_F_aleatoire[2,k]
 		P_i_F_2_test = [x_F_2_test;y_F_2_test]*ones(1,n)-xy_donnees_bruitees
-		distances_P_i_F_2_test = sqrt(sum(P_i_F_2_test.*P_i_F_2_test))
+
+		distances_P_i_F_2_test = sqrt.(((P_i_F_2_test.*P_i_F_2_test)'*ones(2,1))')
+
 		a_test = a_aleatoire[k]
-		ecarts_test = distances_P_i_F_1_test+distances_P_i_F_2_test-2*a_test
+		ecarts_test = distances_P_i_F_1_test+distances_P_i_F_2_test.-2*a_test
 		sommes_ecarts_carres = [sommes_ecarts_carres; sum(ecarts_test.*ecarts_test)]
 	end
 	E_min = minimum(sommes_ecarts_carres)

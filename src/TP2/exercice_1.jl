@@ -33,7 +33,7 @@ Score = score(F_1,F_2,a,F_1_chapeau,F_2_chapeau,a_chapeau);
 println("Score de l''estimation par MCO = ",Score)
 
 
-MAT.matwrite("/home/viet/Stage2A/Projet-CSAD/src/TP2/score-exo1.mat", Dict(
+MAT.matwrite("src/TP2/score-exo1.mat", Dict(
 	"score" => Score
 ))
 
