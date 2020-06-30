@@ -4,8 +4,8 @@ using PyPlot
 using Statistics
 using LinearAlgebra
 
-vars1 = matread("/home/viet/Stage2A/New/Projet-CSAD/src/TP2/SG1.mat")
-vars2 = matread("/home/viet/Stage2A/New/Projet-CSAD/src/TP2/ImSG1.mat")
+vars1 = matread("src/TP2/SG1.mat")
+vars2 = matread("src/TP2/ImSG1.mat")
 
 DataMod = vars1["DataMod"]
 ImMod =  vars1["ImMod"]

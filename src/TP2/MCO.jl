@@ -12,13 +12,12 @@ X_sol = MCO(x,y)
 """
 
 function MCO(x,y)
-    # Initialisation
     n = length(x)
-
     A = [(x.*x)' (x.*y)' (y.*y)' x' y' ones(n,1)]
     B = zeros(n,1)
     A = [A ; 1 0 1 0 0 0]
     B = [B ; 1]
     X_sol=pinv(A)*B
+    X_sol = X_sol/norm(X_sol,2)
     return X_sol
 end
