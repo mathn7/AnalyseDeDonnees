@@ -28,7 +28,7 @@ K = 10
 ListeClass = collect(1:K)
 
 # Classement par aux k-ppv
-Partition,~ = kppv(DataA,DataT,labelA,labelT,K,ListeClass)
+Partition,confusion,nb_erreurs = kppv(DataA,DataT,labelA,labelT,K,ListeClass)
 print("Partition est : " , Partition )
 
 Nt_test = length(Partition)
