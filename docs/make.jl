@@ -5,7 +5,8 @@ makedocs(
     authors = "Saloua Naama, Mohamed El Waghf et Rachid ELMontassir",
     format = Documenter.HTML(prettyurls = get(ENV, "CI", nothing) == "true"),
     pages = [
-            "Accueil" => "index.md",            
+            "Accueil" => "index.md",
+	    "Lien vers la présentation du projet" => "Projet.md",
             "Sujet TP2" => "Sujet_TP2.md",
 	    "Documentation des fonctions" =>"fct_index.md"
             ]
