@@ -29,7 +29,7 @@ ListeClass = collect(1:K)
 
 # Classement par aux k-ppv
 Partition,confusion,nb_erreurs = kppv(DataA,DataT,labelA,labelT,K,ListeClass)
-print("Partition est : " , Partition )
+println("Partition est : " , Partition )
 
 Nt_test = length(Partition)
 n = 28
@@ -37,14 +37,27 @@ if Nt_test <= 50
 
     nb_col = 5
     nb_lig = Integer(Nt_test/nb_col)
-    gui = imshow_gui((2*n, 2*n), (nb_lig,nb_col))
+    gui = imshow_gui((300,300), (nb_lig,nb_col))
     canvases = gui["canvas"]
 
-    for i = 1:nb_lig
+    #=for i = 1:nb_lig
         for j = 1:nb_col
             im = reshape(DataT[(i-1)*nb_col + j, :], n, n)
             imshow(canvases[i,j],im) # a voir si y a une facon meilleure
             # title(['DataT ',num2str(k), ' - ', num2str(Partition(k))],'FontSize',15)
         end
+    end=#
+    for k = 1:Nt_test
+            im = reshape(DataT[k, :], n, n);
+            if k%nb_col == 0
+                imshow(canvases[Int(floor(k/nb_col)),k%nb_col+1],im); # a voir si y a une facon meilleure
+                println("DataT ",string(k), " - ", string(Partition[k]));
+            else
+                imshow(canvases[Int(floor(k/nb_col))+1,k%nb_col],im); # a voir si y a une facon meilleure
+                #title(['DataT ',num2str(k), ' - ', num2str(Partition(k))],'FontSize',15)
+                println("DataT ",string(k), " - ", string(Partition[k]));
+            end
     end
+    Gtk.showall(gui["window"]);
+    print("")
 end
