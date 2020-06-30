@@ -3,23 +3,21 @@
 # TP4 - Reconnaissance de chiffres manuscrits par k plus proches voisins
 # TP4AD.m
 #--------------------------------------------------------------------------
-using MNIST
+using MAT
 
+include("kppv.jl")
 # "Chargement des images d'apprentissage et de test"
-#load MNIST
+datas = matread("src/TP4/MNIST.mat");
 
 #   database_train_images  " 60000x784  "
 #   database_train_labels  " 60000x1    "
 #   database_test_images   " 10000x784  "
 #   database_test_labels   " 10000x1    "
 
-DataA,labelA = traindata()
-DataT,labelT = testdata()
-
-DataA=transpose(DataA)
-labelA=transpose(labelA)
-DataT=transpose(DataT)
-labelT=transpose(labelT)
+DataA = datas["database_train_images"]
+labelA = datas["database_train_labels"]
+DataT = datas["database_test_images"]
+labelT = datas["database_test_labels"]
 
 # Choix du nombre de voisins
 K = 10
@@ -28,5 +26,5 @@ K = 10
 ListeClass = [i for i=1:K]
 
 # Classement par aux k-ppv
-Partition = kppv(DataA,DataT,labelA,K,ListeClass)
+Partition,~ = kppv(DataA,DataT,labelA,labelT,K,ListeClass)
 print("Partition est : " , Partition )
