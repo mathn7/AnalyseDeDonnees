@@ -1,7 +1,7 @@
 # Classification bayésienne
 
 L’objectif est de réaliser un classifieur bayésien permettant de classer les images de trois espèces de
-fleurs (ne recopiez pas les images, afin de préserver votre quota). Lancez le script recup_donnees.m,
+fleurs (ne recopiez pas les images, afin de préserver votre quota). Lancez le script *recup_donnees.jl*,
 qui affiche des images de pensées, d’œillets et de chrysanthèmes. Vous constatez que ces images n’ont
 pas toutes la même taille.
 
@@ -32,7 +32,7 @@ on postule que ce vecteur suffira à les distinguer.
     Écrivez la fonction moyenne, qui calcule la couleur moyenne d’une image, c’est-à-dire ``x^{T} = (\bar{r},\bar{v})`` dans un vecteur ligne, 
     sans oublier de convertir les niveaux de couleur ``(R, V, B)`` auformat single (pour manipuler des réels) et de les normaliser.
 
-Le script *exercice_1.m* regroupe dans trois tableaux de données *X_pensees*, *X_oeillets* et *X_chrysanthemes* les valeurs moyennes calculées 
+Le script *exercice_1.jl* regroupe dans trois tableaux de données *X_pensees*, *X_oeillets* et *X_chrysanthemes* les valeurs moyennes calculées 
 avec la fonction précédente pour chaque groupe d’images. Il affiche ensuite les couleurs moyennes de l’ensemble des images de fleurs sous la forme
 de trois nuages de points de ``\mathbb{R}^2`` avec trois couleurs et symboles différents.
 
@@ -59,7 +59,7 @@ Il faut donc estimer les paramètres ``\mu_{i}`` et ``\Sigma_{i}`` des trois cla
 
     Écrivez la fonction *estimation_mu_Sigma* permettant d’effectuer l’estimation empirique des paramètres d’une loi normale bidimensionnelle ``(d = 2)`` à partir d’une matrice de données ``X``.
 
-Le script *exercice_2.m* estime les paramètres ``\mu_i`` et ``\Sigma_i`` des trois classes ``\omega_i`` correspondant aux trois espèces de fleurs, à partir des tableaux de données *X_pensees*, *X_oeillets* et *X_chrysanthemes*, puis superpose la vraisemblance de chaque classe (en perspective 3D) au nuage de points à partir duquel elle a été estimée.
+Le script *exercice_2.jl* estime les paramètres ``\mu_i`` et ``\Sigma_i`` des trois classes ``\omega_i`` correspondant aux trois espèces de fleurs, à partir des tableaux de données *X_pensees*, *X_oeillets* et *X_chrysanthemes*, puis superpose la vraisemblance de chaque classe (en perspective 3D) au nuage de points à partir duquel elle a été estimée.
 
 ## Exercice 3 - Classification d’images de fleurs
 
@@ -68,7 +68,7 @@ Nous souhaitons maintenant prédire à quelle espèce de fleurs une image requê
 
 !!! warning "Travail à effectuer"
 
-    Modifiez le script *exercice_3.m*, de manière à :
+    Modifiez le script *exercice_3.jl*, de manière à :
     1. partitionner le plan ``\mathbb{R}^2`` en trois parties correspondant aux trois classes de fleurs,
     2. les colorier en trois couleurs différentes associées à celles des nuages de points,
     3. afficher le pourcentage d’images bien classées sur l’ensemble des trois classes.
@@ -80,11 +80,11 @@ Il semble naturel d'affecter à x la classe ``\omega_{i}`` qui maximise ``p\left
 
 !!! warning "Travail à effectuer"
 
-    Écrivez une variante *exercice_3_bis.m* du script *exercice_3.m* où, en jouant sur les probabilités a *priori* des trois classes que vous ajouterez afin de classifier par maximum a posteriori et vous essaierez de maximiser le pourcentage d’images correctement classées.
+    Écrivez une variante *exercice_3_bis.jl* du script *exercice_3.jl* où, en jouant sur les probabilités a *priori* des trois classes que vous ajouterez afin de classifier par maximum a posteriori et vous essaierez de maximiser le pourcentage d’images correctement classées.
 
 ## Pour aller plus loin (facultatif ) - Amélioration du classifieur
 
 Même en jouant sur les probabilités ``a`` *priori*, le classifieur obtenu reste décevant, surtout pour pensées et les ceillets. En effet, l'observation attentive des images de ces deux espèces, dont les couleurs moyennes sont similaires, montre qu'elles ne sont pas structurées de la même façon : les pensées sont plus sombres au centre, c'est-à-dire au niveau du pistil, par rapport aux ceillets. Cela suggère de ne pas seulement calculer la couleur moyenne des images, mais de scinder chaque image en deux parties complémentaires:
 le centre ``C`` (notion à préciser) et le pourtour ``P`` (complémentaire de ``C`` ).
 
-Écrivez un script *exercice_4.m* reprenant le principe du classifieur MAP de l'exercice 3, mais utilisant trois caractéristiques au lieu de deux pour décrire une image, à savoir le couple de valeurs ``(\bar{r}, \bar{v})`` calculées sur le pourtour ``P`` et la valeur ``\bar{r}`` calculée sur le centre ``C``.
+Écrivez un script *exercice_4.jl* reprenant le principe du classifieur MAP de l'exercice 3, mais utilisant trois caractéristiques au lieu de deux pour décrire une image, à savoir le couple de valeurs ``(\bar{r}, \bar{v})`` calculées sur le pourtour ``P`` et la valeur ``\bar{r}`` calculée sur le centre ``C``.
