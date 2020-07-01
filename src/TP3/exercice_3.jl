@@ -76,14 +76,20 @@ heatmap!(r,v,code_classe,color=cgrad([:royalblue, :seagreen, :firebrick]),
 # Initialisation du compteur des images correctement classées :
 nb_img_bien_classees = 0
 # Comptage des images de pensees correctement classees :
-for i = 1:nb_images_pensees
+V_classe_pe = zeros(10)
+V_classe_oe = zeros(10)
+V_classe_ch = zeros(10)
 
+
+for i = 1:nb_images_pensees
 	r_i = X_pensees[i,1]
 	v_i = X_pensees[i,2]
 	V_classe_pensees,_ = vraisemblance(r_i,v_i,mu_pensees,Sigma_pensees,denominateur_classe_pensees)
 	V_classe_oeillets,_ = vraisemblance(r_i,v_i,mu_oeillets,Sigma_oeillets,denominateur_classe_oeillets)
 	V_classe_chrysanthemes,_ = vraisemblance(r_i,v_i,mu_chrysanthemes,Sigma_chrysanthemes,denominateur_classe_chrysanthemes)
-
+	V_classe_pe[i] = V_classe_pensees
+	V_classe_oe[i] = V_classe_oeillets
+	V_classe_ch[i] = V_classe_chrysanthemes
 	if (V_classe_pensees >= V_classe_oeillets) && (V_classe_pensees >= V_classe_chrysanthemes)
 		global nb_img_bien_classees = nb_img_bien_classees+1
 		scatter!([r_i],[v_i],color=:red,markersize=10,label="")
@@ -130,6 +136,7 @@ accuracy = 100*nb_img_bien_classees/(nb_images_chrysanthemes + nb_images_oeillet
 MAT.matwrite("resultats-ex3.mat", Dict(
 	"accuracy" => accuracy
 ))
+
 
 print(string(accuracy)[1:5]*"% d'images correctement classees")
 # Ajout du titre avec le pourcentage des images bien classées
