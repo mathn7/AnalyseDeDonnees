@@ -1,6 +1,6 @@
 # Classification bayésienne
 
-L’objectif est de réaliser un classifieur bayésien permettant de classer les images de trois espèces de
+L’objectif est de réaliser un classifieur bayésien permettant de **classer** les images de trois espèces de
 fleurs (ne recopiez pas les images, afin de préserver votre quota). Lancez le script *recup_donnees.jl*,
 qui affiche des images de pensées, d’œillets et de chrysanthèmes. Vous constatez que ces images n’ont
 pas toutes la même taille.
@@ -44,13 +44,13 @@ Au regard de cette figure, la couleur moyenne vous semble-t-elle une caractéris
 Les trois nuages de points précédents peuvent être modélisés par des lois normales bidimensionnelles.
 Il est rappelé que la densité de probabilité d’une loi normale s’écrit, en dimension ``d`` :
 
-``\hspace*{2.5cm}`` ``p(\mathbf{x})=\frac{1}{(2 \pi)^{d/2}(\operatorname{det} \Sigma)^{1/2}} \exp \left(-\frac{1}{2}(\mathbf{x}-\mu)^{\top} \Sigma^{-1}(\mathbf{x}-\mu)\right) \\    \\``
+``\hspace*{2.5cm}`` ``p(\mathbf{x})=\frac{1}{(2 \pi)^{d/2}(\operatorname{det} \Sigma)^{1/2}} \exp \left(-\frac{1}{2}(\mathbf{x}-\mu)^{\top} \Sigma^{-1}(\mathbf{x}-\mu)\right) \hspace*{2.0cm} (1) \\    \\``
 où: ``\\``
-``\hspace*{1.5cm}``  ``。\mu`` désigne l'espérance (la moyenne) des vecteurs ``\mathbf{x} \in \mathbb{R}^{d}: \mu=E[\mathbf{x}]=\frac{1}{n} \mathbf{X}^{\top} \mathbf{1}_{n} \\    \\``
-``\hspace*{1.5cm}``  ``。\Sigma`` désigne la matrice de variance/covariance : ``\Sigma=E\left[(\mathbf{x}-\mu)(\mathbf{x}-\mu)^{\top}\right]=\frac{1}{n}\left(\mathbf{X}^{c}\right)^{\top} \mathbf{X}^{c} \\``
+``\hspace*{1.5cm}``  ``。\mu`` désigne l'espérance (la moyenne) des vecteurs ``\mathbf{x} \in \mathbb{R}^{d}: \mu=E[\mathbf{x}]=\frac{1}{n} \mathbf{x}^{\top} \mathbf{1}_{n} \\    \\``
+``\hspace*{1.5cm}``  ``。\Sigma`` désigne la matrice de variance/covariance : ``\Sigma=E\left[(\mathbf{x}-\mu)(\mathbf{x}-\mu)^{\top}\right]=\frac{1}{n}\left(\mathbf{x}^{c}\right)^{\top} \mathbf{x}^{c} \\``
 
 Dans le cadre bayésien, la vraisemblance de la classe ``\omega_{i}`` associée à chaque type de fleur, qui est caractérisée par la moyenne ``\mu_{i}`` et la matrice de variance/covariance ``\Sigma_{i},`` peut être modélisée par une loi normale analogue à (1): ``\\``
-``\\ \hspace*{2.5cm}`` ``p\left(\mathbf{x}\mid\omega_{i}\right)=\frac{1}{(2 \pi)^{d / 2}\left(\operatorname{det} \Sigma_{i}\right)^{1 / 2}} \exp \left(-\frac{1}{2}\left(\mathbf{x}-\mu_{i}\right)^{\top} \Sigma_{i}^{-1}\left(\mathbf{x}-\mu_{i}\right)\right), \quad i \in[1,3] \\``
+``\\ \hspace*{2.5cm}`` ``p\left(\mathbf{x}|\omega_{i}\right)=\frac{1}{(2 \pi)^{d / 2}\left(\operatorname{det} \Sigma_{i}\right)^{1 / 2}} \exp \left(-\frac{1}{2}\left(\mathbf{x}-\mu_{i}\right)^{\top} \Sigma_{i}^{-1}\left(\mathbf{x}-\mu_{i}\right)\right), \quad i \in[1,3] \\``
 
 Il faut donc estimer les paramètres ``\mu_{i}`` et ``\Sigma_{i}`` des trois classes correspondant aux trois espèces de fleurs.``\\``
 
@@ -63,7 +63,7 @@ Le script *exercice_2.jl* estime les paramètres ``\mu_i`` et ``\Sigma_i`` des t
 
 ## Exercice 3 - Classification d’images de fleurs
 
-Nous souhaitons maintenant prédire à quelle espèce de fleurs une image requête, ``\mathbf{x}``, doit être associée. Comme nous avons utilisé des données étiquetées (chacune des images étant associée à une espèce de fleurs), il s'agit de *classification supervisée*. Un premier type de classification consiste à affecter à ``\mathbf{x}`` la classe ``\omega_{i}`` qui maximise la vraisemblance ``p\left(\mathbf{x} \mid \omega_{i}\right) .`` Il s'agit alors d'un classifieur par *maximum de vraisemblance*.
+Nous souhaitons maintenant prédire à quelle espèce de fleurs une image requête, ``\mathbf{x}``, doit être associée. Comme nous avons utilisé des données étiquetées (chacune des images étant associée à une espèce de fleurs), il s'agit de *classification supervisée*. Un premier type de classification consiste à affecter à ``\mathbf{x}`` la classe ``\omega_{i}`` qui maximise la vraisemblance ``p\left(\mathbf{x} | \omega_{i}\right) .`` Il s'agit alors d'un classifieur par *maximum de vraisemblance*.
 
 
 !!! warning "Travail à effectuer"
@@ -73,14 +73,14 @@ Nous souhaitons maintenant prédire à quelle espèce de fleurs une image requê
     2. les colorier en trois couleurs différentes associées à celles des nuages de points,
     3. afficher le pourcentage d’images bien classées sur l’ensemble des trois classes.
 
-Par ailleurs, la règle de Bayes donne l'expression suivante de la probabilité ``a`` **posteriori** ``p\left(\omega_{i}\mid\mathbf{x}\right)`` c'est-à-dire de la probabilité pour que la classe ``\omega_{i}`` contienne ``\mathbf{x}`` : ``\\``
-``\\ \hspace*{3.5cm}`` ``p\left(\omega_{i} \mid \mathbf{x}\right)=\frac{p\left(\mathbf{x} \mid \omega_{i}\right) p\left(\omega_{i}\right)}{p(\mathbf{x})} \\``
+Par ailleurs, la règle de Bayes donne l'expression suivante de la probabilité ``a`` **posteriori** ``p\left(\omega_{i}|\mathbf{x}\right)`` c'est-à-dire de la probabilité pour que la classe ``\omega_{i}`` contienne ``\mathbf{x}`` : ``\\``
+``\\ \hspace*{3.5cm}`` ``p\left(\omega_{i} | \mathbf{x}\right)=\frac{p\left(\mathbf{x}|\omega_{i}\right) p\left(\omega_{i}\right)}{p(\mathbf{x})} \hspace*{2.0cm} (2) \\``
 
-Il semble naturel d'affecter à x la classe ``\omega_{i}`` qui maximise ``p\left(\omega_{i} \mid \mathbf{x}\right) .`` Une telle classification est dite par maximum ``\boldsymbol{a}`` **posteriori** ``(\mathrm{MAP}) .`` Sachant que le dénominateur ``p(\mathbf{x})`` de [2] est indépendant de ``\omega_{i},`` il n'est pas nécessaire de le connaítre pour trouver le maximum des ``p\left(\omega_{i} \mid \mathbf{x}\right)``. En revanche, il est nécessaire de connaítre la probabilité ``a`` **priori** ``p\left(\omega_{i}\right)`` de chaque classe ``\omega_{i},`` faute de quoi on fait généralement l'hypothèse que les classes sont équiprobables (l'estimateur par maximum a **posteriori** revient alors à un estimateur par maximum de vraisemblance).
+Il semble naturel d'affecter à x la classe ``\omega_{i}`` qui maximise ``p(\omega_{i}|\mathbf{x}) .`` Une telle classification est dite par **maximum a posteriori** (MAP). Sachant que le dénominateur ``p(\mathbf{x})`` de (2) est indépendant de ``\omega_{i},`` il n'est pas nécessaire de le connaítre pour trouver le maximum des ``p(\omega_{i}|\mathbf{x})``. En revanche, il est nécessaire de connaítre la **probabilité a priori** ``p\left(\omega_{i}\right)`` de chaque classe ``\omega_{i},`` faute de quoi on fait généralement l'hypothèse que les classes sont équiprobables (l'estimateur par maximum a *posteriori* revient alors à un estimateur par maximum de vraisemblance).
 
 !!! warning "Travail à effectuer"
 
-    Écrivez une variante *exercice_3_bis.jl* du script *exercice_3.jl* où, en jouant sur les probabilités a *priori* des trois classes que vous ajouterez afin de classifier par maximum a posteriori et vous essaierez de maximiser le pourcentage d’images correctement classées.
+    Écrivez une variante *exercice\_3\_bis.jl* du script *exercice_3.jl* où, en jouant sur les probabilités a *priori* des trois classes que vous ajouterez afin de classifier par maximum a posteriori et vous essaierez de maximiser le pourcentage d’images correctement classées.
 
 ## Pour aller plus loin (facultatif ) - Amélioration du classifieur
 
