@@ -5,7 +5,7 @@
 #--------------------------------------------------------------------------
 #importation des bibliothèques
 
-using ImageView
+#using ImageView #à décommenter pour l'affichage
 using TestImages, Gtk.ShortNames
 using Images
 using LinearAlgebra
