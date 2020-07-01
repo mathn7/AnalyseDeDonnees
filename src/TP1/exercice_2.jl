@@ -6,7 +6,7 @@
 
 #importation des bibliothèques
 
-using PyPlot
+#using PyPlot #à décommenter pour l'affichage
 using ImageView
 using TestImages, Gtk.ShortNames
 using Images

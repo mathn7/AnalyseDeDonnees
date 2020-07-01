@@ -4,17 +4,18 @@
 # Exercice_3.jl
 #--------------------------------------------------------------------------
 #importation des bibliothèques
-using PyPlot
+
 using ImageView
 using TestImages, Gtk.ShortNames
 using Images
+using LinearAlgebra
 
 ImageView.closeall()
 
 ## Calcul des composantes principales d'une image RVB
-I = load("src/TP1/coloredChips.png");        #chargement de l'image
+Im = load("src/TP1/coloredChips.png");        #chargement de l'image
 #Decoupage de l'image en trois canaux et conversion en flottants
-CI = channelview(I);
+CI = channelview(Im);
 R = float(CI[1,:,:]);
 V = float(CI[2,:,:]);
 B = float(CI[3,:,:]);
@@ -45,7 +46,7 @@ gui = imshow_gui((300,300),(2, 2));  # La fenetre comporte 2 lignes et 2 colonne
 # 1ere fenetre d'affichage
 canvases = gui["canvas"];
 # Affichage de l'image RVB
-ImageView.imshow(canvases[1,1], I); # 1ere ligne, 1ere colonne
+ImageView.imshow(canvases[1,1], Im); # 1ere ligne, 1ere colonne
 # 1ere composante principale = projection sur la 1er vecteur principal
 ImageView.imshow(canvases[1,2],C1); # 1ere ligne, 2nd colonne
 # Moyenne des 3 canaux
