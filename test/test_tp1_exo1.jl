@@ -15,7 +15,7 @@ Sigma = Matrice_var_cov(Im);
 
 c = sum(diag(Sigma));
 
-@testset "tester l'individu moyen et la matrice de variance/covariance" begin
+@testset "Tests EXO1" begin
 	@testset "test de l'individu moyen" begin
 		@test isapprox(Ind_moyen,Individu_moyen(Im),atol=tolerance)
 	end
