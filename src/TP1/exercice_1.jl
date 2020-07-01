@@ -7,11 +7,9 @@
 
 #importation des bibliothèques
 
-#using PyPlot #à décommenter pour l'affichage
-#using ImageView #à décommenter pour l'affichage
-using TestImages, Gtk.ShortNames
+#using PyPlot, Gtk.ShortNames , ImageView #à décommenter pour l'affichage
+#using TestImages , ImageMagick #à décommenter pour utiliser des images disponibles dans ImageMagic
 using Images
-using ImageMagick
 using Statistics
 using Printf
 using LinearAlgebra
