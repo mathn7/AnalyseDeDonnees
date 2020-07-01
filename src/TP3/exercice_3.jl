@@ -11,7 +11,7 @@ using LinearAlgebra
 using LaTeXStrings
 include("vraisemblance.jl")
 
-closeall() 
+Plots.closeall() 
 
 # Chargement des donnees de l exercice 2
 vars = matread("mat/resultats-ex2.mat")
@@ -61,14 +61,14 @@ pyplot() # utiliser le backend pyplot de matplotlib
 # les points suivants sont tracés juste pour ajouter leurs labels dans la légende 
 x = X_pensees[nb_images_pensees,1]
 y = X_pensees[nb_images_pensees,2]
-scatter([x],[y],color=:red,label="pensee bien classée")
-scatter!([x],[y],color=:white,markerstrokecolor=:red,marker=:xcross,label="pensee pas bien classée")
-scatter!([x],[y],color=:green,label="oeillet bien classée")
-scatter!([x],[y],color=:white,markerstrokecolor=:green,marker=:xcross,label="oeillet pas bien classée")
-scatter!([x],[y],color=:blue,label="chrysantheme bien classée")
-scatter!([x],[y],color=:white,markerstrokecolor=:blue,marker=:xcross,label="chrysantheme pas bien classée")
+Plots.scatter([x],[y],color=:red,label="pensee bien classée")
+Plots.scatter!([x],[y],color=:white,markerstrokecolor=:red,marker=:xcross,label="pensee pas bien classée")
+Plots.scatter!([x],[y],color=:green,label="oeillet bien classée")
+Plots.scatter!([x],[y],color=:white,markerstrokecolor=:green,marker=:xcross,label="oeillet pas bien classée")
+Plots.scatter!([x],[y],color=:blue,label="chrysantheme bien classée")
+Plots.scatter!([x],[y],color=:white,markerstrokecolor=:blue,marker=:xcross,label="chrysantheme pas bien classée")
 # la carte des couleurs représentant les différentes classes 
-heatmap!(r,v,code_classe,color=cgrad([:royalblue, :seagreen, :firebrick]),
+Plots.heatmap!(r,v,code_classe,color=cgrad([:royalblue, :seagreen, :firebrick]),
 	xlabel=L"\mathrm{\bar{r}}",ylabel=L"\mathrm{\bar{v}}",
 	xlim=(r[1],r[end]),ylim=(v[1],v[end]))
 #-------------------------------------------------------------------------------
@@ -92,9 +92,9 @@ for i = 1:nb_images_pensees
 	V_classe_ch[i] = V_classe_chrysanthemes
 	if (V_classe_pensees >= V_classe_oeillets) && (V_classe_pensees >= V_classe_chrysanthemes)
 		global nb_img_bien_classees = nb_img_bien_classees+1
-		scatter!([r_i],[v_i],color=:red,markersize=10,label="")
+		Plots.scatter!([r_i],[v_i],color=:red,markersize=10,label="")
 	else
-		scatter!([r_i],[v_i],color=:white,markerstrokecolor=:red,marker=:xcross,markersize=10,label="")
+		Plots.scatter!([r_i],[v_i],color=:white,markerstrokecolor=:red,marker=:xcross,markersize=10,label="")
 	end
 end
 
@@ -109,9 +109,9 @@ for i = 1:nb_images_oeillets
 	
 	if (V_classe_oeillets >= V_classe_pensees) && (V_classe_oeillets >= V_classe_chrysanthemes)
 		global nb_img_bien_classees = nb_img_bien_classees+1
-		scatter!([r_i],[v_i],color=:green,markersize=10,label="")
+		Plots.scatter!([r_i],[v_i],color=:green,markersize=10,label="")
 	else
-		scatter!([r_i],[v_i],color=:white,markerstrokecolor=:green,marker=:xcross,markersize=10,label="")
+		Plots.scatter!([r_i],[v_i],color=:white,markerstrokecolor=:green,marker=:xcross,markersize=10,label="")
 	end
 end
 
@@ -126,9 +126,9 @@ for i = 1:nb_images_chrysanthemes
 
 	if (V_classe_chrysanthemes >= V_classe_pensees) && (V_classe_chrysanthemes >= V_classe_oeillets)
 		global nb_img_bien_classees = nb_img_bien_classees+1
-		scatter!([r_i],[v_i],color=:blue,markersize=10,label="")
+		Plots.scatter!([r_i],[v_i],color=:blue,markersize=10,label="")
 	else
-		scatter!([r_i],[v_i],color=:white,markerstrokecolor=:blue,marker=:xcross,markersize=10,label="")
+		Plots.scatter!([r_i],[v_i],color=:white,markerstrokecolor=:blue,marker=:xcross,markersize=10,label="")
 	end
 end
 # l'accuracy en % :
@@ -140,4 +140,4 @@ MAT.matwrite("mat/resultats-ex3.mat", Dict(
 
 print(string(accuracy)[1:5]*"% d'images correctement classees")
 # Ajout du titre avec le pourcentage des images bien classées
-scatter!([x],[y],markersize=0,label="", title="Classification par maximum de vraisemblance, "*string(accuracy)[1:4]*"% d'images correctement classées")
+Plots.scatter!([x],[y],markersize=0,label="", title="Classification par maximum de vraisemblance, "*string(accuracy)[1:4]*"% d'images correctement classées")

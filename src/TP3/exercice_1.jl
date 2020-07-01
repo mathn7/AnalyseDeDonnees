@@ -4,7 +4,8 @@
 # exercice_1.jl
 #-------------------------------------------------------------------------------
 
-using Plots
+#using Plots
+using Gaston
 using MAT
 using LinearAlgebra
 using Statistics
@@ -62,10 +63,23 @@ MAT.matwrite("mat/resultats-ex1.mat", Dict(
 	"nb_images_oeillets" => vars["nb_images_oeillets"],
 	"nb_images_chrysanthemes" => vars["nb_images_chrysanthemes"]
 ))
-
+#=
 pyplot() # utiliser le backend pyplot de matplotlib
 scatter(X_pensees[:,1],X_pensees[:,2],color=:red,marker=:star7,markerstrokecolor=:red,markersize=15,
 	title="Couleurs moyennes des images",label="Pensees",xlabel=L"\mathrm{\bar{r}}",ylabel=L"\mathrm{\bar{v}}",
 	xlim=(r[1],r[end]),ylim=(v[1],v[end]))
 scatter!(X_oeillets[:,1],X_oeillets[:,2],color=:green,markerstrokecolor=:green,markersize=15,label="Oeillets")
 scatter!(X_chrysanthemes[:,1],X_chrysanthemes[:,2],color=:blue,marker=:+,markerstrokecolor=:blue,markersize=15,label="Chrysantemes")
+=#
+Gaston.scatter(X_pensees[:,1], X_pensees[:,2],marker = "fsquare",lw = 5,legend=:"'Pensees'",lc="'#08F7FE'",# curveconf = "w lp lw 1 lc '#08F7FE' pt 7 t 'pensees'",
+     Axes(object="rectangle from screen 0,0 to screen 1,1 behind fc 'black' fs solid noborder",
+          border="lw 2 lc 'white'",
+          xtics="textcolor rgb 'white'",
+          ytics="textcolor rgb 'white'",
+          ylabel="'r_{bar}' textcolor 'white'",
+          xlabel="'v_{bar}' textcolor 'white'",
+          grid="lc '#08F7FE' dt 4",
+          key="t r textcolor 'white'"))
+
+Gaston.plot!(X_oeillets[:,1],X_oeillets[:,2],marker = "+",lw = 5,lc="'#FFE64D'",legend=:"'Oeillets'")#,markerstrokecolor=:green,markersize=15,label="Oeillets")
+Gaston.plot!(X_chrysanthemes[:,1],X_chrysanthemes[:,2],marker = "*",lw = 5,lc="'white'",legend=:"'Chrysantemes'")#,marker=:+,markerstrokecolor=:blue,markersize=15,label="Chrysantemes")
