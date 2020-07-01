@@ -1,7 +1,7 @@
 # Reconnaissance de chiffres manuscrits par k plus proches voisins
 
 L’objectif de ce TP est de reconnaı̂tre des chiffres manuscrits d’une base de test à partir d’une base d’apprentissage 
-et de la méthode des ``k`` plus proches voisins. La base de données du MNIST 1 sur les chiffres manuscrits comprend un ensemble 
+et de la méthode des ``k`` plus proches voisins. La base de données du MNIST sur les chiffres manuscrits comprend un ensemble 
 e 60 000 exemples d’apprentissage (*database\_train\_images*) et un ensemble de 10 000 exemples de test (*database\_test\_images*). 
 Les chiffres, dont quelques exemples sont représentés sur la figure 1, ont été normalisés et centrés dans une image de taille fixe 28 ``\times`` 28 pixels.
 ``\\``
