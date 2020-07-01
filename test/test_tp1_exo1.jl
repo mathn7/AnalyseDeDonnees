@@ -8,7 +8,7 @@ include("sols_exactes.jl")
 tolerance = 1e-3
 
 #charger l'image à tester
-Im = load("src/TP1/automn.tiff");
+Im = load("../src/TP1/automn.tiff");
 
 #matrice de variance covariance
 Sigma = Matrice_var_cov(Im);

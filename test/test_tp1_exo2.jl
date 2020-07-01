@@ -8,7 +8,7 @@ include("sols_exactes.jl")
 tolerance = 1e-3
 
 #charger l'image à tester
-Im = load("src/TP1/automn.tiff");
+Im = load("../src/TP1/automn.tiff");
 
 Sigma_2 = Sigma2(Im);
 c = sum(Sigma_2)
