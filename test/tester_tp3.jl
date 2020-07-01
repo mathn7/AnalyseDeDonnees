@@ -3,12 +3,12 @@
     
     # donnees
     fleurs = ["pensees","oeillets","chrysanthemes"]
-    donnees   = matread("../src/TP3/donnees.mat")
+    donnees   = matread("../src/TP3/mat/donnees.mat")
     tol_erreur = 1e-5
 
     # tester l'exercice 1
     @testset "Tests exo 1" begin
-        solutions = matread("../src/TP3/solutions-ex1.mat")
+        solutions = matread("../src/TP3/mat/solutions-ex1.mat")
         include("../src/TP3/moyenne_image.jl")
 
         @testset "moyenne_image" for fleur in fleurs
@@ -22,7 +22,7 @@
 
     # tester l'exercice 2
     @testset "Tests exo 2" begin 
-        solutions = matread("../src/TP3/solutions-ex2.mat")
+        solutions = matread("../src/TP3/mat/solutions-ex2.mat")
         include("../src/TP3/estimation_mu_et_sigma.jl")
         include("../src/TP3/vraisemblance.jl")
 
@@ -41,9 +41,9 @@
 
     # tester l'exercice 3
     @testset "Tests exo 3" begin 
-        solutions = matread("../src/TP3/solutions-ex3.mat")
-        solutions_ex2 = matread("../src/TP3/solutions-ex2.mat")
-        resultats = matread("../src/TP3/resultats-ex3.mat")
+        solutions = matread("../src/TP3/mat/solutions-ex3.mat")
+        solutions_ex2 = matread("../src/TP3/mat/solutions-ex2.mat")
+        resultats = matread("../src/TP3/mat/resultats-ex3.mat")
         
         # nous allons tester juste par rapport à la première classe
         X = solutions_ex2["X_pensees"]
@@ -62,7 +62,7 @@
 
     # tester l'exercice 4
     @testset "Tests exo 4" begin
-        solutions = matread("../src/TP3/solutions-ex4.mat")
+        solutions = matread("../src/TP3/mat/solutions-ex4.mat")
         include("../src/TP3/couleur_moyenne.jl")
                
         @testset "couleur moyenne: $fleur" for fleur in fleurs  
