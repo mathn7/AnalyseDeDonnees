@@ -83,10 +83,3 @@ for i = 1:nb_lignes_affichage
 	end
 end
 Gtk.showall(gui["window"])
-
-# TODO 
-#=
-drawnow
-clear chemin fact fichier i nb_lignes_affichage nb_colonnes_affichage s taille_ecran
-save donnees
-=#
