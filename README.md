@@ -32,7 +32,7 @@ julia>activate .
 
 ## Afficher les sorties des scripts du Tp1
 ##### EXO1
-Décommenter les lignes 10 et 11 du script exercice_1.jl
+Décommenter la ligne 10 du script exercice_1.jl
 pour utiliser les bibliothèques d'affichage.
 Dans la racine (Projet-CSAD) , vous chargez une image et
 exécutez la fonction `affichages` du script exercice_1.jl
