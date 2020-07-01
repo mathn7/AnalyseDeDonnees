@@ -6,6 +6,7 @@ version = "0.1.0"
 [deps]
 DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
 FileIO = "5789e2e9-d7fb-5bc7-8068-2c6fae9b9549"
+Gaston = "4b11ee91-296f-5714-9832-002c20994614"
 Gnuplot = "dc211083-a33a-5b79-959f-2ff34033469d"
 Gtk = "4c0ca9eb-093a-5379-98c5-f87ac0bbbf44"
 ImageIO = "82e4d734-157c-48bb-816b-45c225c6df19"

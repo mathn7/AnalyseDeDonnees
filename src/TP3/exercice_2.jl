@@ -6,7 +6,7 @@
 --------------------------------------------------------------------------
 """
 
-using Plots
+using Gaston
 using MAT
 using LinearAlgebra
 using LaTeXStrings
@@ -35,8 +35,20 @@ mu_pensees, Sigma_pensees = estimation_mu_et_sigma(X_pensees)
 V_pensees, denominateur_classe_pensees = vraisemblance(r, v, mu_pensees, Sigma_pensees, -1)
 
 # Representation 3D de la loi normale
-pyplot() # utiliser le backend pyplot de matplotlib
-plt = plot(layout=(1,3))
+p1 = Gaston.surf(r,v,V_pensees,plotstyle="lines",lc="'red'",
+	legend=:"'Vraisemblance empirique'",
+	Axes(title=:"'Vraisemblance de la classe des pensees'",
+	xlabel = :"'r_{bar}'",
+	ylabel = :"'v_{bar}'"),handle = 1)
+
+p1 = Gaston.surf!(X_pensees[:,1],X_pensees[:,2],zeros(length(X_pensees)),
+	pointtype = "+",lw = 5,
+	legend=:"'donnees dapprentissage'",
+	lc = :red,handle = 1)
+
+#pyplot() # utiliser le backend pyplot de matplotlib
+#plt = plot(layout=(1,3))
+#=
 plot!(r,v,V_pensees,st=:wireframe,color=:palegreen,	
 	title=" Vraisemblance de la classe des pensees",
 	label="Vraisemblance empirique",subplot=1,	
@@ -44,7 +56,7 @@ plot!(r,v,V_pensees,st=:wireframe,color=:palegreen,
 	xlabel=L"\mathrm{\bar{r}}",ylabel=L"\mathrm{\bar{v}}")
 
 scatter!(X_pensees[:,1],X_pensees[:,2],zeros(length(X_pensees)),markersize=10,
-	markerstrokecolor=:green,marker=:star7,color=:green,label="donnees d'apprentissage",subplot=1)
+	markerstrokecolor=:green,marker=:star7,color=:green,label="donnees d'apprentissage",subplot=1)=#
 
 ## Estimation pour les oeillets ##
 
@@ -54,6 +66,16 @@ mu_oeillets, Sigma_oeillets= estimation_mu_et_sigma(X_oeillets)
 V_oeillets, denominateur_classe_oeillets = vraisemblance(r, v, mu_oeillets, Sigma_oeillets, -1)
 
 # Representation 3D de la loi normale
+p2 = Gaston.surf(r,v,V_oeillets,plotstyle="lines",lc="'green'",legend=:"'Vraisemblance empirique'",
+	Axes(title=:"'Estimation pour les oeillets'",
+	xlabel = :"'r_{bar}'",
+	ylabel = :"'v_{bar}'"),handle = 2)
+
+p2 = Gaston.surf!(X_oeillets[:,1],X_oeillets[:,2],zeros(length(X_oeillets)),
+	pointtype = "+",lw = 5,
+	legend=:"'donnees dapprentissage'",
+	lc = :green,handle = 2)
+#=
 plot!(r,v,V_oeillets,st=:wireframe,color=:lightsalmon,
 	title="Vraisemblance de la classe des oeillets",
 	label="Vraisemblance empirique",subplot=2,
@@ -63,7 +85,7 @@ plot!(r,v,V_oeillets,st=:wireframe,color=:lightsalmon,
 scatter!(X_oeillets[:,1],X_oeillets[:,2],zeros(length(X_oeillets)),markersize=10,
 	markerstrokecolor=:red,marker=:star5,c=:red,label="donnees d'apprentissage",subplot=2)
 ## Estimation pour les chrysanthemes ##
-
+=#
 # Estimation des parametres de la loi normale [fonction a coder]
 mu_chrysanthemes, Sigma_chrysanthemes = estimation_mu_et_sigma(X_chrysanthemes)
 # Valeurs de la loi normale sur la grille
@@ -96,6 +118,16 @@ MAT.matwrite("mat/resultats-ex2.mat", Dict(
 ### TODO : affichage du second label dans la legende
 
 # Representation 3D de la loi normale
+p3 = Gaston.surf(r,v,V_chrysanthemes,plotstyle="lines",lc=:blue,legend=:"'Vraisemblance empirique'",
+	Axes(title=:"'Estimation pour les chrysanthemes'",
+	xlabel = :"'r_{bar}'",
+	ylabel = :"'v_{bar}'"),handle = 3)
+
+p3 = Gaston.surf!(X_chrysanthemes[:,1],X_chrysanthemes[:,2],zeros(length(X_chrysanthemes)),
+	pointtype = "+",lw = 5,
+	legend=:"'donnees dapprentissage'",
+	lc = :blue,handle = 3)
+#=
 plot!(r,v,V_chrysanthemes,st=:wireframe,alpha=0.8,color=:lightblue,
 	xlim=(r[1],r[end]),ylim=(v[1],v[end]),
 	title="Vraisemblance de la classe des chrysanthemes",
@@ -103,4 +135,6 @@ plot!(r,v,V_chrysanthemes,st=:wireframe,alpha=0.8,color=:lightblue,
 	xlabel=L"\mathrm{\bar{r}}",ylabel=L"\mathrm{\bar{v}}")
 
 scatter!(X_chrysanthemes[:,1],X_chrysanthemes[:,2],zeros(length(X_chrysanthemes)),
-	markersize=10,markerstrokecolor=:blue,marker=:star5,c=:blue,label="donnees d'apprentissage",subplot=3)
+	markersize=10,markerstrokecolor=:blue,marker=:star5,c=:blue,label="donnees d'apprentissage",subplot=3) 
+=#
+Gaston.plot([p1 p2 p3])
