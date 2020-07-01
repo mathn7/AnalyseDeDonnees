@@ -12,7 +12,7 @@ using LaTeXStrings
 include("couleur_moyenne.jl")
 
 # Chargement des donnees
-vars = matread("donnees.mat")
+vars = matread("mat/donnees.mat")
 
 nb_images_pensees = Integer(vars["nb_images_pensees"])
 nb_images_oeillets = Integer(vars["nb_images_oeillets"])
@@ -45,7 +45,7 @@ end
 pas = 0.0025;
 r = 0.35:pas:0.60;
 v = 0.2:pas:0.45;
-MAT.matwrite("resultats-ex4.mat", Dict(
+MAT.matwrite("mat/resultats-ex4.mat", Dict(
 	"r" => collect(r),
 	"v" => collect(v), 
 	"X_pensees" => X_pensees,

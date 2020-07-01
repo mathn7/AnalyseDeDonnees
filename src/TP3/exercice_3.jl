@@ -14,7 +14,7 @@ include("vraisemblance.jl")
 closeall() 
 
 # Chargement des donnees de l exercice 2
-vars = matread("resultats-ex2.mat")
+vars = matread("mat/resultats-ex2.mat")
 
 V_pensees = vars["V_pensees"]
 V_oeillets = vars["V_oeillets"]
@@ -133,7 +133,7 @@ for i = 1:nb_images_chrysanthemes
 end
 # l'accuracy en % :
 accuracy = 100*nb_img_bien_classees/(nb_images_chrysanthemes + nb_images_oeillets + nb_images_pensees)
-MAT.matwrite("resultats-ex3.mat", Dict(
+MAT.matwrite("mat/resultats-ex3.mat", Dict(
 	"accuracy" => accuracy
 ))
 

@@ -14,7 +14,7 @@ include("moyenne_image.jl")
 closeall()
 
 # Chargement des donnees sous forme d'un dictionnaire
-vars = matread("donnees.mat")
+vars = matread("mat/donnees.mat")
 
 nb_images_pensees = Integer(vars["nb_images_pensees"])
 nb_images_oeillets = Integer(vars["nb_images_oeillets"])
@@ -50,7 +50,7 @@ v = 0.2:pas:0.45
 nb_r = length(collect(r))
 nb_v = length(collect(v))
 # Enregistrer les résultats 
-MAT.matwrite("resultats-ex1.mat", Dict(
+MAT.matwrite("mat/resultats-ex1.mat", Dict(
 	"nb_r" => nb_r,
 	"nb_v" => nb_v,
 	"r" => collect(r), 

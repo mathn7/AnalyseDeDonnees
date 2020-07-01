@@ -17,7 +17,7 @@ include("vraisemblance.jl")
 closeall()
 
 # Chargement des donnees de l exercice 1
-vars = matread("resultats-ex1.mat")
+vars = matread("mat/resultats-ex1.mat")
 
 X_pensees =vars["X_pensees"]
 X_oeillets =vars["X_oeillets"]
@@ -69,7 +69,7 @@ mu_chrysanthemes, Sigma_chrysanthemes = estimation_mu_et_sigma(X_chrysanthemes)
 # Valeurs de la loi normale sur la grille
 V_chrysanthemes, denominateur_classe_chrysanthemes = vraisemblance(r,v,mu_chrysanthemes,Sigma_chrysanthemes,-1)
 # enregistrer les résultats
-MAT.matwrite("resultats-ex2.mat", Dict(
+MAT.matwrite("mat/resultats-ex2.mat", Dict(
 	"nb_r" => nb_r,
 	"nb_v" => nb_v,
 	"r" => collect(r), 
