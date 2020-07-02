@@ -4,12 +4,14 @@
 # TP4AD.m
 #--------------------------------------------------------------------------
 using MAT
-using ImageView
-using Gtk.ShortNames
+#using ImageView
+#using Gtk.ShortNames
+using Plots
+
 
 include("kppv.jl")
 # "Chargement des images d'apprentissage et de test"
-datas = matread("src/TP4/MNIST.mat");
+datas = matread("MNIST.mat");
 
 #   database_train_images  " 60000x784  "
 #   database_train_labels  " 60000x1    "
@@ -28,28 +30,32 @@ K = 10
 ListeClass = collect(1:K)
 
 # Classement par aux k-ppv
-Partition,confusion,nb_erreurs = kppv(DataA,DataT,labelA,labelT,K,ListeClass)
+#Partition,confusion,nb_erreurs = kppv(DataA,DataT,labelA,labelT,K,ListeClass)
 println("Partition est : " , Partition )
 
 Nt_test = length(Partition)
 n = 28
-if Nt_test <= 50
+nb_col = 5
+nb_lig = Integer(Nt_test/nb_col)
+plt = Plots.plot(
+    axis=nothing,
+    showaxis=false,
+    layout = (nb_col,nb_lig) 
+)
+#gui = imshow_gui((300,300), (nb_lig,nb_col))
+#canvases = gui["canvas"]
 
-    nb_col = 5
-    nb_lig = Integer(Nt_test/nb_col)
-    gui = imshow_gui((300,300), (nb_lig,nb_col))
-    canvases = gui["canvas"]
-
-    for k = 1:Nt_test
-            im = reshape(DataT[k, :], n, n);
-            if k%nb_col == 0
-                imshow(canvases[Int(floor(k/nb_col)),nb_col],im); # a voir si y a une facon meilleure
-            else
-                imshow(canvases[Int(floor(k/nb_col))+1,k%nb_col],im); # a voir si y a une facon meilleure
-            end
-            #title(['DataT ',num2str(k), ' - ', num2str(Partition(k))],'FontSize',15)
-            println("DataT ",string(k), " - ", string(Partition[k]));
-    end
-    Gtk.showall(gui["window"]);
-    print("")
+for k = 1:Nt_test
+    im = Gray.(reshape(DataT[k, :], n, n))
+    #if k%nb_col == 0
+    #    imshow(canvases[Int(floor(k/nb_col)),nb_col],im); # a voir si y a une facon meilleure
+    #else
+    #    imshow(canvases[Int(floor(k/nb_col))+1,k%nb_col],im); # a voir si y a une facon meilleure
+    #end
+    #title(['DataT ',num2str(k), ' - ', num2str(Partition(k))],'FontSize',15)
+    #println("DataT ",string(k), " - ", string(Partition[k]));
+    Plots.plot!(plt[k], im, ratio=1,title="DataT $k - chif="*string(Partition[k]),titlefontsize=4)
 end
+#Gtk.showall(gui["window"]);
+#print("")
+plt
