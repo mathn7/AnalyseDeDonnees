@@ -10,6 +10,6 @@ using MAT
     end
 
     # tester le TP3 
-    include("tester_tp3.jl")
+    include("tp3_test.jl")
 
 end
