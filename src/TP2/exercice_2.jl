@@ -29,7 +29,7 @@ title("Partie image modifiee")
 # Moindres carres ordinaires MCO
 ###########################################
 
-A=[-Data[:] ones(size(Data,1).*size(Data,2),1)];
+A=[-Data[:] ones(size(Data,1)*size(Data,2),1)];
 B=log.(DataMod[:]);
 
 #Solution
