@@ -4,13 +4,6 @@
 # exercice_4.jl
 #--------------------------------------------------------------------------
 
-using Plots
-using MAT
-using LinearAlgebra
-using LaTeXStrings
-
-include("couleur_moyenne.jl")
-
 function exercice4(afficher::Bool,chemin::String)
 	
 	if afficher

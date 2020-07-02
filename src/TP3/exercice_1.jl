@@ -4,12 +4,6 @@
 # exercice_1.jl
 #-------------------------------------------------------------------------------
 
-using Gaston
-using MAT
-using LinearAlgebra
-using Statistics
-using LaTeXStrings
-include("moyenne_image.jl")
 function  exercice1(afficher::Bool,chemin::String)
 	
 	if afficher

@@ -5,12 +5,6 @@
 # exercice_3.jl
 #--------------------------------------------------------------------------
 
-using Plots
-using MAT
-using LinearAlgebra
-using LaTeXStrings
-include("vraisemblance.jl")
-
 function exercice3(afficher::Bool,chemin::String)
 		
 	if afficher
@@ -154,9 +148,9 @@ function exercice3(afficher::Bool,chemin::String)
 	MAT.matwrite(chemin*"mat/resultats-ex3.mat", Dict(
 		"accuracy" => accuracy
 	))
-
-	print(string(accuracy)[1:5]*"% d'images correctement classees")
+	
 	if afficher
+		print(string(accuracy)[1:5]*"% d'images correctement classees")
 		# Ajout du titre avec le pourcentage des images bien classées
 		Plots.scatter!([x],[y],markersize=0,label="", title="Classification par maximum de vraisemblance, "*string(accuracy)[1:4]*"% d'images correctement classées")
 	end

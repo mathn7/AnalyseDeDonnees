@@ -6,12 +6,6 @@
 --------------------------------------------------------------------------
 """
 
-using Gaston
-using MAT
-using LinearAlgebra
-using LaTeXStrings
-include("estimation_mu_et_sigma.jl")
-include("vraisemblance.jl")
 function exercice2(afficher::Bool,chemin::String)
 	
 	if afficher

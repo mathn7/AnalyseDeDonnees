@@ -1,9 +1,10 @@
-#--------------------------------------------------------------------------
-# ENSEEIHT - 1SN - Analyse de donnees
-# TP3 - Classification bayesienne
-# estimation_mu_et_sigma.m
-#--------------------------------------------------------------------------
-
+"""
+--------------------------------------------------------------------------
+ ENSEEIHT - 1SN - Analyse de donnees
+ TP3 - Classification bayesienne
+ estimation_mu_et_sigma.m
+--------------------------------------------------------------------------
+"""
 function  estimation_mu_et_sigma(X)
 
     n = size(X,1)

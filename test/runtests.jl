@@ -1,5 +1,11 @@
 using Test
+using Plots
+using Gaston
 using MAT
+using LinearAlgebra
+using Statistics
+using LaTeXStrings
+
 
 @testset "Test CSAD" begin
 
