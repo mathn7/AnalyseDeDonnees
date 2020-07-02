@@ -36,5 +36,9 @@ export exercice4
 
 #inclure les fonctions du Tp1
 include("TP1/exercice_1.jl")
+include("TP1/exercice_2.jl")
+
+#inclure la fonction kppv
+include("TP4/kppv.jl")
 
 end # module
