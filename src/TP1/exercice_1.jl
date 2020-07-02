@@ -14,8 +14,17 @@ using Statistics
 using Printf
 using LinearAlgebra
 
-#Entrée : matrice representatrice l'image
-#Sortie : la matrice des données
+@doc doc"""
+# Syntaxe
+```julia
+X = Matrice_de_donnees(Im)
+```
+# Entrée :
+   * **Im**   : (Array{RGBA{Normed{UInt8,8}},2}) matrice representatrice l'image
+# Sortie:
+   * **X**    : (Array{Float32,2}) la matrice des données
+"""
+
 function Matrice_de_donnees(Im)
     #Decoupage de l'image en trois canaux et conversion en flottants
     C = channelview(Im);
@@ -27,22 +36,49 @@ function Matrice_de_donnees(Im)
     return X
 end
 
-#Entrée : matrice representatrice l'image
-#Sortie : l'individu moyen
+@doc doc"""
+# Syntaxe
+```julia
+x_barre = Individu_moyen(Im)
+```
+# Entrée :
+   * **Im**   : (Array{RGBA{Normed{UInt8,8}},2}) matrice representatrice l'image
+# Sortie:
+   * **x_barre**    : (Array{Float64,2})  l'individu moyen
+"""
+
 function Individu_moyen(Im)
     (n,p)= size(Matrice_de_donnees(Im));
     return Matrice_de_donnees(Im)'*ones(n,1)/n;
 end
 
-#Entrée : matrice representatrice l'image
-#Sortie : matrice des données centrés
+@doc doc"""
+# Syntaxe
+```julia
+X_c = Donnees_centrees(Im)
+```
+# Entrée :
+   * **Im**   : (Array{RGBA{Normed{UInt8,8}},2}) matrice representatrice l'image
+# Sortie:
+   * **X_c**    : (Array{Float64,2})  matrice des données centrés
+"""
+
 function Donnees_centrees(Im)
     (n,p)= size(Matrice_de_donnees(Im));
     return Matrice_de_donnees(Im)-ones(n,1)*Individu_moyen(Im)';
 end
 
-#Entrée : matrice representatrice l'image
-#Sortie : la matrice Sigma, de variance/covariance des variables aléatoires
+@doc doc"""
+# Syntaxe
+```julia
+Sigma = Matrice_var_cov(Im)
+```
+# Entrée :
+   * **Im**   : (Array{RGBA{Normed{UInt8,8}},2}) matrice representatrice l'image
+# Sortie:
+   * **Sigma**    : (Array{Float64,2})  la matrice de variance/covariance des variables aléatoires
+"""
+
 function Matrice_var_cov(Im)
     (n,p)= size(Matrice_de_donnees(Im));
     return (Donnees_centrees(Im)')*Donnees_centrees(Im)/n;

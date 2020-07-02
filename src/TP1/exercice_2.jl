@@ -17,8 +17,18 @@ using Printf
 include("exercice_1.jl")
 
 ## ########## Calcul des composantes principales d'une image RVB #########
-#Entrée : matrice representatrice l'image
-#Sortie : la matrice des composantes principales
+
+@doc doc"""
+# Syntaxe
+```julia
+C = Composantes_principales(Im)
+```
+# Entrée :
+   * **Im**   : (Array{RGBA{Normed{UInt8,8}},2}) matrice representatrice l'image
+# Sortie:
+   * **C**    : (Array{Float64,2})  la matrice qui contient les composantes principales en colonnes
+"""
+
 function Composantes_principales(Im)
     X_c = Donnees_centrees(Im) #Im : matrice representatrice l'image
     (n,p)= size(X_c);
@@ -33,8 +43,17 @@ function Composantes_principales(Im)
     return C
 end
 
-#Entrée : matrice representatrice l'image
-#Sortie : Matrice de variance/covariance dans le nouveau repere
+@doc doc"""
+# Syntaxe
+```julia
+Sigma_2 = Sigma2(Im)
+```
+# Entrée :
+   * **Im**   : (Array{RGBA{Normed{UInt8,8}},2}) matrice representatrice l'image
+# Sortie:
+   * **Sigma_2**    : (Array{Float64,2})   Matrice de variance/covariance dans le nouveau repere
+"""
+
 function Sigma2(Im)
     C = Composantes_principales(Im);
     n = size(C)[1]
