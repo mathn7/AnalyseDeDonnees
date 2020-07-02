@@ -7,7 +7,7 @@ Calcule les trois valeurs décrivant l'image ``(\bar{r},\bar{v},\bar{r}_{C})``
 * **I** : l'image
 
 # Sorties 
-* **[r\_bar\_P, v\_bar\_P, r\_bar\_C]** : (\bar{r},\bar{v})`` calculées sur le pourtour P et la valeur ``\bar{r}_{C}`` calculée sur le centre C
+* **[r\_bar\_P, v\_bar\_P, r\_bar\_C]** : ``(\bar{r},\bar{v})`` calculées sur le pourtour P et la valeur ``\bar{r}_{C}`` calculée sur le centre C
 
 """
 function moyenne_amelioree(I)

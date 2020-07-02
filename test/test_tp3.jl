@@ -6,10 +6,10 @@
     fleurs = ["pensees","oeillets","chrysanthemes"]
     donnees   = matread(cheminTP3*"mat/donnees.mat")
     tol_erreur = 1e-5
-    include(cheminTP3*"moyenne_image.jl")
+    include(cheminTP3*"couleur_moyenne.jl")
     include(cheminTP3*"estimation_mu_et_sigma.jl")
     include(cheminTP3*"vraisemblance.jl")
-    include(cheminTP3*"couleur_moyenne.jl")
+    include(cheminTP3*"moyenne_amelioree.jl")
 
     include(cheminTP3*"exercice_1.jl")
     include(cheminTP3*"exercice_2.jl")
@@ -21,10 +21,10 @@
         exercice1(false,cheminTP3)
         solutions = matread(cheminTP3*"mat/solutions-ex1.mat")
 
-        @testset "moyenne_image" for fleur in fleurs
+        @testset "couleur_moyenne" for fleur in fleurs
             @testset "X_$fleur" for i = 1:Integer(donnees["nb_images_$fleur"])
                 im = donnees[fleur[1:2] * string(i)]
-                @test solutions["X_$fleur"][i,:] ≈ moyenne_image(im) atol = tol_erreur
+                @test solutions["X_$fleur"][i,:] ≈ couleur_moyenne(im) atol = tol_erreur
             end
         end
 
@@ -78,7 +78,7 @@
         @testset "couleur moyenne: $fleur" for fleur in fleurs  
             for i = 1:Integer(donnees["nb_images_$fleur"])
                 im = donnees[fleur[1:2] * string(i)]
-                @test solutions["X_$fleur"][i,:] ≈ couleur_moyenne(im) atol = tol_erreur
+                @test solutions["X_$fleur"][i,:] ≈ moyenne_amelioree(im) atol = tol_erreur
             end
         end
     end

@@ -9,7 +9,6 @@ makedocs(
     pages = [
 
             "Accueil" => "index.md",
-            "Projet" => "Projet.md", 
             "Sujet TP1" => "sujet_tp1.md",         
             "Sujet TP2" => "sujet_tp2.md",
             "Sujet TP3" => "sujet_tp3.md",
