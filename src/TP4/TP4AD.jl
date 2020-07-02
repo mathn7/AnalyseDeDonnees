@@ -36,7 +36,7 @@ println("Partition est : " , Partition )
 Nt_test = length(Partition)
 n = 28
 nb_col = 5
-nb_lig = Integer(Nt_test/nb_col)
+nb_lig = Integer(min(50,Nt_test)/nb_col)
 plt = Plots.plot(
     axis=nothing,
     showaxis=false,
@@ -45,7 +45,7 @@ plt = Plots.plot(
 #gui = imshow_gui((300,300), (nb_lig,nb_col))
 #canvases = gui["canvas"]
 
-for k = 1:Nt_test
+for k = 1:min(50,Nt_test)
     im = Gray.(reshape(DataT[k, :], n, n))
     #if k%nb_col == 0
     #    imshow(canvases[Int(floor(k/nb_col)),nb_col],im); # a voir si y a une facon meilleure
