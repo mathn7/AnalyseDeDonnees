@@ -1,4 +1,5 @@
 module CSAD
+
 using Plots
 using Gaston
 using MAT
@@ -33,8 +34,7 @@ export exercice3
 include(cheminTP3*"exercice_4.jl")
 export exercice4
 
-
-
-greet() = print("Hello World!")
+#inclure les fonctions du Tp1
+include("TP1/exercice_1.jl")
 
 end # module
