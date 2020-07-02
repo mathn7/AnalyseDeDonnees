@@ -8,30 +8,29 @@ using Statistics
 using LaTeXStrings
 using Markdown
 
-cheminTP3 = "TP3/"
 
-include(cheminTP3*"couleur_moyenne.jl")
+include("TP3/couleur_moyenne.jl")
 export couleur_moyenne
 
-include(cheminTP3*"vraisemblance.jl")
+include("TP3/vraisemblance.jl")
 export vraisemblance
 
-include(cheminTP3*"moyenne_amelioree.jl")
+include("TP3/moyenne_amelioree.jl")
 export moyenne_amelioree
 
-include(cheminTP3*"estimation_mu_et_sigma.jl")
+include("TP3/estimation_mu_et_sigma.jl")
 export estimation_mu_et_sigma
 
-include(cheminTP3*"exercice_1.jl")
+include("TP3/exercice_1.jl")
 export exercice1
 
-include(cheminTP3*"exercice_2.jl")
+include("TP3/exercice_2.jl")
 export exercice2
 
-include(cheminTP3*"exercice_3.jl")
+include("TP3/exercice_3.jl")
 export exercice3
 
-include(cheminTP3*"exercice_4.jl")
+include("TP3/exercice_4.jl")
 export exercice4
 
 #inclure les fonctions du Tp1
