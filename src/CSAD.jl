@@ -5,6 +5,7 @@ using MAT
 using LinearAlgebra
 using Statistics
 using LaTeXStrings
+using Markdown
 
 cheminTP3 = "TP3/"
 
@@ -14,8 +15,8 @@ export couleur_moyenne
 include(cheminTP3*"vraisemblance.jl")
 export vraisemblance
 
-include(cheminTP3*"moyenne_image.jl")
-export moyenne_image
+include(cheminTP3*"moyenne_amelioree.jl")
+export moyenne_amelioree
 
 include(cheminTP3*"estimation_mu_et_sigma.jl")
 export estimation_mu_et_sigma

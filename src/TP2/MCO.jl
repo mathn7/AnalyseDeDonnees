@@ -1,5 +1,6 @@
 @doc doc"""
 Résolution approchée du problème au sens du moindre carrée
+
 # Syntaxe
 ```julia
 X_sol = MCO(x,y)
@@ -7,6 +8,7 @@ X_sol = MCO(x,y)
 # Entrées :
    * **x**       : (Array{Float,1}) le vecteur x definissant les paramètres du prb
    * **y**       : (Array{Float,1}) le vecteur y definissant les paramètres du prb
+
 # Sorties:
    * **X_sol**    : (Array{Float,1}) la solution du problème  : AX=B
 """

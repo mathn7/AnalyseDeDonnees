@@ -21,21 +21,21 @@ function  exercice1(afficher::Bool,chemin::String)
 	X_pensees = zeros(nb_images_pensees,2)
 	for i = 1:nb_images_pensees
 		im = vars["pe" * string(i)]
-		X_pensees[i,:] = moyenne_image(im)
+		X_pensees[i,:] = moyenne_couleur(im)
 	end
 
 	# Couleur moyenne de chaque image d oeillet [fonction a coder]
 	X_oeillets = zeros(nb_images_oeillets,2)
 	for i = 1:nb_images_oeillets
 		im = vars["oe" * string(i)]
-		X_oeillets[i,:] = moyenne_image(im)
+		X_oeillets[i,:] = moyenne_couleur(im)
 	end
 
 	# Couleur moyenne de chaque image de chrysantheme
 	X_chrysanthemes = zeros(nb_images_chrysanthemes,2)
 	for i = 1:nb_images_chrysanthemes
 		im = vars["ch" * string(i)]
-		X_chrysanthemes[i,:] = moyenne_image(im)
+		X_chrysanthemes[i,:] = moyenne_couleur(im)
 	end
 
 	## Affichage des couleurs moyennes des images de fleurs

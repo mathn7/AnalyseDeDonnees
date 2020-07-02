@@ -1,16 +1,19 @@
-"""
---------------------------------------------------------------------------
- ENSEEIHT - 1SN - Analyse de donnees
- TP3 - Classification bayesienne
- vraisemblance.jl
---------------------------------------------------------------------------
+@doc doc"""
+**TP3 - Classification bayesienne**
 
-calcule la vraisemblance p(x, w_i) et le dénominateur de classe
-x est donnée par ses coordonnées sur la grille(r,v)
-w_i est caractérisée par mu_i et Sigma_i
-le dénominateur de classe peut être
-  - calculé (et retourné comme résultat) si denominateur_classe_i = -1
-  - ou fourni
+calcule la vraisemblance p(x, w_i) et le dénominateur de classe x
+
+# Entrées 
+* **r,v**                     : les coordonnées sur la grille(r,v) 
+* **mu_i**                    : l'esperence estimée
+* **Sigma_i**                 : la matrice variance/covariance
+* **denominateur\_classe\_i** :le dénominateur de classe i
+   - -1
+   - ou fourni
+
+# Sorties 
+* **P**            : La vraisemblance 
+* **denominateur** : le denominateur de la classe i
 """
 function vraisemblance( r, v, mu_i, Sigma_i, denominateur_classe_i)
 

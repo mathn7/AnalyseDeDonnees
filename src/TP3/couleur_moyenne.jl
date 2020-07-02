@@ -1,33 +1,28 @@
+@doc doc"""
+**TP3 - Classification bayesienne**
+
+Calcule la couleur moyenne d'une image
+
+# Entrée
+* **image** : l'image
+
+# Sortie
+* **[r_bar, v_bar]** : les deux composantes moyenne (rouge & vert) de couleur normalisées ``(\bar{r},\bra{v})``
+
 """
---------------------------------------------------------------------------
- ENSEEIHT - 1SN - Analyse de donnees
- TP3 - Classification bayesienne
- moyenne_ex4.m
---------------------------------------------------------------------------
-"""
-function couleur_moyenne(I)
+function couleur_moyenne(image)
 
-    # Conversion au format flottants
-    I = float(I)
-    
-    # Calcul des masques de centre et pourtour
-    (m,n) = size(I)
-    C = I*0
-    centre = Integer.(round.([m/2,n/2]))
-    delta = Integer.(round.(0.1*centre))
-    C[centre[1]-delta[1]+1:centre[1]+delta[1], centre[2]-delta[2]+1:centre[2]+delta[2],:] .= 1
-    P = 1 .- C
+	image = float(image)
 
-    # Calcul des couleurs normalisees r et v
-    somme_canaux = max.(1,sum(I,dims=3))
-    r_P = P.*I[:,:,1]./somme_canaux
-    v_P = P.*I[:,:,2]./somme_canaux
-    r_C = C.*I[:,:,1]./somme_canaux
+	B = image[:,:,3]
+	R = image[:,:,1]
+	V = image[:,:,2]
 
-    # Calcul de la couleur moyenne /r et /v
-    r_barre_P = sum(r_P[:])/sum(P[:])
-    v_barre_P = sum(v_P[:])/sum(P[:])
-    r_barre_C = sum(r_C[:])/sum(C[:])
-    return [r_barre_P, v_barre_P, r_barre_C]
-    
+	r = R ./ max.(1,R + V + B)
+	v = V ./ max.(1,R + V + B)
+
+	r_bar = mean(r[:])
+	v_bar = mean(v[:])
+	
+	return [r_bar, v_bar]
 end
