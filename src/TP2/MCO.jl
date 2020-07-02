@@ -10,7 +10,6 @@ X_sol = MCO(x,y)
 # Sorties:
    * **X_sol**    : (Array{Float,1}) la solution du problème  : AX=B
 """
-
 function MCO(x,y)
     n = length(x)
     A = [(x.*x)' (x.*y)' (y.*y)' x' y' ones(n,1)]

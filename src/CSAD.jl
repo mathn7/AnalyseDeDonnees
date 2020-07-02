@@ -6,7 +6,7 @@ using LinearAlgebra
 using Statistics
 using LaTeXStrings
 
-cheminTP3 = "src/TP3/"
+cheminTP3 = "TP3/"
 
 include(cheminTP3*"couleur_moyenne.jl")
 export couleur_moyenne
