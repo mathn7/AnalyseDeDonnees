@@ -27,7 +27,8 @@ dans la racine (Projet-CSAD) tapez
 
 ```julia
 julia>]
-(CSAD) pkg> activate .
+pkg> activate .
+(CSAD) pkg>
 ```
 
 ## Afficher les sorties des scripts du Tp1
