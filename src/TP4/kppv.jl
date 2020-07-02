@@ -8,17 +8,17 @@ function kppv(DataA,DataT,labelA,labelT,K,ListeClass)
     Na= size(DataA)[1]
     Nt =size(DataT)[1]
 
-    Nt_test =50; # A changer, pouvant aller de 1 jusqu a Nt
+    Nt_test =50; # A changer, pouvant aller de 1 jusqu a Nt (< K)
 
-    #" Initialisation de la matrice de confusion pour comparer les resultats"
-    #" obtenus avec l'etiquetage deja present dans 'labelT' pour les images tests"
+    # Initialisation de la matrice de confusion pour comparer les resultats
+    # obtenus avec l'etiquetage deja present dans 'labelT' pour les images tests
     nb_classes = length(ListeClass)
     confusion = zeros(nb_classes,nb_classes);
 
-    # "Initialisation du vecteur d etiquetage des images tests"
+    # Initialisation du vecteur d etiquetage des images tests
     Partition = zeros(Int,Nt_test,1)
 
-    #"Initialisation du nombre d erreur de reconnaissance"
+    # Initialisation du nombre d erreur de reconnaissance
     nb_erreurs = 0
 
     print("Classification des images test dans " ,string(nb_classes),"  classes ")
@@ -56,9 +56,9 @@ function kppv(DataA,DataT,labelA,labelT,K,ListeClass)
         #ind_max_kppv=ind_sort[length(nech)]
         ind_max_kppv=findall(nech .== maximum(nech));
 
-        # "Si l image test a le plus grand nombre de voisins dans plusieurs"
-        # " classes differentes, alors on lui assigne celle du voisin le + proche"
-        # " sinon on lui assigne l unique classe contenant le plus de voisins"
+        # Si l image test a le plus grand nombre de voisins dans plusieurs
+        # classes differentes, alors on lui assigne celle du voisin le + proche
+        # sinon on lui assigne l unique classe contenant le plus de voisins
 
         if length(ind_max_kppv)>1
             classe_test = labelA[ind_kppv[1]]
@@ -66,8 +66,8 @@ function kppv(DataA,DataT,labelA,labelT,K,ListeClass)
             classe_test = ListeClass[ind_max_kppv[1]]
         end
 
-        # "Assignation de letiquette correspondant à la classe trouvee au point"
-        # "correspondant a la i-eme image test dans le vecteur 'Partition'"
+        # Assignation de letiquette correspondant à la classe trouvee au point
+        # correspondant a la i-eme image test dans le vecteur 'Partition'
         Partition[i] = classe_test
 
         # Mise a jour de la matrice de confusion

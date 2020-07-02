@@ -44,12 +44,11 @@ if Nt_test <= 50
             im = reshape(DataT[k, :], n, n);
             if k%nb_col == 0
                 imshow(canvases[Int(floor(k/nb_col)),nb_col],im); # a voir si y a une facon meilleure
-                println("DataT ",string(k), " - ", string(Partition[k]));
             else
                 imshow(canvases[Int(floor(k/nb_col))+1,k%nb_col],im); # a voir si y a une facon meilleure
-                #title(['DataT ',num2str(k), ' - ', num2str(Partition(k))],'FontSize',15)
-                println("DataT ",string(k), " - ", string(Partition[k]));
             end
+            #title(['DataT ',num2str(k), ' - ', num2str(Partition(k))],'FontSize',15)
+            println("DataT ",string(k), " - ", string(Partition[k]));
     end
     Gtk.showall(gui["window"]);
     print("")
