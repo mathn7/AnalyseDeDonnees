@@ -1,4 +1,5 @@
 using Documenter
+using CSAD
 
 makedocs(
     modules = [CSAD],
