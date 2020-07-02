@@ -32,14 +32,17 @@ pkg> activate .
 ```
 
 ## Afficher les sorties des scripts du Tp1
-##### EXO1
-Décommenter la ligne 10 du script exercice_1.jl
+##### Exercices 1 et 2
+Décommentez la ligne 10 des script exercice_1.jl et exercice_2.jl
 pour utiliser les bibliothèques d'affichage.
 Dans la racine (Projet-CSAD) , vous chargez une image et
-exécutez la fonction `affichages` du script exercice_1.jl
+exécutez la fonction `affichages` du script exercice_1.jl et
+`affichages_2` des scripts (exercice_1.jl et exercice_2.jl).
 
 ```julia
 julia>Im = load("src/TP1/automn.tiff");
 julia>include("src/TP1/exercice_1.jl")
 julia>affichages(Im)
+julia>include("src/TP1/exercice_2.jl")
+julia>affichages_2(Im)
 ```
