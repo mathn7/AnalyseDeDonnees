@@ -10,14 +10,14 @@ using LinearAlgebra
 using Statistics
 using LaTeXStrings
 include("moyenne_image.jl")
-function  exercice1(afficher::Bool)
+function  exercice1(afficher::Bool,chemin::String)
 	
 	if afficher
 		Gaston.closeall()
 	end
 
 	# Chargement des donnees sous forme d'un dictionnaire
-	vars = matread("mat/donnees.mat")
+	vars = matread(chemin*"mat/donnees.mat")
 
 	nb_images_pensees = Integer(vars["nb_images_pensees"])
 	nb_images_oeillets = Integer(vars["nb_images_oeillets"])
@@ -53,7 +53,7 @@ function  exercice1(afficher::Bool)
 	nb_r = length(collect(r))
 	nb_v = length(collect(v))
 	# Enregistrer les résultats 
-	MAT.matwrite("mat/resultats-ex1.mat", Dict(
+	MAT.matwrite(chemin*"mat/resultats-ex1.mat", Dict(
 		"nb_r" => nb_r,
 		"nb_v" => nb_v,
 		"r" => collect(r), 

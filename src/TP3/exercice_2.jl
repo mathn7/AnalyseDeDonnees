@@ -12,14 +12,14 @@ using LinearAlgebra
 using LaTeXStrings
 include("estimation_mu_et_sigma.jl")
 include("vraisemblance.jl")
-function exercice2(afficher::Bool)
+function exercice2(afficher::Bool,chemin::String)
 	
 	if afficher
 		Gaston.closeall()
 	end
 
 	# Chargement des donnees de l exercice 1
-	vars = matread("mat/resultats-ex1.mat")
+	vars = matread(chemin*"mat/resultats-ex1.mat")
 
 	X_pensees =vars["X_pensees"]
 	X_oeillets =vars["X_oeillets"]
@@ -98,7 +98,7 @@ function exercice2(afficher::Bool)
 	# Valeurs de la loi normale sur la grille
 	V_chrysanthemes, denominateur_classe_chrysanthemes = vraisemblance(r,v,mu_chrysanthemes,Sigma_chrysanthemes,-1)
 	# enregistrer les résultats
-	MAT.matwrite("mat/resultats-ex2.mat", Dict(
+	MAT.matwrite(chemin*"mat/resultats-ex2.mat", Dict(
 		"nb_r" => nb_r,
 		"nb_v" => nb_v,
 		"r" => collect(r), 

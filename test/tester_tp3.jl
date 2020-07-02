@@ -2,14 +2,17 @@
 @testset "Tests TP3" begin
     
     # donnees
+    cheminTP3 = "../src/TP3/"
     fleurs = ["pensees","oeillets","chrysanthemes"]
-    donnees   = matread("../src/TP3/mat/donnees.mat")
+    donnees   = matread(cheminTP3*"mat/donnees.mat")
     tol_erreur = 1e-5
 
     # tester l'exercice 1
     @testset "Tests exo 1" begin
-        solutions = matread("../src/TP3/mat/solutions-ex1.mat")
-        include("../src/TP3/moyenne_image.jl")
+        include(cheminTP3*"exercice_1.jl")
+        exercice1(false,"../src/TP3/")
+        solutions = matread(cheminTP3*"mat/solutions-ex1.mat")
+        include(cheminTP3*"moyenne_image.jl")
 
         @testset "moyenne_image" for fleur in fleurs
             @testset "X_$fleur" for i = 1:Integer(donnees["nb_images_$fleur"])
@@ -22,9 +25,11 @@
 
     # tester l'exercice 2
     @testset "Tests exo 2" begin 
-        solutions = matread("../src/TP3/mat/solutions-ex2.mat")
-        include("../src/TP3/estimation_mu_et_sigma.jl")
-        include("../src/TP3/vraisemblance.jl")
+        include(cheminTP3*"exercice_2.jl")
+        exercice2(false,"../src/TP3/")
+        solutions = matread(cheminTP3*"mat/solutions-ex2.mat")
+        include(cheminTP3*"estimation_mu_et_sigma.jl")
+        include(cheminTP3*"vraisemblance.jl")
 
         r = solutions["r"][:]
         v = solutions["v"][:]
@@ -41,9 +46,11 @@
 
     # tester l'exercice 3
     @testset "Tests exo 3" begin 
-        solutions = matread("../src/TP3/mat/solutions-ex3.mat")
-        solutions_ex2 = matread("../src/TP3/mat/solutions-ex2.mat")
-        resultats = matread("../src/TP3/mat/resultats-ex3.mat")
+        include(cheminTP3*"exercice_3.jl")
+        exercice3(false,"../src/TP3/")
+        solutions = matread(cheminTP3*"mat/solutions-ex3.mat")
+        solutions_ex2 = matread(cheminTP3*"mat/solutions-ex2.mat")
+        resultats = matread(cheminTP3*"mat/resultats-ex3.mat")
         
         # nous allons tester juste par rapport à la première classe
         X = solutions_ex2["X_pensees"]
@@ -62,8 +69,10 @@
 
     # tester l'exercice 4
     @testset "Tests exo 4" begin
-        solutions = matread("../src/TP3/mat/solutions-ex4.mat")
-        include("../src/TP3/couleur_moyenne.jl")
+        include(cheminTP3*"exercice_4.jl")
+        exercice4(false,"../src/TP3/")
+        solutions = matread(cheminTP3*"mat/solutions-ex4.mat")
+        include(cheminTP3*"couleur_moyenne.jl")
                
         @testset "couleur moyenne: $fleur" for fleur in fleurs  
             for i = 1:Integer(donnees["nb_images_$fleur"])
@@ -72,5 +81,9 @@
             end
         end
     end
+    rm(cheminTP3*"mat/resultats-ex1.mat")
+    rm(cheminTP3*"mat/resultats-ex2.mat")
+    rm(cheminTP3*"mat/resultats-ex3.mat")
+    rm(cheminTP3*"mat/resultats-ex4.mat")
 
 end

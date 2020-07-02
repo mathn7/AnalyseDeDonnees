@@ -3,12 +3,13 @@ using MAT
 
 @testset "Test CSAD" begin
 
-    # tests du le TP1
+    # tests du TP1
     @testset "Tests TP1" begin
         include("test_tp1_exo1.jl")
         include("test_tp1_exo2.jl")
     end
-    # tester le TP3 (pas complets pour l'instant)
+
+    # tester le TP3 
     include("tester_tp3.jl")
 
 end

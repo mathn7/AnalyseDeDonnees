@@ -11,14 +11,14 @@ using LinearAlgebra
 using LaTeXStrings
 include("vraisemblance.jl")
 
-function exercice3(afficher::Bool)
+function exercice3(afficher::Bool,chemin::String)
 		
 	if afficher
 		Plots.closeall() 
 	end
 
 	# Chargement des donnees de l exercice 2
-	vars = matread("mat/resultats-ex2.mat")
+	vars = matread(chemin*"mat/resultats-ex2.mat")
 
 	V_pensees = vars["V_pensees"]
 	V_oeillets = vars["V_oeillets"]
@@ -97,7 +97,7 @@ function exercice3(afficher::Bool)
 		V_classe_oe[i] = V_classe_oeillets
 		V_classe_ch[i] = V_classe_chrysanthemes
 		if (V_classe_pensees >= V_classe_oeillets) && (V_classe_pensees >= V_classe_chrysanthemes)
-			global nb_img_bien_classees = nb_img_bien_classees+1
+			nb_img_bien_classees = nb_img_bien_classees+1
 			if afficher
 				Plots.scatter!([r_i],[v_i],color=:red,markersize=10,label="")
 			end
@@ -118,7 +118,7 @@ function exercice3(afficher::Bool)
 		V_classe_chrysanthemes,_ = vraisemblance(r_i,v_i,mu_chrysanthemes,Sigma_chrysanthemes,denominateur_classe_chrysanthemes)
 		
 		if (V_classe_oeillets >= V_classe_pensees) && (V_classe_oeillets >= V_classe_chrysanthemes)
-			global nb_img_bien_classees = nb_img_bien_classees+1
+			nb_img_bien_classees = nb_img_bien_classees+1
 			if afficher
 				Plots.scatter!([r_i],[v_i],color=:green,markersize=10,label="")
 			end
@@ -139,7 +139,7 @@ function exercice3(afficher::Bool)
 		V_classe_chrysanthemes,_ = vraisemblance(r_i,v_i,mu_chrysanthemes,Sigma_chrysanthemes,denominateur_classe_chrysanthemes)
 
 		if (V_classe_chrysanthemes >= V_classe_pensees) && (V_classe_chrysanthemes >= V_classe_oeillets)
-			global nb_img_bien_classees = nb_img_bien_classees+1
+			nb_img_bien_classees = nb_img_bien_classees+1
 			if afficher
 				Plots.scatter!([r_i],[v_i],color=:blue,markersize=10,label="")
 			end
@@ -151,7 +151,7 @@ function exercice3(afficher::Bool)
 	end
 	# l'accuracy en % :
 	accuracy = 100*nb_img_bien_classees/(nb_images_chrysanthemes + nb_images_oeillets + nb_images_pensees)
-	MAT.matwrite("mat/resultats-ex3.mat", Dict(
+	MAT.matwrite(chemin*"mat/resultats-ex3.mat", Dict(
 		"accuracy" => accuracy
 	))
 
