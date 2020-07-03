@@ -3,12 +3,30 @@
 # TP4 - Reconnaissance de chiffres manuscrits par k plus proches voisins
 # fonction kppv.m
 #--------------------------------------------------------------------------
+@doc doc"""
+# Syntaxe
+```julia
+[Partition,confusion,nb_erreurs] = kppv(DataA,DataT,labelA,labelT,K,ListeClass)
+```
+# Entrées :
+   * **DataA**   : (Array{Float64,2}) données d'apprentissage
+   * **DataT**   : (Array{Float64,2}) données de test
+   * **labelA**  : (Array{Float64,2}) labels d'apprentissage
+   * **labelT**  : (Array{Float64,2}) labels de test
+   * **K**       : (Int64) nombre de voisins à prendre en compte
+   * **ListeClass** : (Array{Intt64,2}) l'ensemble des classes
+# Sorties:
+   * **Partition**    : (Array{Intt64,2})  les classes des Nt_test premiers éléments de DataT
+   * **confusion**    : (Array{Float64,2})  la matrice de confusion
+   * **nb_erreurs**   : (Int64) nombre d'erreurs effectuées lors de la classification
+"""
+
 function kppv(DataA,DataT,labelA,labelT,K,ListeClass)
 
     Na= size(DataA)[1]
     Nt =size(DataT)[1]
 
-    Nt_test =50; # A changer, pouvant aller de 1 jusqu a Nt (< K)
+    Nt_test =50; # À changer, pouvant aller de 1 jusqu'à Nt
 
     # Initialisation de la matrice de confusion pour comparer les resultats
     # obtenus avec l'etiquetage deja present dans 'labelT' pour les images tests
@@ -52,8 +70,6 @@ function kppv(DataA,DataT,labelA,labelT,K,ListeClass)
         nech=nech[:]
         # Recherche de la classe contenant le maximum de voisins
 
-        #ind_sort=sortperm(nech)
-        #ind_max_kppv=ind_sort[length(nech)]
         ind_max_kppv=findall(nech .== maximum(nech));
 
         # Si l image test a le plus grand nombre de voisins dans plusieurs
