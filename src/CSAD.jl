@@ -35,9 +35,17 @@ export exercice4
 
 #inclure les fonctions du Tp1
 include("TP1/exercice_1.jl")
+export Matrice_de_donnees
+export Individu_moyen
+export Donnees_centrees
+export Matrice_var_cov
+
 include("TP1/exercice_2.jl")
+export Composantes_principales
+export Sigma2
 
 #inclure la fonction kppv
 include("TP4/kppv.jl")
+export kppv.jl
 
 end # module
