@@ -96,7 +96,6 @@ function exercice3bis(afficher::Bool,chemin::String,proba_apriori::Array{Float64
         V_classe_chrysanthemes,_ = vraisemblance(r_i,v_i,mu_chrysanthemes,Sigma_chrysanthemes,denominateur_classe_chrysanthemes) 
         aposteriori_classe_chrysanthemes = V_classe_chrysanthemes * proba_apriori[3]
 
-
 		if (aposteriori_classe_pensees >= aposteriori_classe_oeillets) && (aposteriori_classe_pensees >= aposteriori_classe_chrysanthemes)
 			nb_img_bien_classees = nb_img_bien_classees+1
 			if afficher

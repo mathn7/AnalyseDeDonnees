@@ -27,7 +27,7 @@ puisque ``\bar{r}+\bar{v}+\bar{b}=1``, c’est-à-dire par un vecteur ``x = (\ba
 appelle sa **couleur moyenne**. Compte tenu des différences de couleurs moyennes entre les trois espèces de fleurs, 
 on postule que ce vecteur suffira à les distinguer.
 
-!!! warning "Travail à effectuer"
+!!! tip "Travail à effectuer"
 
     Écrivez la fonction moyenne, qui calcule la couleur moyenne d’une image, c’est-à-dire ``x^{T} = (\bar{r},\bar{v})`` dans un vecteur ligne, 
     sans oublier de convertir les niveaux de couleur ``(R, V, B)`` auformat *float* (pour manipuler des réels) et de les normaliser.
@@ -55,7 +55,7 @@ Dans le cadre bayésien, la vraisemblance de la classe ``\omega_{i}`` associée 
 Il faut donc estimer les paramètres ``\mu_{i}`` et ``\Sigma_{i}`` des trois classes correspondant aux trois espèces de fleurs.``\\``
 
 
-!!! warning "Travail à effectuer"
+!!! tip "Travail à effectuer"
 
     Écrivez la fonction *estimation_mu_Sigma* permettant d’effectuer l’estimation empirique des paramètres d’une loi normale bidimensionnelle ``(d = 2)`` à partir d’une matrice de données ``X``.
 
@@ -66,7 +66,7 @@ Le script *exercice_2.jl* estime les paramètres ``\mu_i`` et ``\Sigma_i`` des t
 Nous souhaitons maintenant prédire à quelle espèce de fleurs une image requête, ``\mathbf{x}``, doit être associée. Comme nous avons utilisé des données étiquetées (chacune des images étant associée à une espèce de fleurs), il s'agit de *classification supervisée*. Un premier type de classification consiste à affecter à ``\mathbf{x}`` la classe ``\omega_{i}`` qui maximise la vraisemblance ``p\left(\mathbf{x} | \omega_{i}\right) .`` Il s'agit alors d'un classifieur par *maximum de vraisemblance*.
 
 
-!!! warning "Travail à effectuer"
+!!! tip "Travail à effectuer"
 
     Modifiez le script *exercice_3.jl*, de manière à :
     1. partitionner le plan ``\mathbb{R}^2`` en trois parties correspondant aux trois classes de fleurs,
@@ -78,7 +78,7 @@ Par ailleurs, la règle de Bayes donne l'expression suivante de la probabilité 
 
 Il semble naturel d'affecter à x la classe ``\omega_{i}`` qui maximise ``p(\omega_{i}|\mathbf{x}) .`` Une telle classification est dite par **maximum a posteriori** (MAP). Sachant que le dénominateur ``p(\mathbf{x})`` de (2) est indépendant de ``\omega_{i},`` il n'est pas nécessaire de le connaítre pour trouver le maximum des ``p(\omega_{i}|\mathbf{x})``. En revanche, il est nécessaire de connaítre la **probabilité a priori** ``p\left(\omega_{i}\right)`` de chaque classe ``\omega_{i},`` faute de quoi on fait généralement l'hypothèse que les classes sont équiprobables (l'estimateur par maximum a *posteriori* revient alors à un estimateur par maximum de vraisemblance).
 
-!!! warning "Travail à effectuer"
+!!! tip "Travail à effectuer"
 
     Écrivez une variante *exercice\_3\_bis.jl* du script *exercice_3.jl* où, en jouant sur les probabilités a *priori* des trois classes que vous ajouterez afin de classifier par maximum a posteriori et vous essaierez de maximiser le pourcentage d’images correctement classées.
 

@@ -11,7 +11,7 @@ using Plots
 
 include("kppv.jl")
 # "Chargement des images d'apprentissage et de test"
-datas = matread("src/TP4/MNIST.mat");
+datas = matread("MNIST.mat");
 
 #   database_train_images  " 60000x784  "
 #   database_train_labels  " 60000x1    "
@@ -30,7 +30,7 @@ K = 10
 ListeClass = collect(1:K)
 
 # Classement par aux k-ppv
-Partition,confusion,nb_erreurs = kppv(DataA,DataT,labelA,labelT,K,ListeClass)
+#Partition,confusion,nb_erreurs = kppv(DataA,DataT,labelA,labelT,K,ListeClass)
 println("Partition est : " , Partition )
 
 Nt_test = length(Partition)
