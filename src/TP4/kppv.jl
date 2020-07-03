@@ -21,7 +21,6 @@
    * **confusion**    : (Array{Float64,2})  la matrice de confusion
    * **nb_erreurs**   : (Int64) nombre d'erreurs effectuées lors de la classification
 """
-
 function kppv(DataA,DataT,labelA,labelT,K,ListeClass)
 
     Na= size(DataA)[1]

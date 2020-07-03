@@ -28,7 +28,6 @@ C = Composantes_principales(Im)
 # Sortie:
    * **C**    : (Array{Float64,2})  la matrice qui contient les composantes principales en colonnes
 """
-
 function Composantes_principales(Im)
     X_c = Donnees_centrees(Im) #Im : matrice representatrice l'image
     (n,p)= size(X_c);
@@ -53,7 +52,6 @@ Sigma_2 = Sigma2(Im)
 # Sortie:
    * **Sigma_2**    : (Array{Float64,2})   Matrice de variance/covariance dans le nouveau repere
 """
-
 function Sigma2(Im)
     C = Composantes_principales(Im);
     n = size(C)[1]
