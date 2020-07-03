@@ -46,6 +46,6 @@ export Sigma2
 
 #inclure la fonction kppv
 include("TP4/kppv.jl")
-export kppv.jl
+export kppv
 
 end # module
