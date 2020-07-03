@@ -1,9 +1,5 @@
 @doc doc"""
 # TP4 - Reconnaissance de chiffres manuscrits par k plus proches voisins
-#--------------------------------------------------------------------------
-# ENSEEIHT - 1SN - Analyse de donnees
-# fonction kppv.m
-#--------------------------------------------------------------------------
 
 # Syntaxe
 ```julia
