@@ -46,7 +46,7 @@ plt = Plots.plot(
 #canvases = gui["canvas"]
 
 for k = 1:min(50,Nt_test)
-    im = Gray.(reshape(DataT[k, :], n, n))
+    im = RGB.(reshape(DataT[k, :], n, n))
     #if k%nb_col == 0
     #    imshow(canvases[Int(floor(k/nb_col)),nb_col],im); # a voir si y a une facon meilleure
     #else

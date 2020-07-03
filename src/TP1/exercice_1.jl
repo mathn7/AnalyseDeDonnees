@@ -7,7 +7,7 @@
 
 #importation des bibliothèques
 
-#using PyPlot, Gtk.ShortNames , ImageView #à décommenter pour l'affichage
+#using PyPlot,Plots, Gtk.ShortNames , ImageView #à décommenter pour l'affichage
 #using TestImages , ImageMagick #à décommenter pour utiliser des images disponibles dans ImageMagic
 using Images
 using Statistics
@@ -92,11 +92,24 @@ function affichages(Im)
 
     #nettoyer l'environnement
     ImageView.closeall()
-    clf() #à commenter si vous n'êtes pas sous Atom
+    #clf() #à commenter si vous n'êtes pas sous Atom
+
+    #Utilisation de Plots pour l'affichage des images
+    plt = Plots.plot(
+        axis=nothing,
+        showaxis=false,
+        layout = (2,2)
+    )
+    Plots.plot!(plt[1], Im, ratio=1,title="ImageRVB",titlefontsize=4)
+    Plots.plot!(plt[2], RGB.(R), ratio=1,title="Canal R",titlefontsize=4)
+    Plots.plot!(plt[3], RGB.(V), ratio=1,title="Canal V",titlefontsize=4)
+    Plots.plot!(plt[4], RGB.(B), ratio=1,title="Canal B",titlefontsize=4)
+    display(plt)
 
     gui = imshow_gui((300,300),(2, 2))  # La fenetre comporte 2 lignes et 2 colonnes (affichage 300×300)
     canvases = gui["canvas"]
 
+    #Utilisation de ImageView
     "###### Affichage de l'image RVB et de ses canaux  #######"
 
     "# Affichage de l'image RVB"
@@ -146,15 +159,22 @@ function affichages(Im)
     "#Affichage du nuage de pixels dans le repere RVB "
 
     #Deuxieme fenetre d affichage
-    PyPlot.scatter3D(R,V,B,"b.")
-    PyPlot.title("Representation 3D des pixels dans lespace RVB",FontSize=20)
-    PyPlot.xlabel("R")
-    PyPlot.ylabel("V")
-    PyPlot.zlabel("B")
+
+    #Utilisation de PyPlot
+    #PyPlot.scatter3D(R,V,B,"b.")
+    #PyPlot.title("Representation 3D des pixels dans lespace RVB",FontSize=20)
+    #PyPlot.xlabel("R")
+    #PyPlot.ylabel("V")
+    #PyPlot.zlabel("B")
+
+    #Utilisation de Plots
+    plt3d= Plots.plot(R,V,B,
+                   seriestype=:scatter,xlab="R",ylab="V",zlab="B",legend=false,title="Representation 3D des pixels dans lespace RVB")
+    display(plt3d)
 
     "#pour que la derniére fenêtre s'affiche sous Atom il faut que cette commande
      #soit la dernière commande !"
 
-    gcf() #à commmenter si vous n'êtes pas sous Atom
+    #gcf() #à commmenter si vous n'êtes pas sous Atom
 
 end

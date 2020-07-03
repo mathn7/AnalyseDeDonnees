@@ -39,9 +39,24 @@ C1 = reshape(C[:,1],size(R));
 # Calcul de l'image en niveaux de gris comme la moyenne des 3 canaux
 I_nvg = (R+V+B)/3;
 # Calcul de l'image en niveaux de gris avec la fonction rgb2gray de Matlab
-Y = Gray.(I);
+Y = Gray.(Im);
 
 ## Affichage de l'image RVB et de ses differentes projections
+
+#Utilisation de Plots pour l'affichage des images
+#=
+plt = Plots.plot(
+    axis=nothing,
+    showaxis=false,
+    layout = (2,2)
+)
+Plots.plot!(plt[1], Im, ratio=1,title="ImageRVB",titlefontsize=4)
+Plots.plot!(plt[2], RGB.(C1), ratio=1,title="1^{ere} composante principale",titlefontsize=4)
+Plots.plot!(plt[3], RGB.(I_nvg), ratio=1,title="Moyenne des 3 canaux",titlefontsize=4)
+Plots.plot!(plt[4], Y, ratio=1,title="Fonction Gray de Julia",titlefontsize=4)
+display(plt)
+=#
+
 gui = imshow_gui((300,300),(2, 2));  # La fenetre comporte 2 lignes et 2 colonnes (affichage 300×300)
 # 1ere fenetre d'affichage
 canvases = gui["canvas"];
