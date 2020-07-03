@@ -7,7 +7,7 @@ Calcule la couleur moyenne d'une image
 * **image** : l'image
 
 # Sortie
-* **[r_bar, v_bar]** : les deux composantes moyenne (rouge & vert) de couleur normalisées ``(\bar{r},\bra{v})``
+* **[r\_bar, v\_bar]** : les deux composantes moyenne (rouge & vert) de couleur normalisées ``(\bar{r},\bar{v})``
 
 """
 function couleur_moyenne(image)

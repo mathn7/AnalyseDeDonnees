@@ -1,13 +1,19 @@
 @doc doc"""
 **TP3 - Classification bayesienne**
 
+Classification d’images de fleurs en ajustant les propbabilités *a priori* des classes
+
 # Entrées 
 * **afficher** : (Bool) afficher les figures (false dans le runtests.jl)
 * **chemin**   : (String) le chemin vers ce fichier
 
 """
-function exercice3(afficher::Bool,chemin::String)
-		
+function exercice3bis(afficher::Bool,chemin::String,proba_apriori::Array{Float64,1})
+        
+    if proba_apriori == []
+        proba_apriori = [.5, .3, .2]
+    end
+
 	if afficher
 		Plots.closeall() 
 	end
@@ -70,7 +76,7 @@ function exercice3(afficher::Bool,chemin::String)
 		# la carte des couleurs représentant les différentes classes 
 		Plots.heatmap!(r,v,code_classe,color=cgrad([:royalblue, :seagreen, :firebrick]),
 			xlabel=L"\mathrm{\bar{r}}",ylabel=L"\mathrm{\bar{v}}",
-			xlim=(r[1],r[end]),ylim=(v[1],v[end]))
+			xlim=(r[1],r[end]),ylim=(aposteriori[1],v[end]))
 	end
 	#-------------------------------------------------------------------------------
 
@@ -81,11 +87,17 @@ function exercice3(afficher::Bool,chemin::String)
 	for i = 1:nb_images_pensees
 		r_i = X_pensees[i,1]
 		v_i = X_pensees[i,2]
-		V_classe_pensees,_ = vraisemblance(r_i,v_i,mu_pensees,Sigma_pensees,denominateur_classe_pensees)
-		V_classe_oeillets,_ = vraisemblance(r_i,v_i,mu_oeillets,Sigma_oeillets,denominateur_classe_oeillets)
-		V_classe_chrysanthemes,_ = vraisemblance(r_i,v_i,mu_chrysanthemes,Sigma_chrysanthemes,denominateur_classe_chrysanthemes)
-		
-		if (V_classe_pensees >= V_classe_oeillets) && (V_classe_pensees >= V_classe_chrysanthemes)
+        V_classe_pensees,_ = vraisemblance(r_i,v_i,mu_pensees,Sigma_pensees,denominateur_classe_pensees) 
+        aposteriori_classe_pensees = V_classe_pensees * proba_apriori[1]
+
+        V_classe_oeillets,_ = vraisemblance(r_i,v_i,mu_oeillets,Sigma_oeillets,denominateur_classe_oeillets) 
+        aposteriori_classe_oeillets = V_classe_oeillets * proba_apriori[2]
+
+        V_classe_chrysanthemes,_ = vraisemblance(r_i,v_i,mu_chrysanthemes,Sigma_chrysanthemes,denominateur_classe_chrysanthemes) 
+        aposteriori_classe_chrysanthemes = V_classe_chrysanthemes * proba_apriori[3]
+
+
+		if (aposteriori_classe_pensees >= aposteriori_classe_oeillets) && (aposteriori_classe_pensees >= aposteriori_classe_chrysanthemes)
 			nb_img_bien_classees = nb_img_bien_classees+1
 			if afficher
 				Plots.scatter!([r_i],[v_i],color=:red,markersize=10,label="")
@@ -102,11 +114,17 @@ function exercice3(afficher::Bool,chemin::String)
 
 		r_i = X_oeillets[i,1]
 		v_i = X_oeillets[i,2]
-		V_classe_pensees,_ = vraisemblance(r_i,v_i,mu_pensees,Sigma_pensees,denominateur_classe_pensees)
-		V_classe_oeillets,_ = vraisemblance(r_i,v_i,mu_oeillets,Sigma_oeillets,denominateur_classe_oeillets)
-		V_classe_chrysanthemes,_ = vraisemblance(r_i,v_i,mu_chrysanthemes,Sigma_chrysanthemes,denominateur_classe_chrysanthemes)
+        V_classe_pensees,_ = vraisemblance(r_i,v_i,mu_pensees,Sigma_pensees,denominateur_classe_pensees) 
+        aposteriori_classe_pensees = V_classe_pensees * proba_apriori[1]
+
+        V_classe_oeillets,_ = vraisemblance(r_i,v_i,mu_oeillets,Sigma_oeillets,denominateur_classe_oeillets) 
+        aposteriori_classe_oeillets = V_classe_oeillets * proba_apriori[2]
+
+        V_classe_chrysanthemes,_ = vraisemblance(r_i,v_i,mu_chrysanthemes,Sigma_chrysanthemes,denominateur_classe_chrysanthemes) 
+        aposteriori_classe_chrysanthemes = V_classe_chrysanthemes * proba_apriori[3]
+
 		
-		if (V_classe_oeillets >= V_classe_pensees) && (V_classe_oeillets >= V_classe_chrysanthemes)
+		if (aposteriori_classe_oeillets >= aposteriori_classe_pensees) && (aposteriori_classe_oeillets >= aposteriori_classe_chrysanthemes)
 			nb_img_bien_classees = nb_img_bien_classees+1
 			if afficher
 				Plots.scatter!([r_i],[v_i],color=:green,markersize=10,label="")
@@ -123,11 +141,17 @@ function exercice3(afficher::Bool,chemin::String)
 
 		r_i = X_chrysanthemes[i,1]
 		v_i = X_chrysanthemes[i,2]	
-		V_classe_pensees,_ = vraisemblance(r_i,v_i,mu_pensees,Sigma_pensees,denominateur_classe_pensees)
-		V_classe_oeillets,_ = vraisemblance(r_i,v_i,mu_oeillets,Sigma_oeillets,denominateur_classe_oeillets)
-		V_classe_chrysanthemes,_ = vraisemblance(r_i,v_i,mu_chrysanthemes,Sigma_chrysanthemes,denominateur_classe_chrysanthemes)
+        V_classe_pensees,_ = vraisemblance(r_i,v_i,mu_pensees,Sigma_pensees,denominateur_classe_pensees) 
+        aposteriori_classe_pensees = V_classe_pensees * proba_apriori[1]
 
-		if (V_classe_chrysanthemes >= V_classe_pensees) && (V_classe_chrysanthemes >= V_classe_oeillets)
+        V_classe_oeillets,_ = vraisemblance(r_i,v_i,mu_oeillets,Sigma_oeillets,denominateur_classe_oeillets) 
+        aposteriori_classe_oeillets = V_classe_oeillets * proba_apriori[2]
+
+        V_classe_chrysanthemes,_ = vraisemblance(r_i,v_i,mu_chrysanthemes,Sigma_chrysanthemes,denominateur_classe_chrysanthemes) 
+        aposteriori_classe_chrysanthemes = V_classe_chrysanthemes * proba_apriori[3]
+
+
+		if (aposteriori_classe_chrysanthemes >= aposteriori_classe_pensees) && (aposteriori_classe_chrysanthemes >= aposteriori_classe_oeillets)
 			nb_img_bien_classees = nb_img_bien_classees+1
 			if afficher
 				Plots.scatter!([r_i],[v_i],color=:blue,markersize=10,label="")
@@ -140,7 +164,7 @@ function exercice3(afficher::Bool,chemin::String)
 	end
 	# l'accuracy en % :
 	accuracy = 100*nb_img_bien_classees/(nb_images_chrysanthemes + nb_images_oeillets + nb_images_pensees)
-	MAT.matwrite(chemin*"mat/resultats-ex3.mat", Dict(
+	MAT.matwrite(chemin*"mat/resultats-ex3-bis.mat", Dict(
 		"accuracy" => accuracy
 	))
 	

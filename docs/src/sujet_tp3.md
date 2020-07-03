@@ -30,7 +30,7 @@ on postule que ce vecteur suffira à les distinguer.
 !!! warning "Travail à effectuer"
 
     Écrivez la fonction moyenne, qui calcule la couleur moyenne d’une image, c’est-à-dire ``x^{T} = (\bar{r},\bar{v})`` dans un vecteur ligne, 
-    sans oublier de convertir les niveaux de couleur ``(R, V, B)`` auformat single (pour manipuler des réels) et de les normaliser.
+    sans oublier de convertir les niveaux de couleur ``(R, V, B)`` auformat *float* (pour manipuler des réels) et de les normaliser.
 
 Le script *exercice_1.jl* regroupe dans trois tableaux de données *X_pensees*, *X_oeillets* et *X_chrysanthemes* les valeurs moyennes calculées 
 avec la fonction précédente pour chaque groupe d’images. Il affiche ensuite les couleurs moyennes de l’ensemble des images de fleurs sous la forme

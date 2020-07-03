@@ -1,9 +1,13 @@
-#-------------------------------------------------------------------------------
-# ENSEEIHT - 1SN - Analyse de donnees
-# TP3 - Classification bayesienne
-# exercice_1.jl
-#-------------------------------------------------------------------------------
+@doc doc"""
+**TP3 - Classification bayesienne**
 
+Calcul de la couleur moyenne d’une image
+
+# Entrées 
+* **afficher** : (Bool) afficher les figures (false dans le runtests.jl)
+* **chemin**   : (String) le chemin vers ce fichier
+
+"""
 function  exercice1(afficher::Bool,chemin::String)
 	
 	if afficher

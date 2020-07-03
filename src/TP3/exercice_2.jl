@@ -1,11 +1,13 @@
-"""
---------------------------------------------------------------------------
- ENSEEIHT - 1SN - Analyse de donnees
- TP3 - Classification bayesienne
- exercice_2.jl
---------------------------------------------------------------------------
-"""
+@doc doc"""
+**TP3 - Classification bayesienne**
 
+Estimation de la vraisemblance de chaque espèce de fleurs
+
+# Entrées 
+* **afficher** : (Bool) afficher les figures (false dans le runtests.jl)
+* **chemin**   : (String) le chemin vers ce fichier
+
+"""
 function exercice2(afficher::Bool,chemin::String)
 	
 	if afficher

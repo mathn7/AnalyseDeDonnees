@@ -1,19 +1,19 @@
 @doc doc"""
 **TP3 - Classification bayesienne**
 
-calcule la vraisemblance p(x, w_i) et le dénominateur de classe x
+calcule la vraisemblance ``p(x|\omega_i)`` et le dénominateur de classe x
 
 # Entrées 
 * **r,v**                     : les coordonnées sur la grille(r,v) 
-* **mu_i**                    : l'esperence estimée
-* **Sigma_i**                 : la matrice variance/covariance
-* **denominateur\_classe\_i** :le dénominateur de classe i
+* **mu_i**                    : l'espérance ``\mu_{i}``
+* **Sigma_i**                 : la matrice variance/covariance ``\Sigma_{i}``
+* **denominateur\_classe\_i** : le dénominateur de la i-ème classe
    - -1
-   - ou fourni
+   - ou fourni ``= (2 \pi)^{d / 2}\left(\operatorname{det} \Sigma_{i}\right)^{1 / 2}``
 
 # Sorties 
-* **P**            : La vraisemblance 
-* **denominateur** : le denominateur de la classe i
+* **P**            : La vraisemblance ``p(x|\omega_i)``
+* **denominateur** : le denominateur de la i-ème classe ``= (2 \pi)^{d / 2}\left(\operatorname{det} \Sigma_{i}\right)^{1 / 2}``
 """
 function vraisemblance( r, v, mu_i, Sigma_i, denominateur_classe_i)
 

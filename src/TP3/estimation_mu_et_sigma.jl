@@ -7,8 +7,8 @@ L’estimation empirique des paramètres d’une loi normale bidimensionnelle à
 * **X**     : la matrice des donnees
 
 # Sorties
-* **mu**    : l'espérance estimée ``E[x]``
-* **sigma** : la matrice de variance / covariance estimée ``E[(x - \mu)(x - \mu)^{T}]``
+* **mu**    : l'espérance estimée ``= E[x]``
+* **sigma** : la matrice de variance / covariance estimée ``= E[(x - \mu)(x - \mu)^{T}]``
 
 """
 function  estimation_mu_et_sigma(X)
