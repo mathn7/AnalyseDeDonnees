@@ -7,7 +7,7 @@
 
 #importation des bibliothèques
 
-#using PyPlot, Gtk.ShortNames , ImageView #à décommenter pour l'affichage
+#using PyPlot,Plots, Gtk.ShortNames , ImageView #à décommenter pour l'affichage
 #using TestImages , ImageMagick #à décommenter pour utiliser des images disponibles dans ImageMagic
 using Images
 using Statistics
@@ -92,7 +92,7 @@ function affichages(Im)
 
     #nettoyer l'environnement
     ImageView.closeall()
-    clf() #à commenter si vous n'êtes pas sous Atom
+    #clf() #à commenter si vous n'êtes pas sous Atom
 
     gui = imshow_gui((300,300),(2, 2))  # La fenetre comporte 2 lignes et 2 colonnes (affichage 300×300)
     canvases = gui["canvas"]
@@ -146,15 +146,22 @@ function affichages(Im)
     "#Affichage du nuage de pixels dans le repere RVB "
 
     #Deuxieme fenetre d affichage
-    PyPlot.scatter3D(R,V,B,"b.")
-    PyPlot.title("Representation 3D des pixels dans lespace RVB",FontSize=20)
-    PyPlot.xlabel("R")
-    PyPlot.ylabel("V")
-    PyPlot.zlabel("B")
+
+    #Utilisation de PyPlot
+    #PyPlot.scatter3D(R,V,B,"b.")
+    #PyPlot.title("Representation 3D des pixels dans lespace RVB",FontSize=20)
+    #PyPlot.xlabel("R")
+    #PyPlot.ylabel("V")
+    #PyPlot.zlabel("B")
+
+    #Utilisation de Plots
+    plt3d= Plots.plot(R,V,B,
+                   seriestype=:scatter, xlab="R",ylab="V",zlab="B",legend=false,markercolor=:blue,title="Representation 3D des pixels dans lespace RVB")
+    display(plt3d)
 
     "#pour que la derniére fenêtre s'affiche sous Atom il faut que cette commande
      #soit la dernière commande !"
 
-    gcf() #à commmenter si vous n'êtes pas sous Atom
+    #gcf() #à commmenter si vous n'êtes pas sous Atom
 
 end

@@ -7,7 +7,7 @@
 #importation des bibliothèques
 
 
-#using PyPlot, Gtk.ShortNames , ImageView #à décommenter pour l'affichage
+#using PyPlot, Plots, Gtk.ShortNames , ImageView #à décommenter pour l'affichage
 #using TestImages , ImageMagick #à décommenter pour utiliser des images disponibles dans ImageMagic
 using Images
 using LinearAlgebra
@@ -63,7 +63,7 @@ end
 function affichages_2(Im)
     #nettoyer l'environnement
     ImageView.closeall()
-    clf() #à commenter si vous n'êtes pas sous Atom
+    #clf() #à commenter si vous n'êtes pas sous Atom
 
     C = Composantes_principales(Im);
     C1 = reshape(C[:,1],size(Im))
@@ -90,13 +90,17 @@ function affichages_2(Im)
 
     ## Affichage du nuage de pixels dans le repere des composantes principales
     # Deuxieme fenetre d'affichage
-    PyPlot.figure("Nuage de pixels dans le repere des composantes principales",figsize=(30,30))
-    PyPlot.scatter3D(C1,C2,C3,"r*")
-    PyPlot.xlabel("1ere CP",FontWeight=20)
-    PyPlot.ylabel("2eme CP",FontWeight=20)
-    PyPlot.zlabel("3eme CP",FontWeight=20)
-    PyPlot.title("Representation 3D des pixels dansl''espace des composantes principales",FontWeight=20)
+    #PyPlot.figure("Nuage de pixels dans le repere des composantes principales",figsize=(30,30))
+    #PyPlot.scatter3D(C1,C2,C3,"r*")
+    #PyPlot.xlabel("1ere CP",FontWeight=20)
+    #PyPlot.ylabel("2eme CP",FontWeight=20)
+    #PyPlot.zlabel("3eme CP",FontWeight=20)
+    #PyPlot.title("Representation 3D des pixels dansl''espace des composantes principales",FontWeight=20)
 
+    #utilisation Plots
+    plt3d= Plots.plot(C1,C2,C3,
+                   seriestype=:scatter, xlab="1ere CP",ylab="2eme CP",zlab="3eme CP",legend=false,markercolor=:red,title="Representation 3D des pixels dansl''espace des composantes principales")
+    display(plt3d)
     #Matrice de variance/covariance dans le nouveau repere
     Sigma_2 = Sigma2(Im)
     ## Calcul des correlations entre les composantes principales et des contrastes
@@ -110,5 +114,5 @@ function affichages_2(Im)
     @printf("Proportion de contraste dans le canal C2 = %0.3f\n",Sigma_2[2,2]/c)
     @printf("Proportion de contraste dans le canal C3 = %0.3f\n",Sigma_2[3,3]/c)
 
-    gcf() #à commenter si vous n'êtes pas sous Atom
+    #gcf() #à commenter si vous n'êtes pas sous Atom
 end
