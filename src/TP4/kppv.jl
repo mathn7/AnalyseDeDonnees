@@ -1,9 +1,10 @@
+@doc doc"""
+# TP4 - Reconnaissance de chiffres manuscrits par k plus proches voisins
 #--------------------------------------------------------------------------
 # ENSEEIHT - 1SN - Analyse de donnees
-# TP4 - Reconnaissance de chiffres manuscrits par k plus proches voisins
 # fonction kppv.m
 #--------------------------------------------------------------------------
-@doc doc"""
+
 # Syntaxe
 ```julia
 [Partition,confusion,nb_erreurs] = kppv(DataA,DataT,labelA,labelT,K,ListeClass)
