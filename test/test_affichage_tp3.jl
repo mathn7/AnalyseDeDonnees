@@ -1,4 +1,3 @@
-using Test
 using Plots
 using Gaston
 using MAT

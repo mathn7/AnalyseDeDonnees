@@ -51,7 +51,7 @@ function tp3_exercice2(afficher::Bool,chemin::String)
 	## Estimation pour les oeillets ##
 
 	# Estimation des parametres de la loi normale
-	mu_oeillets, Sigma_oeillets= tp3_estimation_mu_sigma(X_oeillets)
+	mu_oeillets, Sigma_oeillets = tp3_estimation_mu_sigma(X_oeillets)
 	# Valeurs de la loi normale sur la grille
 	V_oeillets, denominateur_classe_oeillets = tp3_vraisemblance([r v], mu_oeillets, Sigma_oeillets, -1)
 

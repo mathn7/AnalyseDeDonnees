@@ -1,3 +1,5 @@
+using Statistics
+using Markdown
 @doc doc"""
 **TP3 - Classification bayesienne**
 
