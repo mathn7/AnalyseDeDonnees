@@ -10,16 +10,17 @@ Calcule les trois valeurs décrivant l'image ``(\bar{r},\bar{v},\bar{r}_{C})``
 * **[r\_bar\_P, v\_bar\_P, r\_bar\_C]** : ``(\bar{r},\bar{v})`` calculées sur le pourtour P et la valeur ``\bar{r}_{C}`` calculée sur le centre C
 
 """
-function moyenne_amelioree(I)
+function tp3_moyenne_amelioree(I)
 
     # Conversion au format flottants
     I = float(I)
     
     # Calcul des masques de centre et pourtour
+    ratio = 0.3 # (le rayon du centre) / (le rayon de l'image), 0.3 est optimal 
     (m,n) = size(I)
     C = I*0
     centre = Integer.(round.([m/2,n/2]))
-    delta = Integer.(round.(0.1*centre))
+    delta = Integer.(round.(ratio*centre))
     C[centre[1]-delta[1]+1:centre[1]+delta[1], centre[2]-delta[2]+1:centre[2]+delta[2],:] .= 1
     P = 1 .- C
 

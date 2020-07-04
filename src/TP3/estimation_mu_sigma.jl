@@ -11,7 +11,7 @@ L’estimation empirique des paramètres d’une loi normale bidimensionnelle à
 * **sigma** : la matrice de variance / covariance estimée ``= E[(X - \mu)(X - \mu)^{T}]``
 
 """
-function  estimation_mu_et_sigma(X)
+function tp3_estimation_mu_sigma(X)
 
     n = size(X,1)
 

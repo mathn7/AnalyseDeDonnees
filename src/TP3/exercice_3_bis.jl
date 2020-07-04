@@ -1,3 +1,6 @@
+using MAT
+using Markdown
+using LaTeXStrings
 @doc doc"""
 **TP3 - Classification bayesienne**
 
@@ -8,11 +11,7 @@ Classification d’images de fleurs en ajustant les propbabilités *a priori* de
 * **chemin**   : (String) le chemin vers ce fichier
 
 """
-function exercice3bis(afficher::Bool,chemin::String,proba_apriori::Array{Float64,1})
-        
-    if proba_apriori == []
-        proba_apriori = [.5, .3, .2]
-    end
+function tp3_exercice3bis(afficher::Bool,chemin::String,proba_apriori::Array{Float64,1})
 
 	if afficher
 		Plots.closeall() 
@@ -67,7 +66,7 @@ function exercice3bis(afficher::Bool,chemin::String,proba_apriori::Array{Float64
 		# les points suivants sont tracés juste pour ajouter leurs labels dans la légende 
 		x = X_pensees[nb_images_pensees,1]
 		y = X_pensees[nb_images_pensees,2]
-		Plots.scatter([x],[y],color=:red,label="pensee bien classée")
+		plt = Plots.scatter([x],[y],color=:red,label="pensee bien classée")
 		Plots.scatter!([x],[y],color=:white,markerstrokecolor=:red,marker=:xcross,label="pensee pas bien classée")
 		Plots.scatter!([x],[y],color=:green,label="oeillet bien classée")
 		Plots.scatter!([x],[y],color=:white,markerstrokecolor=:green,marker=:xcross,label="oeillet pas bien classée")
@@ -76,7 +75,7 @@ function exercice3bis(afficher::Bool,chemin::String,proba_apriori::Array{Float64
 		# la carte des couleurs représentant les différentes classes 
 		Plots.heatmap!(r,v,code_classe,color=cgrad([:royalblue, :seagreen, :firebrick]),
 			xlabel=L"\mathrm{\bar{r}}",ylabel=L"\mathrm{\bar{v}}",
-			xlim=(r[1],r[end]),ylim=(aposteriori[1],v[end]))
+			xlim=(r[1],r[end]),ylim=(v[1],v[end]))
 	end
 	#-------------------------------------------------------------------------------
 
@@ -85,25 +84,24 @@ function exercice3bis(afficher::Bool,chemin::String,proba_apriori::Array{Float64
 	# Comptage des images de pensees correctement classees :
 
 	for i = 1:nb_images_pensees
-		r_i = X_pensees[i,1]
-		v_i = X_pensees[i,2]
-        V_classe_pensees,_ = vraisemblance(r_i,v_i,mu_pensees,Sigma_pensees,denominateur_classe_pensees) 
+		x_i = X_pensees[i,:]
+        V_classe_pensees,_ = tp3_vraisemblance(x_i,mu_pensees,Sigma_pensees,denominateur_classe_pensees) 
         aposteriori_classe_pensees = V_classe_pensees * proba_apriori[1]
 
-        V_classe_oeillets,_ = vraisemblance(r_i,v_i,mu_oeillets,Sigma_oeillets,denominateur_classe_oeillets) 
+        V_classe_oeillets,_ = tp3_vraisemblance(x_i,mu_oeillets,Sigma_oeillets,denominateur_classe_oeillets) 
         aposteriori_classe_oeillets = V_classe_oeillets * proba_apriori[2]
 
-        V_classe_chrysanthemes,_ = vraisemblance(r_i,v_i,mu_chrysanthemes,Sigma_chrysanthemes,denominateur_classe_chrysanthemes) 
+        V_classe_chrysanthemes,_ = tp3_vraisemblance(x_i,mu_chrysanthemes,Sigma_chrysanthemes,denominateur_classe_chrysanthemes) 
         aposteriori_classe_chrysanthemes = V_classe_chrysanthemes * proba_apriori[3]
 
 		if (aposteriori_classe_pensees >= aposteriori_classe_oeillets) && (aposteriori_classe_pensees >= aposteriori_classe_chrysanthemes)
 			nb_img_bien_classees = nb_img_bien_classees+1
 			if afficher
-				Plots.scatter!([r_i],[v_i],color=:red,markersize=10,label="")
+				Plots.scatter!([x_i[1]],[x_i[2]],color=:red,markersize=10,label="")
 			end
 		else
 			if afficher
-				Plots.scatter!([r_i],[v_i],color=:white,markerstrokecolor=:red,marker=:xcross,markersize=10,label="")
+				Plots.scatter!([x_i[1]],[x_i[2]],color=:white,markerstrokecolor=:red,marker=:xcross,markersize=10,label="")
 			end
 		end
 	end
@@ -111,26 +109,25 @@ function exercice3bis(afficher::Bool,chemin::String,proba_apriori::Array{Float64
 	# Comptage des images d'oeillets correctement classees 
 	for i = 1:nb_images_oeillets
 
-		r_i = X_oeillets[i,1]
-		v_i = X_oeillets[i,2]
-        V_classe_pensees,_ = vraisemblance(r_i,v_i,mu_pensees,Sigma_pensees,denominateur_classe_pensees) 
+		x_i = X_oeillets[i,:]
+        V_classe_pensees,_ = tp3_vraisemblance(x_i,mu_pensees,Sigma_pensees,denominateur_classe_pensees) 
         aposteriori_classe_pensees = V_classe_pensees * proba_apriori[1]
 
-        V_classe_oeillets,_ = vraisemblance(r_i,v_i,mu_oeillets,Sigma_oeillets,denominateur_classe_oeillets) 
+        V_classe_oeillets,_ = tp3_vraisemblance(x_i,mu_oeillets,Sigma_oeillets,denominateur_classe_oeillets) 
         aposteriori_classe_oeillets = V_classe_oeillets * proba_apriori[2]
 
-        V_classe_chrysanthemes,_ = vraisemblance(r_i,v_i,mu_chrysanthemes,Sigma_chrysanthemes,denominateur_classe_chrysanthemes) 
+        V_classe_chrysanthemes,_ = tp3_vraisemblance(x_i,mu_chrysanthemes,Sigma_chrysanthemes,denominateur_classe_chrysanthemes) 
         aposteriori_classe_chrysanthemes = V_classe_chrysanthemes * proba_apriori[3]
 
 		
 		if (aposteriori_classe_oeillets >= aposteriori_classe_pensees) && (aposteriori_classe_oeillets >= aposteriori_classe_chrysanthemes)
 			nb_img_bien_classees = nb_img_bien_classees+1
 			if afficher
-				Plots.scatter!([r_i],[v_i],color=:green,markersize=10,label="")
+				Plots.scatter!([x_i[1]],[x_i[2]],color=:green,markersize=10,label="")
 			end
 		else
 			if afficher
-				Plots.scatter!([r_i],[v_i],color=:white,markerstrokecolor=:green,marker=:xcross,markersize=10,label="")
+				Plots.scatter!([x_i[1]],[x_i[2]],color=:white,markerstrokecolor=:green,marker=:xcross,markersize=10,label="")
 			end
 		end
 	end
@@ -138,38 +135,38 @@ function exercice3bis(afficher::Bool,chemin::String,proba_apriori::Array{Float64
 	# Comptage des images de chrysanthemes correctement classees :
 	for i = 1:nb_images_chrysanthemes
 
-		r_i = X_chrysanthemes[i,1]
-		v_i = X_chrysanthemes[i,2]	
-        V_classe_pensees,_ = vraisemblance(r_i,v_i,mu_pensees,Sigma_pensees,denominateur_classe_pensees) 
+		x_i = X_chrysanthemes[i,:]
+        V_classe_pensees,_ = tp3_vraisemblance(x_i,mu_pensees,Sigma_pensees,denominateur_classe_pensees) 
         aposteriori_classe_pensees = V_classe_pensees * proba_apriori[1]
 
-        V_classe_oeillets,_ = vraisemblance(r_i,v_i,mu_oeillets,Sigma_oeillets,denominateur_classe_oeillets) 
+        V_classe_oeillets,_ = tp3_vraisemblance(x_i,mu_oeillets,Sigma_oeillets,denominateur_classe_oeillets) 
         aposteriori_classe_oeillets = V_classe_oeillets * proba_apriori[2]
 
-        V_classe_chrysanthemes,_ = vraisemblance(r_i,v_i,mu_chrysanthemes,Sigma_chrysanthemes,denominateur_classe_chrysanthemes) 
+        V_classe_chrysanthemes,_ = tp3_vraisemblance(x_i,mu_chrysanthemes,Sigma_chrysanthemes,denominateur_classe_chrysanthemes) 
         aposteriori_classe_chrysanthemes = V_classe_chrysanthemes * proba_apriori[3]
 
 
 		if (aposteriori_classe_chrysanthemes >= aposteriori_classe_pensees) && (aposteriori_classe_chrysanthemes >= aposteriori_classe_oeillets)
 			nb_img_bien_classees = nb_img_bien_classees+1
 			if afficher
-				Plots.scatter!([r_i],[v_i],color=:blue,markersize=10,label="")
+				Plots.scatter!([x_i[1]],[x_i[2]],color=:blue,markersize=10,label="")
 			end
 		else
 			if afficher
-				Plots.scatter!([r_i],[v_i],color=:white,markerstrokecolor=:blue,marker=:xcross,markersize=10,label="")
+				Plots.scatter!([x_i[1]],[x_i[2]],color=:white,markerstrokecolor=:blue,marker=:xcross,markersize=10,label="")
 			end
 		end
 	end
 	# l'accuracy en % :
-	accuracy = 100*nb_img_bien_classees/(nb_images_chrysanthemes + nb_images_oeillets + nb_images_pensees)
-	MAT.matwrite(chemin*"mat/resultats-ex3-bis.mat", Dict(
-		"accuracy" => accuracy
-	))
+	accuracy = 100 * nb_img_bien_classees / (nb_images_chrysanthemes + nb_images_oeillets + nb_images_pensees)
 	
 	if afficher
 		print(string(accuracy)[1:5]*"% d'images correctement classees")
 		# Ajout du titre avec le pourcentage des images bien classées
 		Plots.scatter!([x],[y],markersize=0,label="", title="Classification par maximum de vraisemblance, "*string(accuracy)[1:4]*"% d'images correctement classées")
 	end
+	if afficher
+		display(plt)
+	end
+	return accuracy
 end

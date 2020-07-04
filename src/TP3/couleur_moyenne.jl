@@ -10,7 +10,7 @@ Calcule la couleur moyenne d'une image
 * **[r\_bar, v\_bar]** : les deux composantes moyenne (rouge & vert) de couleur normalisées ``(\bar{r},\bar{v})``
 
 """
-function couleur_moyenne(image)
+function tp3_couleur_moyenne(image)
 
 	image = float(image)
 

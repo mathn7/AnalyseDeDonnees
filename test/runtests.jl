@@ -1,12 +1,9 @@
 using Test
-#using Plots
-#using Gaston
 using MAT
 using LinearAlgebra
 using Statistics
 using LaTeXStrings
 using Markdown
-
 
 @testset "Test CSAD" begin
 

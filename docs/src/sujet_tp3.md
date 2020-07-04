@@ -29,7 +29,7 @@ on postule que ce vecteur suffira à les distinguer.
 
 !!! tip "Travail à effectuer"
 
-    Écrivez la fonction moyenne, qui calcule la couleur moyenne d’une image, c’est-à-dire ``x^{T} = (\bar{r},\bar{v})`` dans un vecteur ligne, 
+    Écrivez la fonction *couleur\_moyenne*, qui calcule la couleur moyenne d’une image, c’est-à-dire ``x^{T} = (\bar{r},\bar{v})`` dans un vecteur ligne, 
     sans oublier de convertir les niveaux de couleur ``(R, V, B)`` auformat *float* (pour manipuler des réels) et de les normaliser.
 
 Le script *exercice_1.jl* regroupe dans trois tableaux de données *X_pensees*, *X_oeillets* et *X_chrysanthemes* les valeurs moyennes calculées 
@@ -57,7 +57,7 @@ Il faut donc estimer les paramètres ``\mu_{i}`` et ``\Sigma_{i}`` des trois cla
 
 !!! tip "Travail à effectuer"
 
-    Écrivez la fonction *estimation_mu_Sigma* permettant d’effectuer l’estimation empirique des paramètres d’une loi normale bidimensionnelle ``(d = 2)`` à partir d’une matrice de données ``X``.
+    Écrivez la fonction *estimation\_mu\_Sigma* permettant d’effectuer l’estimation empirique des paramètres d’une loi normale bidimensionnelle ``(d = 2)`` à partir d’une matrice de données ``X``.
 
 Le script *exercice_2.jl* estime les paramètres ``\mu_i`` et ``\Sigma_i`` des trois classes ``\omega_i`` correspondant aux trois espèces de fleurs, à partir des tableaux de données *X_pensees*, *X_oeillets* et *X_chrysanthemes*, puis superpose la vraisemblance de chaque classe (en perspective 3D) au nuage de points à partir duquel elle a été estimée.
 

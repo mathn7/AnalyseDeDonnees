@@ -15,20 +15,19 @@ calcule la vraisemblance ``p(x|\omega_i)`` et le dénominateur de classe x
 * **P**            : La vraisemblance ``p(x|\omega_i)``
 * **denominateur** : le denominateur de la i-ème classe ``= (2 \pi)^{d / 2}\left(\operatorname{det} \Sigma_{i}\right)^{1 / 2}``
 """
-function vraisemblance( r, v, mu_i, Sigma_i, denominateur_classe_i)
+function tp3_vraisemblance(x, mu_i, Sigma_i, denominateur_classe_i)
 
-    nb_r = length(r)
-    nb_v = length(v)
-    if nb_r > 1 || nb_v > 1
-        P = zeros(nb_r,nb_v)
-        for i = 1:nb_r
-            for j = 1:nb_v
-                x_centre = [r[i],v[j]] - mu_i
+    n = size(x)[1]
+    if n > 3
+        P = zeros(n,n)
+        for i = 1:n
+            for j = 1:n
+                x_centre = [x[i,1],x[j,2]] - mu_i
                 P[j,i] = exp(-x_centre' * (Sigma_i \ x_centre) / 2)
             end
         end
     else
-        x_centre = [r;v] - mu_i
+        x_centre = x - mu_i
         P = exp(-x_centre' * (Sigma_i \ x_centre) / 2)
     end
     if denominateur_classe_i == -1

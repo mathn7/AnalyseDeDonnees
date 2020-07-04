@@ -1,3 +1,5 @@
+using MAT
+using Markdown
 @doc doc"""
 **TP3 - Classification bayesienne**
 
@@ -8,7 +10,7 @@ Estimation de la vraisemblance de chaque espèce de fleurs
 * **chemin**   : (String) le chemin vers ce fichier
 
 """
-function exercice2(afficher::Bool,chemin::String)
+function tp3_exercice2(afficher::Bool,chemin::String)
 	
 	if afficher
 		Gaston.closeall()
@@ -28,9 +30,9 @@ function exercice2(afficher::Bool,chemin::String)
 	## Estimation pour les pensees ##
 
 	# Estimation des parametres de la loi normale [fonction a coder]
-	mu_pensees, Sigma_pensees = estimation_mu_et_sigma(X_pensees)
+	mu_pensees, Sigma_pensees = tp3_estimation_mu_sigma(X_pensees)
 	# Valeurs de la loi normale sur la grille
-	V_pensees, denominateur_classe_pensees = vraisemblance(r, v, mu_pensees, Sigma_pensees, -1)
+	V_pensees, denominateur_classe_pensees = tp3_vraisemblance([r v], mu_pensees, Sigma_pensees, -1)
 
 	if afficher
 		# Representation 3D de la loi normale
@@ -61,9 +63,9 @@ function exercice2(afficher::Bool,chemin::String)
 	## Estimation pour les oeillets ##
 
 	# Estimation des parametres de la loi normale
-	mu_oeillets, Sigma_oeillets= estimation_mu_et_sigma(X_oeillets)
+	mu_oeillets, Sigma_oeillets= tp3_estimation_mu_sigma(X_oeillets)
 	# Valeurs de la loi normale sur la grille
-	V_oeillets, denominateur_classe_oeillets = vraisemblance(r, v, mu_oeillets, Sigma_oeillets, -1)
+	V_oeillets, denominateur_classe_oeillets = tp3_vraisemblance([r v], mu_oeillets, Sigma_oeillets, -1)
 
 	if afficher
 		# Representation 3D de la loi normale
@@ -90,9 +92,9 @@ function exercice2(afficher::Bool,chemin::String)
 	=#
 
 	# Estimation des parametres de la loi normale [fonction a coder]
-	mu_chrysanthemes, Sigma_chrysanthemes = estimation_mu_et_sigma(X_chrysanthemes)
+	mu_chrysanthemes, Sigma_chrysanthemes = tp3_estimation_mu_sigma(X_chrysanthemes)
 	# Valeurs de la loi normale sur la grille
-	V_chrysanthemes, denominateur_classe_chrysanthemes = vraisemblance(r,v,mu_chrysanthemes,Sigma_chrysanthemes,-1)
+	V_chrysanthemes, denominateur_classe_chrysanthemes = tp3_vraisemblance([r v],mu_chrysanthemes,Sigma_chrysanthemes,-1)
 	# enregistrer les résultats
 	MAT.matwrite(chemin*"mat/resultats-ex2.mat", Dict(
 		"nb_r" => nb_r,
