@@ -4,16 +4,16 @@
 calcule la vraisemblance ``p(x|\omega_i)`` et le dénominateur de classe x
 
 # Entrées 
-* **r,v**                     : les coordonnées sur la grille(r,v) 
-* **mu_i**                    : l'espérance ``\mu_{i}``
-* **Sigma_i**                 : la matrice variance/covariance ``\Sigma_{i}``
-* **denominateur\_classe\_i** : le dénominateur de la i-ème classe
+* **x**                       : les coordonnées sur la grille 
+* **mu_i**                    : (Array{Float64,1}) l'espérance ``\mu_{i}``
+* **Sigma_i**                 : (Array{Float64,2}) la matrice variance/covariance ``\Sigma_{i}``
+* **denominateur\_classe\_i** : (Float64) le dénominateur de la i-ème classe
    - -1
    - ou fourni ``= (2 \pi)^{d / 2}\left(\operatorname{det} \Sigma_{i}\right)^{1 / 2}``
 
 # Sorties 
 * **P**            : La vraisemblance ``p(x|\omega_i)``
-* **denominateur** : le denominateur de la i-ème classe ``= (2 \pi)^{d / 2}\left(\operatorname{det} \Sigma_{i}\right)^{1 / 2}``
+* **denominateur** : (Float64) le denominateur de la i-ème classe ``= (2 \pi)^{d / 2}\left(\operatorname{det} \Sigma_{i}\right)^{1 / 2}``
 """
 function tp3_vraisemblance(x, mu_i, Sigma_i, denominateur_classe_i)
 

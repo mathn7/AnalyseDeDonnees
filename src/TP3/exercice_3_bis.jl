@@ -10,6 +10,8 @@ Classification d’images de fleurs en ajustant les propbabilités *a priori* de
 * **afficher** : (Bool) afficher les figures (false dans le runtests.jl)
 * **chemin**   : (String) le chemin vers ce fichier
 
+# Sorties 
+* **accuracy** : (Float64) l'accuracy du classifieur
 """
 function tp3_exercice3bis(afficher::Bool,chemin::String,proba_apriori::Array{Float64,1})
 

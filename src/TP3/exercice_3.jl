@@ -10,6 +10,8 @@ Classification d’images de fleurs sous l’hypothèse que les classes sont éq
 * **afficher** : (Bool) afficher les figures (false dans le runtests.jl)
 * **chemin**   : (String) le chemin vers ce fichier
 
+# Sorties 
+* **accuracy** : (Float64) l'accuracy du classifieur
 """
 function tp3_exercice3(afficher::Bool,chemin::String)
 		
