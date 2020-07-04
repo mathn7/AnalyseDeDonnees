@@ -1,6 +1,7 @@
 using MAT
 using Markdown
 using LaTeXStrings
+using Printf
 @doc doc"""
 **TP3 - Classification bayesienne**
 
@@ -146,12 +147,14 @@ function tp3_exercice3(afficher::Bool,chemin::String)
 	accuracy = 100*nb_img_bien_classees/(nb_images_chrysanthemes + nb_images_oeillets + nb_images_pensees)
 	
 	if afficher
-		print(string(accuracy)[1:5]*"% d'images correctement classees")
+		print("Classifieur avec des classes sont équiprobables,    ")
+		@printf("accuracy : %0.3f",accuracy)
+		println("%")
 		# Ajout du titre avec le pourcentage des images bien classées
 		Plots.scatter!([x],[y],markersize=0,label="", title="Classification par maximum de vraisemblance, "*string(accuracy)[1:4]*"% d'images correctement classées")
 	end
 	if afficher
-		display(plt)
+		Gaston.display(plt)
 	end
 	return accuracy
 end

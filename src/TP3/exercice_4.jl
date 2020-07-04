@@ -1,6 +1,7 @@
 using MAT
 using Markdown
 using LaTeXStrings
+using Printf
 @doc doc"""
 **TP3 - Classification bayesienne**
 
@@ -79,7 +80,7 @@ function tp3_exercice4(afficher::Bool,chemin::String)
 	if afficher
 		# Affichage des classes 
 		pyplot() # utiliser le backend pyplot de matplotlib
-		plt = plot(layout = (2,1))
+		plt = Plots.plot(layout = (2,1))
 		# les points suivants sont tracés juste pour ajouter leurs labels dans la légende 
 		x = X_pensees[nb_images_pensees,1]
 		y = X_pensees[nb_images_pensees,2]
@@ -161,7 +162,9 @@ function tp3_exercice4(afficher::Bool,chemin::String)
 	accuracy = 100 * nb_img_bien_classees / (nb_images_chrysanthemes + nb_images_oeillets + nb_images_pensees)
 
 	if afficher
-		print(string(accuracy)*"% d'images correctement classees")
+		print("Classifieur amélioré,                               ")
+		@printf("accuracy : %0.3f",accuracy)
+		println("%")
 		# Ajout du titre avec le pourcentage des images bien classées
 		Plots.scatter!([x],[y],markersize=0,label="", title="Classification par maximum de vraisemblance, "*string(accuracy)[1:4]*"% d'images correctement classées",subplot=1)
 	end

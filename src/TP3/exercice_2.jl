@@ -111,6 +111,7 @@ function tp3_exercice2(afficher::Bool,chemin::String)
 			pointtype = "+",lw = 5,
 			legend=:"'donnees dapprentissage'",
 			lc = :blue,handle = 3)
-		Gaston.plot([p1 p2 p3])
+		plt = Gaston.plot([p1 p2 p3])
+		Gaston.display(plt)
 	end
 end
