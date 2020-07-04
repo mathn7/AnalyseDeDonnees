@@ -83,5 +83,4 @@
     end
     rm(cheminTP3*"mat/resultats-ex1.mat",force = true)
     rm(cheminTP3*"mat/resultats-ex2.mat",force = true)
-
 end
