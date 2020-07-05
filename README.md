@@ -9,9 +9,9 @@ Projet du calcul scientifique et analyse des donnees
 
 ## Tester les scripts
 
-### Dépendances à installer
+### Prérequis
 
-On utilise pour l'affichage le backend Pyplot de l'API Matplotlib de Python. Sous MacOS, Windows ou Linux, vous pouvez l'instaler avec les commandes suivantes :  
+On utilise pour l'affichage le backend Pyplot de l'API Matplotlib de Python. Vous pouvez l'instaler sous MacOS, Windows et Linux avec les commandes suivantes :  
 
 ```
 python -m pip install -U pip
