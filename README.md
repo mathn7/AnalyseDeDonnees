@@ -26,7 +26,7 @@ python3 -m pip install -U matplotlib
 dans la racine (Projet-CSAD) tapez
 
 ```julia
-julia>]
+julia> ]
 pkg> activate .
 (CSAD) pkg>
 ```
@@ -40,9 +40,16 @@ exécutez la fonction `affichages` du script exercice_1.jl et
 `affichages_2` des scripts (exercice_1.jl et exercice_2.jl).
 
 ```julia
-julia>Im = load("src/TP1/automn.tiff");
-julia>include("src/TP1/exercice_1.jl")
-julia>affichages(Im)
-julia>include("src/TP1/exercice_2.jl")
-julia>affichages_2(Im)
+julia> Im = load("src/TP1/automn.tiff");
+julia> include("src/TP1/exercice_1.jl")
+julia> affichages(Im)
+julia> include("src/TP1/exercice_2.jl")
+julia> affichages_2(Im)
+```
+## Tester le TP3 avec affichage des figures
+dans la racine du dossier contenant le module tapez :
+```julia
+julia> ]
+pkg> activate .
+julia> include("test/test_affichage_tp3.jl")
 ```
