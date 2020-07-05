@@ -17,6 +17,7 @@ Amélioration du classifieur
 function tp3_exercice4(afficher::Bool,chemin::String)
 	
 	if afficher
+		pyplot() # utiliser le backend pyplot de matplotlib
 		Plots.closeall() 
 	end
 
@@ -79,7 +80,6 @@ function tp3_exercice4(afficher::Bool,chemin::String)
 	
 	if afficher
 		# Affichage des classes 
-		pyplot() # utiliser le backend pyplot de matplotlib
 		plt = Plots.plot(layout = (2,1))
 		# les points suivants sont tracés juste pour ajouter leurs labels dans la légende 
 		x = X_pensees[nb_images_pensees,1]

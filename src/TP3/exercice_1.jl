@@ -13,7 +13,7 @@ Calcul de la couleur moyenne d’une image
 function tp3_exercice1(afficher::Bool,chemin::String)
 	
 	if afficher
-		Gaston.closeall()
+		pyplot() # utiliser le backend pyplot de matplotlib
 	end
 
 	# Chargement des donnees sous forme d'un dictionnaire
@@ -22,7 +22,9 @@ function tp3_exercice1(afficher::Bool,chemin::String)
 	nb_images_pensees = Integer(vars["nb_images_pensees"])
 	nb_images_oeillets = Integer(vars["nb_images_oeillets"])
 	nb_images_chrysanthemes = Integer(vars["nb_images_chrysanthemes"])
+
 	## Calcul des vecteurs de moyenne des images de fleurs
+
 	# Couleur moyenne de chaque image de pensee [fonction a coder]
 	X_pensees = zeros(nb_images_pensees,2)
 	for i = 1:nb_images_pensees
@@ -44,8 +46,6 @@ function tp3_exercice1(afficher::Bool,chemin::String)
 		X_chrysanthemes[i,:] = tp3_couleur_moyenne(im)
 	end
 
-	## Affichage des couleurs moyennes des images de fleurs
-
 	# Vecteur r et v pour les axes()
 	pas = 0.0025
 	r = 0.35:pas:0.60
@@ -66,19 +66,16 @@ function tp3_exercice1(afficher::Bool,chemin::String)
 		"nb_images_chrysanthemes" => vars["nb_images_chrysanthemes"]
 	))
 	if afficher
-		plt = Gaston.scatter(X_pensees[:,1], X_pensees[:,2],marker = "fsquare",lw = 5,legend=:"'Pensees'",lc="'#08F7FE'",
-			Axes(object="rectangle from screen 0,0 to screen 1,1 behind fc 'black' fs solid noborder",
-				border="lw 2 lc 'white'",
-				xtics="textcolor rgb 'white'",
-				ytics="textcolor rgb 'white'",
-				ylabel="'r_{bar}' textcolor 'white'",
-				xlabel="'v_{bar}' textcolor 'white'",
-				grid="lc '#08F7FE' dt 4",
-				key="t r textcolor 'white'"))
+		## Affichage des couleurs moyennes des images de fleurs
 
-		Gaston.plot!(X_oeillets[:,1],X_oeillets[:,2],marker = "+",lw = 5,lc="'#FFE64D'",legend=:"'Oeillets'")
-		Gaston.plot!(X_chrysanthemes[:,1],X_chrysanthemes[:,2],marker = "*",lw = 5,lc="'white'",legend=:"'Chrysantemes'")
+		plt = Plots.scatter(X_pensees[:,1],X_pensees[:,2],color=:red,marker=:star7,markerstrokecolor=:red,markersize=15,
+			title="Couleurs moyennes des images",label="Pensees",xlabel=L"\mathrm{\bar{r}}",ylabel=L"\mathrm{\bar{v}}",
+			xlim=(r[1],r[end]),ylim=(v[1],v[end]))
+
+		Plots.scatter!(X_oeillets[:,1],X_oeillets[:,2],color=:green,markerstrokecolor=:green,markersize=15,label="Oeillets")
+
+		Plots.scatter!(X_chrysanthemes[:,1],X_chrysanthemes[:,2],color=:blue,marker=:+,markerstrokecolor=:blue,markersize=15,label="Chrysantemes")
 		
-		display(plt)
+		Plots.display(plt)
 	end
 end	

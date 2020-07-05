@@ -13,7 +13,8 @@ Estimation de la vraisemblance de chaque espèce de fleurs
 function tp3_exercice2(afficher::Bool,chemin::String)
 	
 	if afficher
-		Gaston.closeall()
+		pyplot() # utiliser le backend pyplot de matplotlib
+		Plots.closeall()
 	end
 
 	# Chargement des donnees de l exercice 1
@@ -35,17 +36,16 @@ function tp3_exercice2(afficher::Bool,chemin::String)
 	V_pensees, denominateur_classe_pensees = tp3_vraisemblance([r v], mu_pensees, Sigma_pensees, -1)
 
 	if afficher
-		# Representation 3D de la loi normale
-		p1 = Gaston.surf(r,v,V_pensees,plotstyle="lines",lc="'red'",
-			legend=:"'Vraisemblance empirique'",
-			Axes(title=:"'Vraisemblance de la classe des pensees'",
-			xlabel = :"'r_{bar}'",
-			ylabel = :"'v_{bar}'"),handle = 1)
+		plt = Plots.plot(layout=(1,3))
+		
+		Plots.plot!(r,v,V_pensees,st=:wireframe,color=:salmon,	
+			title=" Vraisemblance de la classe des pensees",
+			label="Vraisemblance empirique",subplot=1,	
+			xlim=(r[1],r[end]),ylim=(v[1],v[end]),
+			xlabel=L"\mathrm{\bar{r}}",ylabel=L"\mathrm{\bar{v}}")
 
-		p1 = Gaston.surf!(X_pensees[:,1],X_pensees[:,2],zeros(length(X_pensees)),
-			pointtype = "+",lw = 5,
-			legend=:"'donnees dapprentissage'",
-			lc = :red,handle = 1)
+		Plots.scatter!(X_pensees[:,1],X_pensees[:,2],zeros(length(X_pensees)),markersize=10,
+			markerstrokecolor=:red,marker=:star7,color=:red,label="donnees d'apprentissage",subplot=1)
 	end
 
 	## Estimation pour les oeillets ##
@@ -56,16 +56,14 @@ function tp3_exercice2(afficher::Bool,chemin::String)
 	V_oeillets, denominateur_classe_oeillets = tp3_vraisemblance([r v], mu_oeillets, Sigma_oeillets, -1)
 
 	if afficher
-		# Representation 3D de la loi normale
-		p2 = Gaston.surf(r,v,V_oeillets,plotstyle="lines",lc="'green'",legend=:"'Vraisemblance empirique'",
-			Axes(title=:"'Estimation pour les oeillets'",
-			xlabel = :"'r_{bar}'",
-			ylabel = :"'v_{bar}'"),handle = 2)
+		Plots.plot!(r,v,V_oeillets,st=:wireframe,color=:palegreen,	
+			title=" Vraisemblance de la classe des oeillets",
+			label="Vraisemblance empirique",subplot=2,	
+			xlim=(r[1],r[end]),ylim=(v[1],v[end]),
+			xlabel=L"\mathrm{\bar{r}}",ylabel=L"\mathrm{\bar{v}}")
 
-		p2 = Gaston.surf!(X_oeillets[:,1],X_oeillets[:,2],zeros(length(X_oeillets)),
-			pointtype = "+",lw = 5,
-			legend=:"'donnees dapprentissage'",
-			lc = :green,handle = 2)
+		Plots.scatter!(X_oeillets[:,1],X_oeillets[:,2],zeros(length(X_oeillets)),markersize=10,
+			markerstrokecolor=:green,marker=:star7,color=:green,label="donnees d'apprentissage",subplot=2)
 	end
 
 	## Estimation pour les chrysanthemes ##
@@ -101,17 +99,14 @@ function tp3_exercice2(afficher::Bool,chemin::String)
 	))
 
 	if afficher
-		# Representation 3D de la loi normale
-		p3 = Gaston.surf(r,v,V_chrysanthemes,plotstyle="lines",lc=:blue,legend=:"'Vraisemblance empirique'",
-			Axes(title=:"'Estimation pour les chrysanthemes'",
-			xlabel = :"'r_{bar}'",
-			ylabel = :"'v_{bar}'"),handle = 3)
+		Plots.plot!(r,v,V_chrysanthemes,st=:wireframe,color=:deepskyblue,
+			title=" Vraisemblance de la classe des chrysanthemes",
+			label="Vraisemblance empirique",subplot=3,	
+			xlim=(r[1],r[end]),ylim=(v[1],v[end]),
+			xlabel=L"\mathrm{\bar{r}}",ylabel=L"\mathrm{\bar{v}}")
 
-		p3 = Gaston.surf!(X_chrysanthemes[:,1],X_chrysanthemes[:,2],zeros(length(X_chrysanthemes)),
-			pointtype = "+",lw = 5,
-			legend=:"'donnees dapprentissage'",
-			lc = :blue,handle = 3)
-		plt = Gaston.plot([p1 p2 p3])
-		Gaston.display(plt)
+			Plots.scatter!(X_chrysanthemes[:,1],X_chrysanthemes[:,2],zeros(length(X_chrysanthemes)),markersize=7,
+			markerstrokecolor=:blue,marker=:star7,color=:blue,label="donnees d'apprentissage",subplot=3)
+		Plots.display(plt)
 	end
 end

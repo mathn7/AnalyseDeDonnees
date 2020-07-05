@@ -17,6 +17,7 @@ Classification d’images de fleurs en ajustant les propbabilités *a priori* de
 function tp3_exercice3bis(afficher::Bool,chemin::String,proba_apriori::Array{Float64,1})
 
 	if afficher
+		pyplot() # utiliser le backend pyplot de matplotlib
 		Plots.closeall() 
 	end
 
@@ -64,8 +65,6 @@ function tp3_exercice3bis(afficher::Bool,chemin::String,proba_apriori::Array{Flo
 
 	if afficher
 		# Affichage des classes 
-		pyplot() # utiliser le backend pyplot de matplotlib
-
 		# les points suivants sont tracés juste pour ajouter leurs labels dans la légende 
 		x = X_pensees[nb_images_pensees,1]
 		y = X_pensees[nb_images_pensees,2]

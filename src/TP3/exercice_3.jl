@@ -17,6 +17,7 @@ Classification d’images de fleurs sous l’hypothèse que les classes sont éq
 function tp3_exercice3(afficher::Bool,chemin::String)
 		
 	if afficher
+		pyplot() # utiliser le backend pyplot de matplotlib
 		Plots.closeall() 
 	end
 
@@ -64,8 +65,6 @@ function tp3_exercice3(afficher::Bool,chemin::String)
 
 	if afficher
 		# Affichage des classes 
-		pyplot() # utiliser le backend pyplot de matplotlib
-
 		# les points suivants sont tracés juste pour ajouter leurs labels dans la légende 
 		x = X_pensees[nb_images_pensees,1]
 		y = X_pensees[nb_images_pensees,2]
@@ -154,7 +153,7 @@ function tp3_exercice3(afficher::Bool,chemin::String)
 		Plots.scatter!([x],[y],markersize=0,label="", title="Classification par maximum de vraisemblance, "*string(accuracy)[1:4]*"% d'images correctement classées")
 	end
 	if afficher
-		Gaston.display(plt)
+		Plots.display(plt)
 	end
 	return accuracy
 end
