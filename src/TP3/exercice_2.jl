@@ -14,6 +14,7 @@ function tp3_exercice2(afficher::Bool,chemin::String)
 	
 	if afficher
 		pyplot() # utiliser le backend pyplot de matplotlib
+		Plots.display(Plots.plot())
 		Plots.closeall()
 	end
 
