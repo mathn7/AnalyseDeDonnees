@@ -35,7 +35,7 @@ for i = 1:nb_images_pensees
 end
 display(plt)
 println("Affichage des pensees ...")
-tapez_entrer("tapez la clé entrer pour voir les oeillets")
+tapez_entrer("tapez la clé entrer pour afficher les oeillets")
 
 ## Images d'oeillets
 # Chargement des images
@@ -55,7 +55,7 @@ for i = 1:nb_images_oeillets
 end
 display(plt)
 println("Affichage des oeillets ...")
-tapez_entrer("tapez la clé entrer pour voir les chrysanthemes")
+tapez_entrer("tapez la clé entrer pour afficher les chrysanthemes")
 
 ## Images de chrysanthemes
 # Chargement des images
