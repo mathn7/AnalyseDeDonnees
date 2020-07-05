@@ -11,6 +11,7 @@ using MAT
 using Primes
 
 include("float_to_RGB.jl")
+# fonction pour attendre
 tapez_entrer(text) = (print(stdout, text); read(stdin, 1); nothing)
 
 # Chemin d'acces aux images
@@ -29,7 +30,7 @@ nb_colonnes_affichage = max(fact[2],fact[1])
 
 plt = plot(layout=(nb_lignes_affichage,nb_colonnes_affichage),showaxis = false)
 for i = 1:nb_images_pensees
-	im = float_to_RGB(float(images["pe$i"])./255)
+	im = float_to_RGB(images["pe$i"])
 	Plots.plot!(plt[i],im)
 end
 display(plt)
@@ -49,7 +50,7 @@ nb_colonnes_affichage = max(fact[2],fact[1])
 
 plt = plot(layout=(nb_lignes_affichage,nb_colonnes_affichage),showaxis = false)
 for i = 1:nb_images_oeillets
-	im = float_to_RGB(float(images["oe$i"])./255)
+	im = float_to_RGB(images["oe$i"])
 	Plots.plot!(plt[i],im)
 end
 display(plt)
@@ -69,7 +70,7 @@ nb_colonnes_affichage = max(fact[2],fact[1])
 
 plt = plot(layout=(nb_lignes_affichage,nb_colonnes_affichage),showaxis = false)
 for i = 1:nb_images_chrysanthemes
-	im = float_to_RGB(float(images["ch$i"])./255)
+	im = float_to_RGB(images["ch$i"])
 	Plots.plot!(plt[i],im)
 end
 display(plt)
