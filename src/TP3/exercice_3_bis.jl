@@ -22,7 +22,7 @@ function tp3_exercice3bis(afficher::Bool,chemin::String,proba_apriori::Array{Flo
 	end
 
 	# Chargement des donnees de l exercice 2
-	vars = matread(chemin*"mat/resultats-ex2.mat")
+	vars = matread(chemin*"resultats-ex2.mat")
 
 	V_pensees = vars["V_pensees"]
 	V_oeillets = vars["V_oeillets"]

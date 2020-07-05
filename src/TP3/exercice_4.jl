@@ -22,9 +22,9 @@ function tp3_exercice4(afficher::Bool,chemin::String)
 	end
 
 	# Chargement des donnees
-	# Chargement des donnees de l exercice 2
-    vars_ex2 = matread(chemin*"mat/solutions-ex2.mat")
-	vars = matread(chemin*"mat/donnees.mat")
+    vars_ex2 = matread(chemin*"resultats-ex2.mat")
+	vars = matread(chemin*"donnees.mat")
+	
 	nb_images_pensees = Integer(vars["nb_images_pensees"])
 	nb_images_oeillets = Integer(vars["nb_images_oeillets"])
 	nb_images_chrysanthemes = Integer(vars["nb_images_chrysanthemes"])

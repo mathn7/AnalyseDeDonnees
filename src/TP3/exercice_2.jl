@@ -19,7 +19,7 @@ function tp3_exercice2(afficher::Bool,chemin::String)
 	end
 
 	# Chargement des donnees de l exercice 1
-	vars = matread(chemin*"mat/resultats-ex1.mat")
+	vars = matread(chemin*"resultats-ex1.mat")
 
 	X_pensees =vars["X_pensees"]
 	X_oeillets =vars["X_oeillets"]
@@ -74,7 +74,7 @@ function tp3_exercice2(afficher::Bool,chemin::String)
 	# Valeurs de la loi normale sur la grille
 	V_chrysanthemes, denominateur_classe_chrysanthemes = tp3_vraisemblance([r v],mu_chrysanthemes,Sigma_chrysanthemes,-1)
 	# enregistrer les résultats
-	MAT.matwrite(chemin*"mat/resultats-ex2.mat", Dict(
+	MAT.matwrite(chemin*"resultats-ex2.mat", Dict(
 		"nb_r" => nb_r,
 		"nb_v" => nb_v,
 		"r" => collect(r), 

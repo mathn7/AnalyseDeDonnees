@@ -35,3 +35,6 @@ tp3_exercice3bis(true,"../src/TP3/",[5.,3.,2.])
 wait_for_key("tapez entrer pour lancer l'exo 4")
 tp3_exercice4(true,"../src/TP3/")
 
+# supprimer les fichiers contenant les resultats
+rm("../src/TP3/resultats-ex1.mat",force = true)
+rm("../src/TP3/resultats-ex2.mat",force = true)

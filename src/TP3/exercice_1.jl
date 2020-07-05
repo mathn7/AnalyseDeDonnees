@@ -17,7 +17,7 @@ function tp3_exercice1(afficher::Bool,chemin::String)
 	end
 
 	# Chargement des donnees sous forme d'un dictionnaire
-	vars = matread(chemin*"mat/donnees.mat")
+	vars = matread(chemin*"donnees.mat")
 
 	nb_images_pensees = Integer(vars["nb_images_pensees"])
 	nb_images_oeillets = Integer(vars["nb_images_oeillets"])
@@ -53,7 +53,7 @@ function tp3_exercice1(afficher::Bool,chemin::String)
 	nb_r = length(collect(r))
 	nb_v = length(collect(v))
 	# Enregistrer les résultats 
-	MAT.matwrite(chemin*"mat/resultats-ex1.mat", Dict(
+	MAT.matwrite(chemin*"resultats-ex1.mat", Dict(
 		"nb_r" => nb_r,
 		"nb_v" => nb_v,
 		"r" => collect(r), 
