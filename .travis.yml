@@ -9,7 +9,7 @@ julia:
 notifications:
   email: false
   
-install: travis_wait 20 pip install
+install: travis_wait 20 install 
 
 jobs:
   include:
