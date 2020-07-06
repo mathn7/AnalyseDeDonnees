@@ -1,12 +1,27 @@
 module CSAD
 
 using Plots
-using Gaston
 using MAT
 using LinearAlgebra
 using Statistics
 using LaTeXStrings
 using Markdown
+
+#============= TP1 ==============#
+include("TP1/exercice_1.jl")
+export Matrice_de_donnees
+export Individu_moyen
+export Donnees_centrees
+export Matrice_var_cov
+
+include("TP1/exercice_2.jl")
+export Composantes_principales
+export Sigma2
+#================================#
+
+#============= TP2 ==============#
+
+#================================#
 
 #============= TP3 ==============#
 include("TP3/couleur_moyenne.jl")
@@ -35,21 +50,11 @@ export tp3_exercice3bis
 
 include("TP3/exercice_4.jl")
 export tp3_exercice4
-#===============================#
+#================================#
 
-#inclure les fonctions du Tp1
-include("TP1/exercice_1.jl")
-export Matrice_de_donnees
-export Individu_moyen
-export Donnees_centrees
-export Matrice_var_cov
-
-include("TP1/exercice_2.jl")
-export Composantes_principales
-export Sigma2
-
-#inclure la fonction kppv
+#============= TP4 ==============#
 include("TP4/kppv.jl")
 export kppv
+#================================#
 
 end # module
