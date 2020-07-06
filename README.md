@@ -39,18 +39,15 @@ pkg> activate . # Activer l'environnement du module CSAD
 ```
 
 ### Afficher les sorties des scripts du Tp1
-##### Exercices 1 et 2
-Décommentez la ligne 10 des script exercice_1.jl et exercice_2.jl pour utiliser les bibliothèques d'affichage.
-Dans la racine (Projet-CSAD), chargez une image et exécutez la fonction `affichages` du script exercice_1.jl et
-`affichages_2` des scripts (exercice_1.jl et exercice_2.jl).
-
+Dans la racine (Projet-CSAD) tapez :
 ```julia
-julia> Im = load("src/TP1/automn.tiff");
-julia> include("src/TP1/exercice_1.jl")
-julia> affichages(Im)
-julia> include("src/TP1/exercice_2.jl")
-julia> affichages_2(Im)
+julia> ]
+pkg> activate .
+julia> include("test/test_affichage_tp1.jl")
 ```
+On teste avec l'image `automn.tiff` , pour changer d'image
+il suffit de changer le path à la ligne 12 du script
+``test_affichage_tp1.jl``
 
 ### Tester le TP3 avec affichage des tracés
 dans la racine du dossier contenant le module tapez :
