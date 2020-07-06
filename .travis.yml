@@ -9,7 +9,7 @@ julia:
 notifications:
   email: false
   
-install: travis_wait 20 install 
+install: travis_wait 20 sleep 1800 &  
 
 jobs:
   include:
