@@ -8,6 +8,8 @@ julia:
 
 notifications:
   email: false
+  
+install: travis_wait 30 mvn install
 
 jobs:
   include:
