@@ -8,9 +8,10 @@ julia:
 
 notifications:
   email: false
-
+  
 jobs:
   include:
+    before_deploy : - "travis_wait 30 sleep 1800 &"
     - stage: Documentation
       julia: 1.4
       os: linux
