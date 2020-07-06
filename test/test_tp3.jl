@@ -1,30 +1,29 @@
 
 @testset "Tests TP3" begin
     
-    # donnees
-    chemin = "../src/TP3/"
     # supprimer les fichiers contenant les resultats s'ils existent
-    rm(chemin*"resultats-ex1.mat",force = true)
-    rm(chemin*"resultats-ex2.mat",force = true)
-
+    rm("../src/TP3/resultats-ex1.mat",force = true)
+    rm("../src/TP3/resultats-ex2.mat",force = true)
+    
+    # donnees
     fleurs = ["pensees","oeillets","chrysanthemes"]
-    donnees   = matread(chemin*"donnees.mat")
+    donnees   = matread("../src/TP3/donnees.mat")
     tol_erreur = 1e-5
 
-    include(chemin*"couleur_moyenne.jl")
-    include(chemin*"estimation_mu_sigma.jl")
-    include(chemin*"vraisemblance.jl")
-    include(chemin*"moyenne_amelioree.jl")
+    include("../src/TP3/couleur_moyenne.jl")
+    include("../src/TP3/estimation_mu_sigma.jl")
+    include("../src/TP3/vraisemblance.jl")
+    include("../src/TP3/moyenne_amelioree.jl")
 
-    include(chemin*"exercice_1.jl")
-    include(chemin*"exercice_2.jl")
-    include(chemin*"exercice_3.jl")
-    include(chemin*"exercice_3_bis.jl")
-    include(chemin*"exercice_4.jl")
+    include("../src/TP3/exercice_1.jl")
+    include("../src/TP3/exercice_2.jl")
+    include("../src/TP3/exercice_3.jl")
+    include("../src/TP3/exercice_3_bis.jl")
+    include("../src/TP3/exercice_4.jl")
 
     # tester l'exercice 1
     @testset "Tests exo 1" begin
-        tp3_exercice1(false,chemin)
+        tp3_exercice1(false,"../src/TP3/")
         solutions = matread("solutions_tp3/solutions-ex1.mat")
 
         @testset "couleur_moyenne" for fleur in fleurs
@@ -38,7 +37,7 @@
 
     # tester l'exercice 2
     @testset "Tests exo 2" begin 
-        tp3_exercice2(false,chemin)
+        tp3_exercice2(false,"../src/TP3/")
         solutions = matread("solutions_tp3/solutions-ex2.mat")
 
         r = solutions["r"][:]
@@ -56,8 +55,8 @@
 
     # tester l'exercice 3 / exercice 3 bis
     @testset "Tests exo 3" begin 
-        @test 76.67 ≈ tp3_exercice3(false,chemin) atol = 1                 # test accuracy == 76.67 %   
-        @test 83.33 ≈ tp3_exercice3bis(false,chemin,[.5, .3, .2]) atol = 1 # test accuracy == 83.33 %   
+        @test 76.67 ≈ tp3_exercice3(false,"../src/TP3/") atol = 1                 # test accuracy == 76.67 %   
+        @test 83.33 ≈ tp3_exercice3bis(false,"../src/TP3/",[.5, .3, .2]) atol = 1 # test accuracy == 83.33 %   
         solutions_ex2 = matread("solutions_tp3/solutions-ex2.mat")
         solutions_ex3 = matread("solutions_tp3/solutions-ex3.mat")
         
@@ -78,7 +77,7 @@
     # tester l'exercice 4 
     @testset "Tests exo 4" begin
         solutions = matread("solutions_tp3/solutions-ex4.mat")
-        @test 100. ≈ tp3_exercice4(false,chemin) atol = 1            # test accuracy == 100 %               
+        @test 100.0 ≈ tp3_exercice4(false,"../src/TP3/")  atol = 1            # test accuracy == 100 %               
         @testset "couleur moyenne: $fleur" for fleur in fleurs  
             for i = 1:Integer(donnees["nb_images_$fleur"])
                 im = donnees[fleur[1:2] * string(i)]
@@ -86,6 +85,6 @@
             end
         end
     end
-    rm(chemin*"resultats-ex1.mat",force = true)
-    rm(chemin*"resultats-ex2.mat",force = true)
+    rm("../src/TP3/resultats-ex1.mat",force = true)
+    rm("../src/TP3/resultats-ex2.mat",force = true)
 end
