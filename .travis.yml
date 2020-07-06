@@ -11,11 +11,11 @@ notifications:
   
 jobs:
   include:
+    before_deploy : - "travis_wait 30 sleep 1800 &"
     - stage: Documentation
       julia: 1.4
       os: linux
       script: 
-        - "travis_wait 30 sleep 1800 &"
         - julia --project=docs -e 'using Pkg; Pkg.instantiate(); Pkg.develop(PackageSpec(path=pwd()))' 
         - julia --project=docs --color=yes docs/make.jl
       after_success: skip
