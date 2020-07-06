@@ -8,7 +8,9 @@ julia:
 
 notifications:
   email: false
-install: travis_wait 20 pip install matplotlib
+  
+install: travis_wait 20 pip install
+
 jobs:
   include:
     #before_deploy : - "travis_wait 30 sleep 1800 &"
