@@ -68,7 +68,7 @@ fact = Primes.factor(Vector,nb_images_chrysanthemes) # factorisation en nombres 
 nb_lignes_affichage = min(fact[2],fact[1])
 nb_colonnes_affichage = max(fact[2],fact[1])
 
-plt = plot(layout=(nb_lignes_affichage,nb_colonnes_affichage),showaxis = false)
+plt = plot(layout = (nb_lignes_affichage,nb_colonnes_affichage), axis = nothing, showaxis = false)
 for i = 1:nb_images_chrysanthemes
 	im = float_to_RGB(images["ch$i"])
 	Plots.plot!(plt[i],im)

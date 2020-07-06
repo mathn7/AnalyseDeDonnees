@@ -1,25 +1,26 @@
-#--------------------------------------------------------------------------
-# ENSEEIHT - 1SN - Analyse de donnees
-# TP4 - Reconnaissance de chiffres manuscrits par k plus proches voisins
-# TP4AD.m
-#--------------------------------------------------------------------------
 using MAT
-using Plots
-
+using Markdown
 include("kppv.jl")
 
-# "Chargement des images d'apprentissage et de test"
-datas = matread("src/TP4/MNIST.mat");
+"""
+**TP4 - Reconnaissance de chiffres**
+
+Reconnaissance de chiffres manuscrits par k plus proches voisins
+
+"""
+
+# Chargement des images d'apprentissage et de test
+dataset = matread("src/TP4/MNIST.mat");
 
 #   database_train_images  " 60000x784  "
 #   database_train_labels  " 60000x1    "
 #   database_test_images   " 10000x784  "
 #   database_test_labels   " 10000x1    "
 
-DataA = datas["database_train_images"]
-labelA = datas["database_train_labels"]
-DataT = datas["database_test_images"]
-labelT = datas["database_test_labels"]
+DataA = dataset["database_train_images"]
+labelA = dataset["database_train_labels"]
+DataT = dataset["database_test_images"]
+labelT = dataset["database_test_labels"]
 
 # Choix du nombre de voisins
 K = 10
@@ -27,18 +28,16 @@ K = 10
 # Initialisation du vecteur des classes
 ListeClass = collect(1:K)
 
+Nt_test = 100
 # Classement par aux k-ppv
-Partition,confusion,nb_erreurs = kppv(DataA,DataT,labelA,labelT,K,ListeClass)
-println("Partition est : " , Partition )
+Partition,confusion,nb_erreurs = kppv(true,DataA,DataT,labelA,labelT,K,ListeClass,Nt_test)
 
-Nt_test = length(Partition)
+println("Partition est : " , Partition )
 n = 28
-nb_col = 5
-nb_lig = Integer(min(50,Nt_test)/nb_col)
 plt = Plots.plot(
-    axis=nothing,
+    axis = nothing,
     showaxis=false,
-    layout = (nb_col,nb_lig)
+    layout = (5,10) 
 )
 
 for k = 1:min(50,Nt_test)
