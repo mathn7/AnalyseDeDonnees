@@ -30,7 +30,7 @@ Vous pouvez reformuler le problème en ne considérant que cinq paramètres en �
 
 L’objectif est de reconstruire des images préalablement modifiées par une transformation non linéaire bruitée.
 
-``\hspace*{1.5cm}`` ![](assets/image-modifiee.png)
+``\hspace*{1.5cm}`` ![](assets/image-TP2.png)
 
 Soit I une image de taille ``n \times m``. Une transformation non linéaire notée ``T`` est réalisée sur chaque niveau de gris ``I_{ij}`` du pixel ``(i, j)`` de l’image ``I``. L’image modifiée après transformation est notée ``J``, dont les éléments sont définis par :
 
