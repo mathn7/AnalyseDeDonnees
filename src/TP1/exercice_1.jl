@@ -170,10 +170,9 @@ function affichages(Im)
     #Utilisation de Plots
     plt3d= Plots.plot(R,V,B,
                    seriestype=:scatter,xlab="R",ylab="V",zlab="B",legend=false,title="Representation 3D des pixels dans lespace RVB")
+
     display(plt3d)
 
-    "#pour que la derniére fenêtre s'affiche sous Atom il faut que cette commande
-     #soit la dernière commande !"
 
     #gcf() #à commmenter si vous n'êtes pas sous Atom
 
