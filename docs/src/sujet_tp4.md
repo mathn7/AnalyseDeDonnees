@@ -23,13 +23,12 @@ la nouvelle entrée x, selon une distance à définir. L’algorithme 1 associé
 par la suite.
 ``\\ \rule{14cm}{2.0pt} \\``
 **Algorithm 1** Algorithme des ``k``-ppv ``\\``
-Input : ``Data_{A}`` et ``Label_{A}`` ensemble de données et labels d'apprentissage, ``Data_{T}`` ensemble de test.
-1. Soit ``x \in Data_{T}`` le point dont on cherche les ``k``-ppv au sens d'une distance ``d`` Calculer les distances ``d\left(x, x_{i}\right),\forall x_{i} \in D a t a_{A}``
-2. Trouver les ``k`` points ``x_{k} \in D a t a_{A}`` plus proches voisins de ``x`` au sens de la distance ``d``
-3. Déterminer la classe ``C`` la plus représentée parmi les ``k`` plus proches voisins de ``x``.
-4. Assigner la classe ``C`` à la donnée ``x``.
-
-
+**INPUT** : Data``_{A}`` et Label``_{A}`` ensemble de données et labels d'apprentissage, Data``_{T}`` ensemble de test.``\\``
+    **1.**  Soit ``x \in`` Data``_{T}`` le point dont on cherche les ``k``-ppv et ``d`` une distance, Calculer les distances ``d(x,x_{i}),\forall x_{i} \in ``Data``_{A}\\``
+    **2.**  Trouver les ``k`` points ``x_{k} \in`` Data``_{A}`` plus proches voisins de ``x`` au sens de la distance ``d \\``
+    **3.**  Déterminer la classe ``C`` la plus représentée parmi les ``k`` plus proches voisins de ``x.\\``
+    **4.**  Assigner la classe ``C`` à la donnée ``x``.
+``\\ \rule{14cm}{0.5pt} \\``
 ![](assets/kppv.png)
 
 FIGURE 2- Exemple de classification ``k``-ppv. L'échantillon de test (cercle vert) doit être classé soit dans la première classe des carrés bleus, soit dans la deuxième classe des triangles rouges. Si ``\mathrm{k}=3`` (cercle plein), il est assigné à la deuxième classe parce qu'il y a 2 triangles et seulement 1 carré à l'intérieur du cercle intérieur. Si ``\mathrm{k}=5`` (cercle en pointillés), il est assigné à la première classe (3 carrés contre 2 triangles à l'intérieur du cercle extérieur
