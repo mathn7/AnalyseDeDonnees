@@ -53,8 +53,6 @@ il suffit de changer le path à la ligne 12 du script
 ### Tester le TP3 avec affichage des tracés
 
 ```julia
-julia> ]
-pkg> activate . 
 julia> include("test/test_affichage_tp3.jl")
 ```
 ### Tester le TP4 avec affichage des résultats
