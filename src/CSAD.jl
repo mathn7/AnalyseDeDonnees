@@ -37,7 +37,7 @@ include("TP3/exercice_4.jl");          export tp3_exercice4
 
 #============= TP4 ==============#
 include("TP4/kppv.jl")
-export kppv
+export tp4_kppv
 #================================#
 
 end # module

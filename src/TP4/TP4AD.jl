@@ -32,7 +32,7 @@ function tp4_exercice(Nt_test::Int64)
     ListeClass = collect(1:K)
 
     # Classement par aux k-ppv
-    Partition,confusion,nb_erreurs = kppv(true,DataA,DataT,labelA,labelT,K,ListeClass,Nt_test)
+    Partition,confusion,nb_erreurs = tp4_kppv(true,DataA,DataT,labelA,labelT,K,ListeClass,Nt_test)
 
     println("Partition est : " , Partition )
     n = 28
