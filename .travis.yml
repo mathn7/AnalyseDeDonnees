@@ -9,11 +9,10 @@ julia:
 notifications:
   email: false
   
-install: travis_wait 20 sleep 1800 &  
+install: travis_wait 30 sleep 1800 &  
 
 jobs:
   include:
-    #before_deploy : - "travis_wait 30 sleep 1800 &"
     - stage: Documentation
       julia: 1.4
       os: linux
