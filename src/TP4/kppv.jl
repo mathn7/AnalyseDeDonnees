@@ -3,7 +3,7 @@
 
 # Syntaxe
 ```julia
-[Partition,confusion,nb_erreurs] = kppv(DataA,DataT,labelA,labelT,K,ListeClass)
+[Partition,confusion,nb_erreurs] = tp4_kppv(DataA,DataT,labelA,labelT,K,ListeClass)
 ```
 
 # Entrées :
