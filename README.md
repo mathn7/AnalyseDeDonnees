@@ -23,7 +23,7 @@ python3 -m pip install -U pip
 python3 -m pip install -U matplotlib
 ```
 
-### Tester sans affichage
+### Tester le module CSAD
 
 ```julia
 julia> ]
@@ -33,7 +33,6 @@ pkg> add https://github.com/mathn7/Projet-CSAD.git
 
 si vous avez les sources en local, dans le dossier (Projet-CSAD) le module tapez:
 ```julia
-julia> ]
 pkg> activate . # Activer l'environnement du module CSAD
     Activating environment at `.../Projet-CSAD/Project.toml`
 (CSAD) pkg> test
