@@ -33,7 +33,5 @@ include("solutions_tp2/sols_exactes.jl")
         @test isapprox(sol_prb_moindre_carre_totaux, sol_exact_prb_moindre_carre_totaux, atol=tol_erreur)
         @test isapprox(Img_Recons_par_MCO, Img_Recons_par_MCO_exact, atol=tol_erreur)
         @test isapprox(Img_Recons_par_MCT, Img_Recons_par_MCT_exact, atol=tol_erreur)
-  end
-
-
     end
+end
