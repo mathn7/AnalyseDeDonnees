@@ -7,6 +7,6 @@ Pages = ["fct_index.md"]
 ```
 
 ```@autodocs
-Modules = [CSAD]
+Modules = [AnalyseDeDonnees]
 Order   = [:function, :type]
 ```
