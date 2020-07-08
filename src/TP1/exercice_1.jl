@@ -92,10 +92,9 @@ function affichages(Im)
 
     #nettoyer l'environnement
     ImageView.closeall()
-    #clf() #à commenter si vous n'êtes pas sous Atom
 
     #Utilisation de Plots pour l'affichage des images
-    plt = Plots.plot(
+    #=plt = Plots.plot(
         axis=nothing,
         showaxis=false,
         layout = (2,2)
@@ -105,6 +104,7 @@ function affichages(Im)
     Plots.plot!(plt[3], RGB.(V), ratio=1,title="Canal V",titlefontsize=4)
     Plots.plot!(plt[4], RGB.(B), ratio=1,title="Canal B",titlefontsize=4)
     display(plt)
+    =#
 
     gui = imshow_gui((300,300),(2, 2))  # La fenetre comporte 2 lignes et 2 colonnes (affichage 300×300)
     canvases = gui["canvas"]
@@ -158,22 +158,11 @@ function affichages(Im)
 
     "#Affichage du nuage de pixels dans le repere RVB "
 
-    #Deuxieme fenetre d affichage
-
-    #Utilisation de PyPlot
-    #PyPlot.scatter3D(R,V,B,"b.")
-    #PyPlot.title("Representation 3D des pixels dans lespace RVB",FontSize=20)
-    #PyPlot.xlabel("R")
-    #PyPlot.ylabel("V")
-    #PyPlot.zlabel("B")
-
     #Utilisation de Plots
     plt3d= Plots.plot(R,V,B,
                    seriestype=:scatter,xlab="R",ylab="V",zlab="B",legend=false,title="Representation 3D des pixels dans lespace RVB")
 
     display(plt3d)
 
-
-    #gcf() #à commmenter si vous n'êtes pas sous Atom
 
 end
