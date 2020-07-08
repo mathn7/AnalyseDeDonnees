@@ -6,20 +6,20 @@ include("../src/TP1/exercice_2.jl");
 
 
 # fonction
-wait_for_key(text) = (print(stdout, text); read(stdin, 1); nothing)
+pause(text) = (print(stdout, text); read(stdin, 1); nothing)
 
 #chargement de l'image de test
 Im = load("src/TP1/automn.tiff");
 
 println("Lancement des tests d'affichage ...")
 
-wait_for_key("tapez entrée pour lancer l'exo 1")
+pause("tapez entrée pour lancer l'exo 1")
 affichages(Im)
 println("\n")
 
-wait_for_key("tapez entrée pour lancer l'exo 2")
+pause("tapez entrée pour lancer l'exo 2")
 affichages_2(Im)
 println("\n")
 
-wait_for_key("tapez entrée pour lancer l'exo 3")
+pause("tapez entrée pour lancer l'exo 3")
 include("../src/TP1/exercice_3.jl")
