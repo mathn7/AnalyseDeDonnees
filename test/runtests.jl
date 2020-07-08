@@ -4,6 +4,7 @@ using LinearAlgebra
 using Statistics
 using LaTeXStrings
 using Markdown
+using AnalyseDeDonnees
 
 @testset "Test CSAD" begin
 

@@ -19,6 +19,8 @@ function tp3_exercice4(afficher::Bool,chemin::String)
 	if afficher
 		pyplot() # utiliser le backend pyplot de matplotlib
 		Plots.closeall() 
+		# la fonction pause
+		pause(text) = (print(stdout, text); read(stdin, 1); nothing)
 	end
 
 	# Chargement des donnees
@@ -76,20 +78,35 @@ function tp3_exercice4(afficher::Bool,chemin::String)
 	end
 	mu_chrysanthemes, Sigma_chrysanthemes = tp3_estimation_mu_sigma(X_chrysanthemes)
 
+	# afficher les nouvelles coordonnées des images
+	if afficher
+		plt = Plots.scatter(X_pensees[:,1],X_pensees[:,2],X_pensees[:,3],color=:red,marker=:star7,markerstrokecolor=:red,markersize=10,
+			label="Pensees",title="Couleurs moyennes des images",xlabel=L"\mathrm{\bar{r}}",ylabel=L"\mathrm{\bar{v}}")
+
+		Plots.scatter!(X_oeillets[:,1],X_oeillets[:,2],X_oeillets[:,3],color=:green,markerstrokecolor=:green,markersize=10,label="Oeillets")
+		
+		Plots.scatter!(X_chrysanthemes[:,1],X_chrysanthemes[:,2],X_chrysanthemes[:,3], color=:blue,marker=:+, markerstrokecolor=:blue,
+			markersize=10,label="Chrysantemes",xlim=(r[1],r[end]),ylim=(v[1],v[end]))
+	end
+	if afficher
+		display(plt)
+	end
+
+	pause("tapez entrée pour afficher les résultats de la classification")
 	## Affichage des couleurs moyennes des images
 	
 	if afficher
+		print("Classifieur amélioré,                               ")
 		# Affichage des classes 
-		plt = Plots.plot(layout = (2,1))
 		# les points suivants sont tracés juste pour ajouter leurs labels dans la légende 
 		x = X_pensees[nb_images_pensees,1]
 		y = X_pensees[nb_images_pensees,2]
-		Plots.scatter!([x],[y],color=:red,label="pensee bien classée",subplot=1)
-		Plots.scatter!([x],[y],color=:white,markerstrokecolor=:red,marker=:xcross,label="pensee pas bien classée",subplot=1)
-		Plots.scatter!([x],[y],color=:green,label="oeillet bien classée",subplot=1)
-		Plots.scatter!([x],[y],color=:white,markerstrokecolor=:green,marker=:xcross,label="oeillet pas bien classée",subplot=1)
-		Plots.scatter!([x],[y],color=:blue,label="chrysantheme bien classée",subplot=1)
-		Plots.scatter!([x],[y],color=:white,markerstrokecolor=:blue,marker=:xcross,label="chrysantheme pas bien classée",subplot=1)
+		plt = Plots.scatter([x],[y],color=:red,label="pensee bien classée")
+		Plots.scatter!([x],[y],color=:white,markerstrokecolor=:red,marker=:xcross,label="pensee pas bien classée")
+		Plots.scatter!([x],[y],color=:green,label="oeillet bien classée")
+		Plots.scatter!([x],[y],color=:white,markerstrokecolor=:green,marker=:xcross,label="oeillet pas bien classée")
+		Plots.scatter!([x],[y],color=:blue,label="chrysantheme bien classée")
+		Plots.scatter!([x],[y],color=:white,markerstrokecolor=:blue,marker=:xcross,label="chrysantheme pas bien classée")
 		# la carte des couleurs représentant les différentes classes 
 		Plots.heatmap!(r,v,code_classe,color=cgrad([:royalblue, :seagreen, :firebrick]),
 			xlabel=L"\mathrm{\bar{r}}",ylabel=L"\mathrm{\bar{v}}",
@@ -110,11 +127,11 @@ function tp3_exercice4(afficher::Bool,chemin::String)
 		if (V_classe_pensees >= V_classe_oeillets) && (V_classe_pensees >= V_classe_chrysanthemes)
 			nb_img_bien_classees = nb_img_bien_classees + 1
 			if afficher
-				Plots.scatter!([x_i[1]],[x_i[2]],color=:red,markersize=10,label="",subplot=1)
+				Plots.scatter!([x_i[1]],[x_i[2]],color=:red,markersize=10,label="")
 			end
 		else
 			if afficher
-				Plots.scatter!([x_i[1]],[x_i[2]],color=:white,markerstrokecolor=:red,marker=:xcross,markersize=10,label="",subplot=1)
+				Plots.scatter!([x_i[1]],[x_i[2]],color=:white,markerstrokecolor=:red,marker=:xcross,markersize=10,label="")
 			end
 		end
 	end
@@ -130,11 +147,11 @@ function tp3_exercice4(afficher::Bool,chemin::String)
 		if (V_classe_oeillets >= V_classe_pensees) && (V_classe_oeillets >= V_classe_chrysanthemes)
 			nb_img_bien_classees = nb_img_bien_classees + 1
 			if afficher
-				Plots.scatter!([x_i[1]],[x_i[2]],color=:green,markersize=10,label="",subplot=1)
+				Plots.scatter!([x_i[1]],[x_i[2]],color=:green,markersize=10,label="")
 			end
 		else
 			if afficher
-				Plots.scatter!([x_i[1]],[x_i[2]],color=:white,markerstrokecolor=:green,marker=:xcross,markersize=10,label="",subplot=1)
+				Plots.scatter!([x_i[1]],[x_i[2]],color=:white,markerstrokecolor=:green,marker=:xcross,markersize=10,label="")
 			end
 		end
 	end
@@ -150,11 +167,11 @@ function tp3_exercice4(afficher::Bool,chemin::String)
 		if (V_classe_chrysanthemes >= V_classe_pensees) && (V_classe_chrysanthemes >= V_classe_oeillets)
 			nb_img_bien_classees = nb_img_bien_classees + 1
 			if afficher
-				Plots.scatter!([x_i[1]],[x_i[2]],color=:blue,markersize=10,label="",subplot=1)
+				Plots.scatter!([x_i[1]],[x_i[2]],color=:blue,markersize=10,label="")
 			end
 		else
 			if afficher
-				Plots.scatter!([x_i[1]],[x_i[2]],color=:white,markerstrokecolor=:blue,marker=:xcross,markersize=10,label="",subplot=1)
+				Plots.scatter!([x_i[1]],[x_i[2]],color=:white,markerstrokecolor=:blue,marker=:xcross,markersize=10,label="")
 			end
 		end
 	end
@@ -162,21 +179,10 @@ function tp3_exercice4(afficher::Bool,chemin::String)
 	accuracy = 100 * nb_img_bien_classees / (nb_images_chrysanthemes + nb_images_oeillets + nb_images_pensees)
 
 	if afficher
-		print("Classifieur amélioré,                               ")
 		@printf("accuracy : %0.3f",accuracy)
 		println("%")
 		# Ajout du titre avec le pourcentage des images bien classées
-		Plots.scatter!([x],[y],markersize=0,label="", title="Classification par maximum de vraisemblance, "*string(accuracy)[1:4]*"% d'images correctement classées",subplot=1)
-	end
-
-	if afficher
-		Plots.scatter!(X_pensees[:,1],X_pensees[:,2],X_pensees[:,3],color=:red,marker=:star7,markerstrokecolor=:red,markersize=10,
-			label="Pensees",title="Couleurs moyennes des images",xlabel=L"\mathrm{\bar{r}}",ylabel=L"\mathrm{\bar{v}}",subplot=2)
-
-		Plots.scatter!(X_oeillets[:,1],X_oeillets[:,2],X_oeillets[:,3],color=:green,markerstrokecolor=:green,markersize=10,label="Oeillets",subplot=2)
-		
-		Plots.scatter!(X_chrysanthemes[:,1],X_chrysanthemes[:,2],X_chrysanthemes[:,3], color=:blue,marker=:+, markerstrokecolor=:blue,
-			markersize=10,label="Chrysantemes",xlim=(r[1],r[end]),ylim=(v[1],v[end]),subplot=2)
+		Plots.scatter!([x],[y],markersize=0,label="", title="Classification par maximum de vraisemblance, "*string(accuracy)[1:4]*"% d'images correctement classées")
 	end
 	if afficher
 		display(plt)

@@ -14,8 +14,9 @@ function tp3_exercice2(afficher::Bool,chemin::String)
 	
 	if afficher
 		pyplot() # utiliser le backend pyplot de matplotlib
-		Plots.display(Plots.plot())
 		Plots.closeall()
+		# la fonction pause
+		pause(text) = (print(stdout, text); read(stdin, 1); nothing)
 	end
 
 	# Chargement des donnees de l exercice 1
@@ -36,17 +37,19 @@ function tp3_exercice2(afficher::Bool,chemin::String)
 	# Valeurs de la loi normale sur la grille
 	V_pensees, denominateur_classe_pensees = tp3_vraisemblance([r v], mu_pensees, Sigma_pensees, -1)
 
-	if afficher
-		plt = Plots.plot(layout=(1,3))
-		
-		Plots.plot!(r,v,V_pensees,st=:wireframe,color=:salmon,	
-			title=" Vraisemblance de la classe des pensees",
-			label="Vraisemblance empirique",subplot=1,	
+	if afficher		
+		println("La Vraisemblance de la classe des pensees ...")	
+
+		plt = Plots.plot(r,v,V_pensees,st=:wireframe,color=:salmon,	
+			title="Vraisemblance de la classe des pensees",
+			label="Vraisemblance empirique",	
 			xlim=(r[1],r[end]),ylim=(v[1],v[end]),
 			xlabel=L"\mathrm{\bar{r}}",ylabel=L"\mathrm{\bar{v}}")
 
 		Plots.scatter!(X_pensees[:,1],X_pensees[:,2],zeros(length(X_pensees)),markersize=10,
-			markerstrokecolor=:red,marker=:star7,color=:red,label="donnees d'apprentissage",subplot=1)
+			markerstrokecolor=:red,marker=:star7,color=:red,label="donnees d'apprentissage")
+		
+		Plots.display(plt)
 	end
 
 	## Estimation pour les oeillets ##
@@ -57,14 +60,18 @@ function tp3_exercice2(afficher::Bool,chemin::String)
 	V_oeillets, denominateur_classe_oeillets = tp3_vraisemblance([r v], mu_oeillets, Sigma_oeillets, -1)
 
 	if afficher
-		Plots.plot!(r,v,V_oeillets,st=:wireframe,color=:palegreen,	
-			title=" Vraisemblance de la classe des oeillets",
-			label="Vraisemblance empirique",subplot=2,	
+		pause("tapez entrée pour afficher la Vraisemblance de la classe des oeillets")
+
+		plt = Plots.plot(r,v,V_oeillets,st=:wireframe,color=:palegreen,	
+			title="Vraisemblance de la classe des oeillets",
+			label="Vraisemblance empirique",	
 			xlim=(r[1],r[end]),ylim=(v[1],v[end]),
 			xlabel=L"\mathrm{\bar{r}}",ylabel=L"\mathrm{\bar{v}}")
 
 		Plots.scatter!(X_oeillets[:,1],X_oeillets[:,2],zeros(length(X_oeillets)),markersize=10,
-			markerstrokecolor=:green,marker=:star7,color=:green,label="donnees d'apprentissage",subplot=2)
+			markerstrokecolor=:green,marker=:star7,color=:green,label="donnees d'apprentissage")
+
+		Plots.display(plt)
 	end
 
 	## Estimation pour les chrysanthemes ##
@@ -100,14 +107,16 @@ function tp3_exercice2(afficher::Bool,chemin::String)
 	))
 
 	if afficher
-		Plots.plot!(r,v,V_chrysanthemes,st=:wireframe,color=:deepskyblue,
+		pause("tapez entrée pour afficher la Vraisemblance de la classe des chrysanthemes")
+
+		plt = Plots.plot(r,v,V_chrysanthemes,st=:wireframe,color=:deepskyblue,
 			title=" Vraisemblance de la classe des chrysanthemes",
-			label="Vraisemblance empirique",subplot=3,	
+			label="Vraisemblance empirique",	
 			xlim=(r[1],r[end]),ylim=(v[1],v[end]),
 			xlabel=L"\mathrm{\bar{r}}",ylabel=L"\mathrm{\bar{v}}")
 
-			Plots.scatter!(X_chrysanthemes[:,1],X_chrysanthemes[:,2],zeros(length(X_chrysanthemes)),markersize=7,
-			markerstrokecolor=:blue,marker=:star7,color=:blue,label="donnees d'apprentissage",subplot=3)
+		Plots.scatter!(X_chrysanthemes[:,1],X_chrysanthemes[:,2],zeros(length(X_chrysanthemes)),markersize=7,
+			markerstrokecolor=:blue,marker=:star7,color=:blue,label="donnees d'apprentissage")
 		Plots.display(plt)
 	end
 end
