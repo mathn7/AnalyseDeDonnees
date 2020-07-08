@@ -19,10 +19,10 @@ function tp3_exercice4(afficher::Bool,chemin::String)
 	if afficher
 		pyplot() # utiliser le backend pyplot de matplotlib
 		Plots.closeall() 
-		# la fonction pause
-		pause(text) = (print(stdout, text); read(stdin, 1); nothing)
 	end
 
+	# la fonction pause
+	pause(text) = (print(stdout, text); read(stdin, 1); nothing)
 	# Chargement des donnees
     vars_ex2 = matread(chemin*"resultats-ex2.mat")
 	vars = matread(chemin*"donnees.mat")
