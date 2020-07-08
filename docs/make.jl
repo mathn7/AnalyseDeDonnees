@@ -1,8 +1,8 @@
 using Documenter
-using CSAD
+using AnalyseDeDonnees
 
 makedocs(
-    modules = [CSAD],
+    modules = [AnalyseDeDonnees],
     sitename = "CSAD.jl",
     authors = "Saloua Naama, Mohamed El Waghf et Rachid ELMontassir",
     format = Documenter.HTML(prettyurls = get(ENV, "CI", nothing) == "true"),
@@ -18,4 +18,4 @@ makedocs(
             ]
     )
 
-deploydocs(repo = "github.com/mathn7/Projet-CSAD.git")
+deploydocs(repo = "github.com/mathn7/AnalyseDeDonnees.git")

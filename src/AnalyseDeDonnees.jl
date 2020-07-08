@@ -1,4 +1,4 @@
-module CSAD
+module AnalyseDeDonnees
 
 using Plots
 using MAT
