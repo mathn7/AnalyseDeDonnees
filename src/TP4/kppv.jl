@@ -3,7 +3,7 @@
 
 # Syntaxe
 ```julia
-[Partition,confusion,nb_erreurs] = kppv(DataA,DataT,labelA,labelT,K,ListeClass)
+[Partition,confusion,nb_erreurs] = tp4_kppv(DataA,DataT,labelA,labelT,K,ListeClass)
 ```
 
 # Entrées :
@@ -20,7 +20,7 @@
    * **confusion**    : (Array{Float64,2})  la matrice de confusion
    * **nb_erreurs**   : (Int64) nombre d'erreurs effectuées lors de la classification
 """
-function kppv(afficher::Bool,DataA,DataT,labelA,labelT,K,ListeClass,Nt_test::Int64)
+function tp4_kppv(afficher::Bool,DataA,DataT,labelA,labelT,K,ListeClass,Nt_test::Int64)
 
     Na = size(DataA)[1]
     Nt = size(DataT)[1]

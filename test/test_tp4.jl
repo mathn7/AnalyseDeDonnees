@@ -17,19 +17,19 @@
     labelT = dataset["database_test_labels"]
 
     # le cas de test 1
-    partition, confusion, nb_erreurs = kppv(false, DataA, DataT, labelA, labelT, K, collect(1:K), 10)
+    partition, confusion, nb_erreurs = tp4_kppv(false, DataA, DataT, labelA, labelT, K, collect(1:K), 10)
     @test partition  ≈ solutions["partition10"]   atol = tol_erreur
     @test confusion  ≈ solutions["confusion10"]   atol = tol_erreur
     @test nb_erreurs ≈ solutions["nb_erreurs10"]  atol = tol_erreur
 
     # le cas de test 2
-    partition, confusion, nb_erreurs = kppv(false, DataA, DataT, labelA, labelT, K, collect(1:K), 50)
+    partition, confusion, nb_erreurs = tp4_kppv(false, DataA, DataT, labelA, labelT, K, collect(1:K), 50)
     @test partition  ≈ solutions["partition50"]   atol = tol_erreur
     @test confusion  ≈ solutions["confusion50"]   atol = tol_erreur
     @test nb_erreurs ≈ solutions["nb_erreurs50"]  atol = tol_erreur
 
     # le cas de test 3
-    partition, confusion, nb_erreurs = kppv(false, DataA, DataT, labelA, labelT, K, collect(1:K), 100)
+    partition, confusion, nb_erreurs = tp4_kppv(false, DataA, DataT, labelA, labelT, K, collect(1:K), 100)
     @test partition  ≈ solutions["partition100"]  atol = tol_erreur
     @test confusion  ≈ solutions["confusion100"]  atol = tol_erreur
     @test nb_erreurs ≈ solutions["nb_erreurs100"] atol = tol_erreur

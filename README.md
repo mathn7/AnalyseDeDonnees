@@ -14,27 +14,25 @@ Projet du calcul scientifique et analyse des donnees
 On utilise pour l'affichage le backend Pyplot de l'API Matplotlib de Python. Vous pouvez l'instaler sous MacOS, Windows et Linux avec les commandes suivantes :  
 
 ```
-python -m pip install -U pip
 python -m pip install -U matplotlib
 ```
 ou
 ```
-python3 -m pip install -U pip
 python3 -m pip install -U matplotlib
 ```
 
-### Tester sans affichage
+### Tester le module CSAD
 
 ```julia
 julia> ]
 pkg> add https://github.com/mathn7/Projet-CSAD.git
 (CSAD) pkg> test
 ```
-si vous avez les sources en local, dans la racine du dossier contenant le module tapez:
 
+si vous avez les sources en local, dans la racine (Projet-CSAD) tapez:
 ```julia
-julia> ]
 pkg> activate . # Activer l'environnement du module CSAD
+    Activating environment at `.../Projet-CSAD/Project.toml`
 (CSAD) pkg> test
 ```
 
@@ -50,9 +48,12 @@ il suffit de changer le path à la ligne 12 du script
 ``test_affichage_tp1.jl``
 
 ### Tester le TP3 avec affichage des tracés
-dans la racine du dossier contenant le module tapez :
+
 ```julia
-julia> ]
-pkg> activate . 
 julia> include("test/test_affichage_tp3.jl")
+```
+### Tester le TP4 avec affichage des résultats
+
+```julia
+julia> include("test/test_affichage_tp4.jl")
 ```
