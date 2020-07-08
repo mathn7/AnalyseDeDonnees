@@ -3,7 +3,7 @@ using AnalyseDeDonnees
 
 makedocs(
     modules = [AnalyseDeDonnees],
-    sitename = "CSAD.jl",
+    sitename = "AnalyseDeDonnees.jl",
     authors = "Saloua Naama, Mohamed El Waghf et Rachid ELMontassir",
     format = Documenter.HTML(prettyurls = get(ENV, "CI", nothing) == "true"),
     pages = [
