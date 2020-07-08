@@ -63,7 +63,6 @@ end
 function affichages_2(Im)
     #nettoyer l'environnement
     ImageView.closeall()
-    #clf() #à commenter si vous n'êtes pas sous Atom
 
     C = Composantes_principales(Im);
     C1 = reshape(C[:,1],size(Im))
@@ -71,18 +70,6 @@ function affichages_2(Im)
     C3 = reshape(C[:,3],size(Im))
 
     #Utilisation de Plots pour l'affichage des images
-    #=
-    plt = Plots.plot(
-        axis=nothing,
-        showaxis=false,
-        layout = (2,2)
-    )
-    Plots.plot!(plt[1], Im, ratio=1,title="ImageRVB",titlefontsize=4)
-    Plots.plot!(plt[2], RGB.(C1), ratio=1,title="1^{ere} composante principale",titlefontsize=4)
-    Plots.plot!(plt[3], RGB.(C2), ratio=1,title="2^{eme} composante principale",titlefontsize=4)
-    Plots.plot!(plt[4], RGB.(C3), ratio=1,title="3^{eme} composante principale",titlefontsize=4)
-    display(plt)
-    =#
 
     ##  ####### Affichage de l'image RVB et de ses composantes principales #######
     gui = imshow_gui((300,300),(2, 2))  # La fenetre comporte 2 lignes et 2 colonnes (affichage 300×300)
@@ -103,15 +90,6 @@ function affichages_2(Im)
     ImageMagick.save("src/TP1/CP2.png",(C2.-minimum(C2[:]))/(maximum(C2[:].-minimum(C2[:]))))
     ImageMagick.save("src/TP1/CP3.png",(C3.-minimum(C3[:]))/(maximum(C3[:].-minimum(C3[:]))))
 
-    ## Affichage du nuage de pixels dans le repere des composantes principales
-    # Deuxieme fenetre d'affichage
-    #PyPlot.figure("Nuage de pixels dans le repere des composantes principales",figsize=(30,30))
-    #PyPlot.scatter3D(C1,C2,C3,"r*")
-    #PyPlot.xlabel("1ere CP",FontWeight=20)
-    #PyPlot.ylabel("2eme CP",FontWeight=20)
-    #PyPlot.zlabel("3eme CP",FontWeight=20)
-    #PyPlot.title("Representation 3D des pixels dansl''espace des composantes principales",FontWeight=20)
-
     #utilisation Plots
     plt3d= Plots.plot(C1,C2,C3,
                    seriestype=:scatter, markersize = 1, xlab="1ere CP",ylab="2eme CP",zlab="3eme CP",legend=false,markercolor=:blue,title="Representation 3D des pixels dansl''espace des composantes principales")
@@ -129,5 +107,4 @@ function affichages_2(Im)
     @printf("Proportion de contraste dans le canal C2 = %0.3f\n",Sigma_2[2,2]/c)
     @printf("Proportion de contraste dans le canal C3 = %0.3f\n",Sigma_2[3,3]/c)
 
-    #gcf() #à commenter si vous n'êtes pas sous Atom
 end
