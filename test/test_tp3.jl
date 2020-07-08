@@ -6,8 +6,8 @@
     rm("../src/TP3/resultats-ex2.mat",force = true)
     
     # donnees
-    fleurs = ["pensees","oeillets","chrysanthemes"]
-    donnees   = matread("../src/TP3/donnees.mat")
+    fleurs  = ["pensees","oeillets","chrysanthemes"]
+    donnees = matread("../src/TP3/donnees.mat")
     tol_erreur = 1e-5
 
     include("../src/TP3/couleur_moyenne.jl")
@@ -46,6 +46,7 @@
         @testset "vraisemblance et estimation: $fleur" for fleur in fleurs  
             mu, Sigma        = tp3_estimation_mu_sigma(solutions["X_"*fleur])
             vr, denominateur = tp3_vraisemblance([r v], solutions["mu_"*fleur], solutions["Sigma_"*fleur], -1)
+
             @test solutions["mu_"*fleur]                   ≈ mu  atol = tol_erreur
             @test solutions["Sigma_"*fleur]                ≈ Sigma  atol = tol_erreur              
             @test solutions["V_"*fleur]                    ≈ vr atol = tol_erreur
@@ -55,8 +56,6 @@
 
     # tester l'exercice 3 / exercice 3 bis
     @testset "Tests exo 3" begin 
-        @test 76.67 ≈ tp3_exercice3(false,"../src/TP3/") atol = 1                 # test accuracy == 76.67 %   
-        @test 83.33 ≈ tp3_exercice3bis(false,"../src/TP3/",[.5, .3, .2]) atol = 1 # test accuracy == 83.33 %   
         solutions_ex2 = matread("solutions_tp3/solutions-ex2.mat")
         solutions_ex3 = matread("solutions_tp3/solutions-ex3.mat")
         
@@ -71,7 +70,10 @@
         for i in 1:Integer(donnees["nb_images_"*fleur])            
             V_classe,_ = tp3_vraisemblance(X[i,:],mu,Sigma,denominateur)
             @test solutions_ex3["V_classe_"*fleur][i] ≈ V_classe atol = tol_erreur
-        end 
+        end
+         
+        @test 76.67 ≈ tp3_exercice3(false,"../src/TP3/") atol = 1                 # test accuracy == 76.67 %   
+        @test 83.33 ≈ tp3_exercice3bis(false,"../src/TP3/",[.5, .3, .2]) atol = 1 # test accuracy == 83.33 %
     end
 
     # tester l'exercice 4 

@@ -1,4 +1,5 @@
 using MAT
+
 # exo2
 result = MAT.matread("test/solutions_tp2/Resultats-exacts-exo2.mat")
 

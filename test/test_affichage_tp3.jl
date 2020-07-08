@@ -16,6 +16,7 @@ include("../src/TP3/exercice_3_bis.jl")
 include("../src/TP3/exercice_4.jl")
 
 pyplot()
+
 # fonction 
 wait_for_key(text) = (print(stdout, text); read(stdin, 1); nothing)
 
