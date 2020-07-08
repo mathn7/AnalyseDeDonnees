@@ -13,13 +13,13 @@ Im = load("src/TP1/automn.tiff");
 
 println("Lancement des tests d'affichage ...")
 
-wait_for_key("tapez entrer pour lancer l'exo 1")
+wait_for_key("tapez entrée pour lancer l'exo 1")
 affichages(Im)
 println("\n")
 
-wait_for_key("tapez entrer pour lancer l'exo 2")
+wait_for_key("tapez entrée pour lancer l'exo 2")
 affichages_2(Im)
 println("\n")
 
-wait_for_key("tapez entrer pour lancer l'exo 3")
+wait_for_key("tapez entrée pour lancer l'exo 3")
 include("../src/TP1/exercice_3.jl")
