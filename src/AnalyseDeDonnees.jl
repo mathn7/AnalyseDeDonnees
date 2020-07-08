@@ -1,11 +1,13 @@
 module AnalyseDeDonnees
 
-using Plots
+#using Plots
 using MAT
 using LinearAlgebra
 using Statistics
 using LaTeXStrings
 using Markdown
+using Printf
+using Images
 
 #============= TP1 ==============#
 include("TP1/exercice_1.jl")
