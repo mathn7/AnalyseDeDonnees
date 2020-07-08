@@ -14,12 +14,10 @@ Projet du calcul scientifique et analyse des donnees
 On utilise pour l'affichage le backend Pyplot de l'API Matplotlib de Python. Vous pouvez l'instaler sous MacOS, Windows et Linux avec les commandes suivantes :  
 
 ```
-python -m pip install -U pip
 python -m pip install -U matplotlib
 ```
 ou
 ```
-python3 -m pip install -U pip
 python3 -m pip install -U matplotlib
 ```
 
