@@ -8,12 +8,12 @@ include("solutions_tp1/sols_exactes.jl")
 tolerance = 1e-3
 
 #charger l'image à tester
-Im = load("../src/TP1/automn.tiff");
+Im = load("../src/TP1/automn.tiff")
 
 #matrice de variance covariance
-Sigma = Matrice_var_cov(Im);
+Sigma = Matrice_var_cov(Im)
 
-c = sum(diag(Sigma));
+c = sum(diag(Sigma))
 
 @testset "Tests EXO1" begin
 	@testset "test de l'individu moyen" begin
@@ -31,5 +31,4 @@ c = sum(diag(Sigma));
 			@test isapprox(PcB, Sigma[3,3]/c, atol=tolerance)
 		end
 	end
-
 end

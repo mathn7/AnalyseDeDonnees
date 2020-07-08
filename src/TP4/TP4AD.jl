@@ -39,7 +39,7 @@ function tp4_exercice(Nt_test::Int64)
     plt = Plots.plot(
         axis = nothing,
         showaxis=false,
-        layout = (min(5,Integer(round(Nt_test/5))),max(5,Integer(round(Nt_test/5))))  
+        layout = (min(5,Integer(round(Nt_test/5))),max(5,Integer(ceil(Nt_test/5))))  
     )
 
     for k = 1:min(50,Nt_test)
