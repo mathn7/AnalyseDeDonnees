@@ -29,7 +29,7 @@ pkg> add https://github.com/mathn7/Projet-CSAD.git
 (CSAD) pkg> test
 ```
 
-si vous avez les sources en local, dans le dossier (Projet-CSAD) le module tapez:
+si vous avez les sources en local, dans la racine (Projet-CSAD) tapez:
 ```julia
 pkg> activate . # Activer l'environnement du module CSAD
     Activating environment at `.../Projet-CSAD/Project.toml`
