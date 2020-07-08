@@ -1,10 +1,10 @@
-# Projet CSAD
+# AnalyseDeDonnees 
 Projet du calcul scientifique et analyse des donnees
 
 
 | **Documentation** | **Intégration continue** | **Julia** |
 |:-----------------:|:------------------------:|:---------:|
-|[![](https://img.shields.io/badge/docs-dev-blue.svg)](https://mathn7.github.io/Projet-CSAD/dev)|[![Build Status](https://travis-ci.com/mathn7/Projet-CSAD.svg?branch=master)](https://travis-ci.com/mathn7/Projet-CSAD)|[![](https://img.shields.io/github/v/release/JuliaLang/julia.svg)](https://docs.julialang.org)|
+|[![](https://img.shields.io/badge/docs-dev-blue.svg)](https://mathn7.github.io/AnalyseDeDonnees/dev)|[![Build Status](https://travis-ci.com/mathn7/AnalyseDeDonnees.svg?branch=master)](https://travis-ci.com/mathn7/AnalyseDeDonnees)|[![](https://img.shields.io/github/v/release/JuliaLang/julia.svg)](https://docs.julialang.org)|
 
 
 ## Tester les scripts
@@ -21,23 +21,23 @@ ou
 python3 -m pip install -U matplotlib
 ```
 
-### Tester le module CSAD
+### Tester le module AnalyseDeDonnees
 
 ```julia
 julia> ]
-pkg> add https://github.com/mathn7/Projet-CSAD.git
-(CSAD) pkg> test
+pkg> add https://github.com/mathn7/AnalyseDeDonnees.git
+(AnalyseDeDonnees) pkg> test
 ```
 
-si vous avez les sources en local, dans la racine (Projet-CSAD) tapez:
+si vous avez les sources en local, dans la racine (AnalyseDeDonnees) tapez:
 ```julia
-pkg> activate . # Activer l'environnement du module CSAD
-    Activating environment at `.../Projet-CSAD/Project.toml`
-(CSAD) pkg> test
+pkg> activate . # Activer l'environnement du module AnalyseDeDonnees
+    Activating environment at `.../AnalyseDeDonnees/Project.toml`
+(AnalyseDeDonnees) pkg> test
 ```
 
 ### Afficher les sorties des scripts du Tp1
-Dans la racine (Projet-CSAD) tapez :
+Dans la racine (AnalyseDeDonnees) tapez :
 ```julia
 julia> ]
 pkg> activate .
