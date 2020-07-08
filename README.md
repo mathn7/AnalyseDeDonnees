@@ -14,12 +14,10 @@ Projet du calcul scientifique et analyse des donnees
 On utilise pour l'affichage le backend Pyplot de l'API Matplotlib de Python. Vous pouvez l'instaler sous MacOS, Windows et Linux avec les commandes suivantes :  
 
 ```
-python -m pip install -U pip
 python -m pip install -U matplotlib
 ```
 ou
 ```
-python3 -m pip install -U pip
 python3 -m pip install -U matplotlib
 ```
 
@@ -31,7 +29,7 @@ pkg> add https://github.com/mathn7/Projet-CSAD.git
 (CSAD) pkg> test
 ```
 
-si vous avez les sources en local, dans le dossier (Projet-CSAD) le module tapez:
+si vous avez les sources en local, dans la racine (Projet-CSAD) tapez:
 ```julia
 pkg> activate . # Activer l'environnement du module CSAD
     Activating environment at `.../Projet-CSAD/Project.toml`
