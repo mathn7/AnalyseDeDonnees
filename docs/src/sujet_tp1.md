@@ -40,7 +40,7 @@ En utilisant les deux images *autumn.tiff* et *pears.png* dans le script *exerci
 
 ``\hspace*{2.5cm}`` ``I_{nvg}=\frac{1}{3}(R+V+B)``
 
-Pourtant, si l'on regarde en détail la fonction *rgb2gray* de Matlab, qui est spécifiquement conçue pour transformer une image ``\mathrm{RVB}`` en une image en niveaux de gris, on remarquera qu'elle effectue une autre combinaison linéaire que la simple moyenne des trois canaux (cf. help rgb2gray):
+Pourtant, si l'on regarde en détail la fonction *Gray* de Julia, qui est spécifiquement conçue pour transformer une image ``\mathrm{RVB}`` en une image en niveaux de gris, on remarquera qu'elle effectue une autre combinaison linéaire que la simple moyenne des trois canaux (cf. help rgb2gray):
 
 ``\hspace*{2.5cm}`` ``Y=0,2989 R + 0,5870 V + 0,1140 B``
 
