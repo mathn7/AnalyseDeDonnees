@@ -1,2 +1,3 @@
 [deps]
+AnalyseDeDonnees = "8aee07c5-bb35-41f3-b471-880dc342bbbb"
 Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
