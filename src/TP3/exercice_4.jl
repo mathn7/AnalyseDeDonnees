@@ -92,10 +92,10 @@ function tp3_exercice4(afficher::Bool,chemin::String)
 		display(plt)
 	end
 
-	pause("tapez entrée pour afficher les résultats de la classification")
 	## Affichage des couleurs moyennes des images
 	
 	if afficher
+		pause("tapez entrée pour afficher les résultats de la classification")
 		print("Classifieur amélioré,                               ")
 		# Affichage des classes 
 		# les points suivants sont tracés juste pour ajouter leurs labels dans la légende 
