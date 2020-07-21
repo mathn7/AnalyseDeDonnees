@@ -5,7 +5,7 @@ using Statistics
 using LaTeXStrings
 using Markdown
 
-@testset "Test CSAD" begin
+@testset "Test AnalyseDeDonnees" begin
 
     # tests du TP1
     @testset "Tests TP1" begin

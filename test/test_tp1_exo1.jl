@@ -11,13 +11,13 @@ tolerance = 1e-3
 Im = load("../src/TP1/automn.tiff")
 
 #matrice de variance covariance
-Sigma = Matrice_var_cov(Im)
+Sigma = tp1_Matrice_var_cov(Im)
 
 c = sum(diag(Sigma))
 
 @testset "Tests EXO1" begin
 	@testset "test de l'individu moyen" begin
-		@test isapprox(Ind_moyen,Individu_moyen(Im),atol=tolerance)
+		@test isapprox(Ind_moyen,tp1_Individu_moyen(Im),atol=tolerance)
 	end
 	@testset "test de la matrice de variance/covariance" begin
 		@testset "coefficients de corrélation" begin
