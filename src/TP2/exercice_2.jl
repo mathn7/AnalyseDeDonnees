@@ -5,8 +5,8 @@ using Statistics
 using LinearAlgebra
 
 function exercice_2(Afficher::Bool)
-    vars1 = matread("src/TP2/SG1.mat")
-    vars2 = matread("src/TP2/ImSG1.mat")
+    vars1 = matread("../src/TP2/SG1.mat")
+    vars2 = matread("../src/TP2/ImSG1.mat")
 
     DataMod = vars1["DataMod"]
     ImMod =  vars1["ImMod"]
@@ -91,7 +91,7 @@ function exercice_2(Afficher::Bool)
 
     end
 
-    MAT.matwrite("src/TP2/Resultats-exo2.mat", Dict(
+    MAT.matwrite("../src/TP2/Resultats-exo2.mat", Dict(
         "A" => A,
         "b" => B,
         "sol_prb_moindre_carre_ordinaires" => Gamma1,

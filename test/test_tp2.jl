@@ -9,7 +9,6 @@ include("solutions_tp2/sols_exactes.jl")
 
     tol_erreur = 1e-6
 
-
     @testset "MCO_exo1" begin
       x_sol = MCO(x_MCO,y_MCO)
       @test x_sol ≈ sol_exacte_MCO  atol = tol_erreur
@@ -17,7 +16,7 @@ include("solutions_tp2/sols_exactes.jl")
 
     @testset "Test exo2" begin
         exercice_2(false)
-        result = matread("src/TP2/Resultats-exo2.mat")
+        result = matread("../src/TP2/Resultats-exo2.mat")
                                     
 
         A = result["A"] 

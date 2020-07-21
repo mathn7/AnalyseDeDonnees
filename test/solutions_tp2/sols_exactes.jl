@@ -1,7 +1,7 @@
 using MAT
 
 # exo2
-result = MAT.matread("test/solutions_tp2/Resultats-exacts-exo2.mat")
+result = MAT.matread("solutions_tp2/Resultats-exacts-exo2.mat")
 
 A_exact = result["A"] 
 b_exact = result["b"] 
