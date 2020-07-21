@@ -1,6 +1,5 @@
 using LinearAlgebra
 using PyPlot
-using MAT
 
 include("score.jl")
 include("Donnees.jl")

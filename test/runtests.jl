@@ -13,6 +13,10 @@ using Markdown
         include("test_tp1_exo2.jl")
     end
 
+    # tester le TP2 
+    include("test_tp2.jl")
+
+
     # tester le TP3 
     include("test_tp3.jl")  
     

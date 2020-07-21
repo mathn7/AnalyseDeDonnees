@@ -47,13 +47,25 @@ On teste avec l'image `automn.tiff` , pour changer d'image
 il suffit de changer le path à la ligne 12 du script
 ``test_affichage_tp1.jl``
 
-### Tester le TP3 avec affichage des tracés
+### Afficher les sorties des scripts du Tp2
+Dans la racine (AnalyseDeDonnees) tapez :
+###### Pour l'exercice 1
+```julia
+julia> include("src/exercice_1.jl")
+```
+###### Pour l'exercice 2
+```julia
+julia> include("src/exercice_2.jl")
+julia> exercice_2(true)
+```
 
+### Tester le TP3 avec affichage des tracés
+Dans la racine (AnalyseDeDonnees) tapez :
 ```julia
 julia> include("test/test_affichage_tp3.jl")
 ```
 ### Tester le TP4 avec affichage des résultats
-
+Dans la racine (AnalyseDeDonnees) tapez :
 ```julia
 julia> include("test/test_affichage_tp4.jl")
 ```

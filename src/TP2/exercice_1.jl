@@ -1,6 +1,5 @@
 using LinearAlgebra
 using PyPlot
-using MAT
 using Markdown
 
 include("Donnees.jl")

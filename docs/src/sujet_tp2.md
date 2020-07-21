@@ -52,7 +52,6 @@ On dispose d’une partie de l’image modifiée par la transformation ``T`` ave
 
 ``\hspace*{1.5cm}`` 4. Estimez l’erreur aux moindres carrés (RMSE) entre l’image reconstruite et l’image originale.
 
-``\hspace*{1.5cm}`` 5. Essayez avec les autres jeux de données.
 
 #### Problème aux moindres carrés totaux
 

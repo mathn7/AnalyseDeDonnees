@@ -10,7 +10,7 @@ include("solutions_tp2/sols_exactes.jl")
     tol_erreur = 1e-6
 
 
-    @testset "MCO" begin
+    @testset "MCO_exo1" begin
       x_sol = MCO(x_MCO,y_MCO)
       @test x_sol ≈ sol_exacte_MCO  atol = tol_erreur
     end
