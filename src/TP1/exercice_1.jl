@@ -24,7 +24,7 @@ X = Matrice_de_donnees(Im)
 # Sortie:
    * **X**    : (Array{Float32,2}) la matrice des données
 """
-function Matrice_de_donnees(Im)
+function tp1_Matrice_de_donnees(Im)
     #Decoupage de l'image en trois canaux et conversion en flottants
     C = channelview(Im);
     R = float(C[1,:,:]);
@@ -45,7 +45,7 @@ x_barre = Individu_moyen(Im)
 # Sortie:
    * **x_barre**    : (Array{Float64,2})  l'individu moyen
 """
-function Individu_moyen(Im)
+function tp1_Individu_moyen(Im)
     (n,p)= size(Matrice_de_donnees(Im));
     return Matrice_de_donnees(Im)'*ones(n,1)/n;
 end
@@ -60,9 +60,9 @@ X_c = Donnees_centrees(Im)
 # Sortie:
    * **X_c**    : (Array{Float64,2})  matrice des données centrés
 """
-function Donnees_centrees(Im)
-    (n,p)= size(Matrice_de_donnees(Im));
-    return Matrice_de_donnees(Im)-ones(n,1)*Individu_moyen(Im)';
+function tp1_Donnees_centrees(Im)
+    (n,p)= size(tp1_Matrice_de_donnees(Im));
+    return tp1_Matrice_de_donnees(Im)-ones(n,1)*tp1_Individu_moyen(Im)';
 end
 
 @doc doc"""
@@ -75,9 +75,9 @@ Sigma = Matrice_var_cov(Im)
 # Sortie:
    * **Sigma**    : (Array{Float64,2})  la matrice de variance/covariance des variables aléatoires
 """
-function Matrice_var_cov(Im)
-    (n,p)= size(Matrice_de_donnees(Im));
-    return (Donnees_centrees(Im)')*Donnees_centrees(Im)/n;
+function tp1_Matrice_var_cov(Im)
+    (n,p)= size(tp1_Matrice_de_donnees(Im));
+    return (tp1_Donnees_centrees(Im)')*tp1_Donnees_centrees(Im)/n;
 end
 
 #Entrée : matrice representatrice l'image
@@ -143,7 +143,7 @@ function affichages(Im)
                                    #save("src/TP1/canal_B.png",colorview(RGB, zeroarray, zeroarray, C[3,:,:]))
 
    "# Coefficients de correlation lineaire"
-   Sigma = Matrice_var_cov(Im) #Matrice de variance/covariance
+   Sigma = tp1_Matrice_var_cov(Im) #Matrice de variance/covariance
 
    @printf("Correlation r(R,V) = %0.3f\n",Sigma[1,2]/sqrt(Sigma[1,1]*Sigma[2,2]));
    @printf("Correlation r(R,B) = %0.3f\n",Sigma[1,3]/sqrt(Sigma[1,1]*Sigma[3,3]));

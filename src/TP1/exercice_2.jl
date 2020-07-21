@@ -28,10 +28,10 @@ C = Composantes_principales(Im)
 # Sortie:
    * **C**    : (Array{Float64,2})  la matrice qui contient les composantes principales en colonnes
 """
-function Composantes_principales(Im)
-    X_c = Donnees_centrees(Im) #Im : matrice representatrice l'image
+function tp1_Composantes_principales(Im)
+    X_c = tp1_Donnees_centrees(Im) #Im : matrice representatrice l'image
     (n,p)= size(X_c);
-    Sigma = Matrice_var_cov(Im)
+    Sigma = tp1_Matrice_var_cov(Im)
     # Calcul des valeurs/vecteurs propres de Sigma
     D,W = eigen(Sigma)
     #Tri des valeurs propres dans l'ordre décroissant:
@@ -52,8 +52,8 @@ Sigma_2 = Sigma2(Im)
 # Sortie:
    * **Sigma_2**    : (Array{Float64,2})   Matrice de variance/covariance dans le nouveau repere
 """
-function Sigma2(Im)
-    C = Composantes_principales(Im);
+function tp1_Sigma2(Im)
+    C = tp1_Composantes_principales(Im);
     n = size(C)[1]
     return (C')*C/n
 end
@@ -64,7 +64,7 @@ function affichages_2(Im)
     #nettoyer l'environnement
     ImageView.closeall()
 
-    C = Composantes_principales(Im);
+    C = tp1_Composantes_principales(Im);
     C1 = reshape(C[:,1],size(Im))
     C2 = reshape(C[:,2],size(Im))
     C3 = reshape(C[:,3],size(Im))
