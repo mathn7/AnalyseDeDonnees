@@ -10,7 +10,7 @@ tolerance = 1e-3
 #charger l'image à tester
 Im = load("../src/TP1/automn.tiff")
 
-Sigma_2 = Sigma2(Im);
+Sigma_2 = tp1_Sigma2(Im);
 c = sum(Sigma_2)
 @testset "Tests EXO2" begin
 	@testset "coefficients de corrélation" begin
