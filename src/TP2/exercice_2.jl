@@ -1,6 +1,6 @@
 # Chargement des donnees
 using MAT
-using PyPlot
+#using PyPlot
 using Statistics
 using LinearAlgebra
 
