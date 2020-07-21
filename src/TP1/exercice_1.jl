@@ -46,8 +46,8 @@ x_barre = Individu_moyen(Im)
    * **x_barre**    : (Array{Float64,2})  l'individu moyen
 """
 function tp1_Individu_moyen(Im)
-    (n,p)= size(Matrice_de_donnees(Im));
-    return Matrice_de_donnees(Im)'*ones(n,1)/n;
+    (n,p)= size(tp1_Matrice_de_donnees(Im));
+    return tp1_Matrice_de_donnees(Im)'*ones(n,1)/n;
 end
 
 @doc doc"""
