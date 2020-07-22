@@ -1,6 +1,5 @@
 module AnalyseDeDonnees
 
-#using Plots
 using MAT
 using LinearAlgebra
 using Statistics
@@ -11,20 +10,17 @@ using Images
 
 #============= TP1 ==============#
 include("TP1/exercice_1.jl")
-export Matrice_de_donnees
-export Individu_moyen
-export Donnees_centrees
-export Matrice_var_cov
-
+export tp1_Matrice_de_donnees
+export tp1_Individu_moyen
+export tp1_Donnees_centrees
+export tp1_Matrice_var_cov
 include("TP1/exercice_2.jl")
-export Composantes_principales
-export Sigma2
-#================================#
+export tp1_Composantes_principales
+export tp1_Sigma2
 
 #============= TP2 ==============#
 include("TP2/MCO.jl")
-export MCO
-#================================#
+export tp2_MCO
 
 #============= TP3 ==============#
 include("TP3/couleur_moyenne.jl");     export tp3_couleur_moyenne
@@ -36,12 +32,9 @@ include("TP3/exercice_2.jl");          export tp3_exercice2
 include("TP3/exercice_3.jl");          export tp3_exercice3
 include("TP3/exercice_3_bis.jl");      export tp3_exercice3bis
 include("TP3/exercice_4.jl");          export tp3_exercice4
-#================================#
 
 #============= TP4 ==============#
 include("TP4/kppv.jl")
 export tp4_kppv
-#================================#
 
-
-end # module
+end
