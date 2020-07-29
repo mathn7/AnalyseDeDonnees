@@ -1,5 +1,6 @@
 using Test
 using Statistics
+using Images
 
 include("../src/TP1/exercice_1.jl")
 include("solutions_tp1/sols_exactes.jl")
